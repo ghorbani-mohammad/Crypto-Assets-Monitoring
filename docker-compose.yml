@@ -1,0 +1,56 @@
+version: '3'
+
+services:
+
+  crypto_assets_db:
+    container_name: crypto_assets_db
+    image: mdillon/postgis:11
+    restart: unless-stopped
+    volumes:
+      - crypto_assets_db:/var/lib/postgresql/data
+
+  crypto_assets_api:
+    container_name: crypto_assets_api
+    build: .
+    restart: unless-stopped
+    depends_on:
+      - crypto_assets_db
+    volumes:
+      - .:/app
+    ports:
+      - 4381:80
+    command: ["python", "/app/crypto_assets/manage.py", "runserver", "0:80"]
+    environment:
+      DEBUG: 'True'
+
+  crypto_assets_celery:
+    container_name: crypto_assets_celery
+    build: .
+    working_dir: /app/crypto_assets
+    command: ["celery", "-A", "crypto_assets", "worker", "-l", "info"]
+    restart: unless-stopped
+    volumes:
+      - .:/app
+    depends_on:
+      - crypto_assets_db
+      - crypto_assets_redis
+
+  crypto_assets_beat:
+    container_name: crypto_assets_beat
+    build: .
+    working_dir: /app/crypto_assets
+    command: ["celery", "-A", "crypto_assets", "beat", "-l", "info"]
+    restart: unless-stopped
+    volumes:
+      - .:/app
+    depends_on:
+      - crypto_assets_db
+      - crypto_assets_redis
+
+  crypto_assets_redis:
+    container_name : crypto_assets_redis
+    image: redis:5.0.8
+    restart: unless-stopped
+
+volumes:
+  crypto_assets_db:

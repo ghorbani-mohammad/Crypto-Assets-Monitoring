@@ -1,0 +1,15 @@
+### Django ###
+*.log
+*.pot
+*.pyc
+__pycache__/
+local_settings.py
+.idea
+venv
+db.sqlite3
+crypto_assets/static
+*.sql
+*.sql.gz
+todo
+crypto_assets/celerybeat-schedule
+crypto_assets/celerybeat.pid
