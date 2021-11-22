@@ -1,8 +1,8 @@
 ### Information
 
-- Server: **keylid1**
+- Server: **DigitalOcean**
 - Port: 4381
-- Server path: `/var/www/igap_inf/`
+- Server path: `/var/www/crypto_assets/`
 - Doc Link:
 - Nginx log files:
     ```
@@ -10,4 +10,4 @@
     error:  /var/log/nginx/api-crypto_assets_error.log
     ```
 - Links:
-    * [beshkaf.tika-team.ir](https://beshkaf.tika-team.ir)
+    * [crypto_assets.m-gh.ir](https://crypto_assets.m-gh.ir)
