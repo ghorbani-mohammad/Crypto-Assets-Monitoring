@@ -5,6 +5,7 @@
 __pycache__/
 local_settings.py
 .idea
+.vscode
 venv
 db.sqlite3
 crypto_assets/static
