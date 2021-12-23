@@ -9,4 +9,4 @@
     error:  /var/log/nginx/api-crypto_assets_error.log
     ```
 - Links:
-    * [crypto.m-gh.com](https://crypto.m-gh.com/admin/)
+    * [crypto.m-gh.com](https://crypto.m-gh.com/secret-admin/)
