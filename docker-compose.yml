@@ -49,7 +49,7 @@ services:
 
   crypto_assets_redis:
     container_name : crypto_assets_redis
-    image: redis:5.0.8
+    image: redis:5.0.14
     restart: unless-stopped
 
 volumes:

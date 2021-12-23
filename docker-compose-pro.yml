@@ -14,7 +14,7 @@ services:
     depends_on:
       - crypto_assets_db
     volumes:
-      - /var/www/igap_inf/static:/app/crypto_assets/static
+      - /var/www/crypto_assets/static:/app/crypto_assets/static
     ports:
       - "127.0.0.1:4381:80"
 
