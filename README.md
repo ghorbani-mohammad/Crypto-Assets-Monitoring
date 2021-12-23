@@ -3,11 +3,10 @@
 - Server: **DigitalOcean**
 - Port: 4381
 - Server path: `/var/www/crypto_assets/`
-- Doc Link:
 - Nginx log files:
     ```
     access: /var/log/nginx/api-crypto_assets_access.log
     error:  /var/log/nginx/api-crypto_assets_error.log
     ```
 - Links:
-    * [crypto_assets.m-gh.ir](https://crypto_assets.m-gh.ir)
+    * [crypto.m-gh.ir](https://crypto_assets.m-gh.ir)
