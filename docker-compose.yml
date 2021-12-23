@@ -51,7 +51,7 @@ services:
 
   crypto_assets_redis:
     container_name : crypto_assets_redis
-    image: redis:5.0.14
+    image: redis:6.2
     restart: unless-stopped
 
 volumes:
