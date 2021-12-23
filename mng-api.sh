@@ -59,7 +59,7 @@ function create_admin_user() {
 }
 
 function issue_https_certificate() {
-    sudo certbot --nginx certonly -d crypto.m-gh.com
+    sudo certbot --nginx certonly -d crypto.m-gh.com -d www.crypto.m-gh.com --nginx-server-root /etc/nginx/my_conf/
     sudo ln -s ${SERVER_PATH}${NGINX_FILE} /etc/nginx/sites-enabled/${NGINX_FILE}
     sudo service nginx restart
 }
