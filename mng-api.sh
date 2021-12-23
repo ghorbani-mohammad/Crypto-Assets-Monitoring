@@ -2,7 +2,7 @@
 
 PROJECT_NAME='crypto_assets'
 SERVER_NAME='keylid1'
-SERVER_PATH='/var/www/igap_inf/'
+SERVER_PATH='/var/www/crypto_assets/'
 
 API_CONTAINER_NAME=${PROJECT_NAME}'_api'
 DB_CONTAINER_NAME=${PROJECT_NAME}'_db'
@@ -59,7 +59,7 @@ function create_admin_user() {
 }
 
 function issue_https_certificate() {
-    sudo certbot --nginx certonly -d beshkaf.tika-team.ir
+    sudo certbot --nginx certonly -d crypto_assets.m-gh.com
     sudo ln -s ${SERVER_PATH}${NGINX_FILE} /etc/nginx/sites-enabled/${NGINX_FILE}
     sudo service nginx restart
 }
