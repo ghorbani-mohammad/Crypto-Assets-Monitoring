@@ -1,7 +1,7 @@
 #!/bin/bash
 
 PROJECT_NAME='crypto_assets'
-SERVER_NAME='keylid1'
+SERVER_NAME='DigitalOcean'
 SERVER_PATH='/var/www/crypto_assets/'
 
 API_CONTAINER_NAME=${PROJECT_NAME}'_api'
