@@ -8,5 +8,5 @@
     access: /var/log/nginx/api-crypto_assets_access.log
     error:  /var/log/nginx/api-crypto_assets_error.log
     ```
-- Links:
-    * [crypto.m-gh.com](https://crypto.m-gh.com/admin/)
+- Django Admin Panel:
+    * [https://crypto.m-gh.com/secret-admin/](https://crypto.m-gh.com/secret-admin/)
