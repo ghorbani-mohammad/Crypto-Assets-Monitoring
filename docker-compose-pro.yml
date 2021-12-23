@@ -4,8 +4,10 @@ services:
 
   crypto_assets_db:
     container_name: crypto_assets_db
-    image: mdillon/postgis:11
+    image: postgres:13.5
     restart: unless-stopped
+    env_file:
+      - .env
 
   crypto_assets_api:
     container_name: crypto_assets_api
