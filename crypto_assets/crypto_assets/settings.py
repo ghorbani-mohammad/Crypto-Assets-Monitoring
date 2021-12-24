@@ -3,10 +3,8 @@ from envparse import env
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-
-
-SECRET_KEY = 'django-insecure-hk(1k+%)4@kg&7$ft-hx%vva8_mdhk+%)j9kli)ysprcog2wy3'
-DEBUG = env.bool("DEBUG", default=False)
+DEBUG = env.bool("DEBUG")
+SECRET_KEY = env.str('SECRET_KEY')
 ALLOWED_HOSTS = ['crypto.m-gh.com']
 
 
