@@ -103,3 +103,14 @@ CELERY_ACCEPT_CONTENT = ["application/json"]
 CELERY_TASK_SERIALIZER = "json"
 CELERY_RESULT_SERIALIZER = "json"
 CELERY_TIMEZONE = "Asia/Tehran"
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'postgres',
+        'USER': env.str("POSTGRES_USERNAME"),
+        'PASSWORD': env.str("POSTGRES_PASSWORD"),
+        'HOST': 'crypto_assets_db',
+        'PORT': '5432',
+    }
+}
