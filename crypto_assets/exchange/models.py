@@ -9,3 +9,9 @@ class Coin(BaseModel):
 
     def __str__(self) -> str:
         return f"<{self.pk} - {self.code}>"
+
+
+class Exchange(BaseModel):
+    WALLEX = 'wallex'
+    NAME_CHOICES = ((WALLEX, WALLEX),)
+    name = models.CharField(max_length=100, choices=NAME_CHOICES)
