@@ -34,6 +34,10 @@ class Transaction(BaseModel):
     SELL = 'sell'
     TYPE_CHOICES = ((BUY, BUY), (SELL, SELL))
     type = models.CharField(max_length=10, choices=TYPE_CHOICES)
+    TOMAN = 'toman'
+    TETHER = 'tether'
+    MARKET_CHOICES = ((TOMAN, TOMAN), (TETHER, TETHER))
+    market = models.CharField(max_length=10, choices=MARKET_CHOICES, null=True)
     price = models.DecimalField(max_digits=20, decimal_places=10)
     quantity = models.DecimalField(max_digits=20, decimal_places=10)
     coin = models.ForeignKey(
