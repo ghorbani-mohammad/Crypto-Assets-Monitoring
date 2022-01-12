@@ -22,7 +22,7 @@ class Coin(BaseModel):
     code = models.CharField(max_length=20, unique=True)
 
     def __str__(self) -> str:
-        return f"<{self.pk} - {self.code}>"
+        return self.code
 
     @property
     def price(self):
