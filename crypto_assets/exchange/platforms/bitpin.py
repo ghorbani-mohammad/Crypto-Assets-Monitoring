@@ -8,7 +8,7 @@ logger = logging.getLogger(__name__)
 
 class Bitpin(BaseExchange):
     def get_price(self, coin, market):
-        logger.info(f"Bitpin.get_price({coin}, {market})")
+        market = self.market_mapper(market)
         api_addr = 'https://api.bitpin.ir/v1/mkt/markets/'
         try:
             coins = requests.get(api_addr).json()['results']
@@ -18,3 +18,8 @@ class Bitpin(BaseExchange):
         except Exception as e:
             logger.error(e)
             return None
+
+    def market_mapper(self, market):
+        if market == 'tether':
+            return 'USDT'
+        return market
