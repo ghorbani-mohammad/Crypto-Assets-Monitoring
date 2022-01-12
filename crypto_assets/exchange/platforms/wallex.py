@@ -10,10 +10,8 @@ class Wallex(BaseExchange):
     def get_price(self, coin, market):
         logger.info(f"Wallex.get_price({coin}, {market})")
         api_addr = 'https://api.wallex.ir/v1/markets'
-        resp = requests.get(api_addr).json()
-        logger.info(f"Wallex response: {resp['result']['symbols'][0]}")
-        for symbol in resp['result']['symbols']:
-            logger.info(symbol)
-            if symbol['baseAsset'] == coin.code and symbol['quoteAsset'] == market:
-                return symbol['stats']['lastPrice']
-        return None
+        try:
+            coin = requests.get(api_addr).json()['result']['symbols'][f'{coin}{market}']
+            return round(float(coin['stats']['lastPrice']), 2)
+        except:
+            return None
