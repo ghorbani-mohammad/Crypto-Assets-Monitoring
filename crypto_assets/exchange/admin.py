@@ -22,11 +22,11 @@ class ExchangeAdmin(ReadOnlyAdminDateFields, admin.ModelAdmin):
 class TransactionAdmin(ReadOnlyAdminDateFields, admin.ModelAdmin):
     list_display = [
         'pk',
-        'profile',
         'coin',
         'type',
-        'get_price',
         'get_quantity',
+        'get_price',
+        'get_current_price',
         'total_price',
         'current_value',
     ]
@@ -34,6 +34,10 @@ class TransactionAdmin(ReadOnlyAdminDateFields, admin.ModelAdmin):
     @admin.display(description="price")
     def get_price(self, instance):
         return instance.get_price
+
+    @admin.display(description="current price")
+    def get_current_price(self, instance):
+        return instance.get_current_price
 
     @admin.display(description="quantity")
     def get_quantity(self, instance):

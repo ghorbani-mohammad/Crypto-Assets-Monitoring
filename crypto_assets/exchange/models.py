@@ -70,5 +70,9 @@ class Transaction(BaseModel):
         return round(self.price, 4)
 
     @property
+    def get_current_price(self):
+        return round(self.coin.price(self.market), 4)
+
+    @property
     def get_quantity(self):
         return round(self.quantity, 4)
