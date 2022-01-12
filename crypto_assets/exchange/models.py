@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.functional import cached_property
 
 from user.models import Profile
 from .platforms.bitpin import Bitpin
@@ -62,6 +63,7 @@ class Transaction(BaseModel):
         return round(self.price * self.quantity, 4)
 
     @property
+    @cached_property
     def current_value(self):
         return round(self.coin.price(self.market) * self.quantity, 4)
 
