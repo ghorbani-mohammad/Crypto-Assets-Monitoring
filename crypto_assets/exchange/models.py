@@ -1,6 +1,7 @@
 from django.db import models
 
 from user.models import Profile
+from .platforms.bitpin import Bitpin
 from .platforms.wallex import Wallex
 from reusable.models import BaseModel
 
@@ -17,6 +18,8 @@ class Exchange(BaseModel):
     def get_platform(self):
         if self.name == Exchange.WALLEX:
             return Wallex()
+        elif self.name == Exchange.BITPIN:
+            return Bitpin()
 
     def price(self, coin, market):
         return self.get_platform().get_price(coin, market)
