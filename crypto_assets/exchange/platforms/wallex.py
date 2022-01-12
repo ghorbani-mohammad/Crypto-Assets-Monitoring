@@ -11,7 +11,7 @@ class Wallex(BaseExchange):
         logger.info(f"Wallex.get_price({coin}, {market})")
         api_addr = 'https://api.wallex.ir/v1/markets'
         resp = requests.get(api_addr).json()
-        logger.info(f'Wallex response: {resp}')
+        logger.info(f"Wallex response: {resp['result']['symbols'][0]}")
         for symbol in resp['result']['symbols']:
             logger.info(symbol)
             if symbol['baseAsset'] == coin.code and symbol['quoteAsset'] == market:
