@@ -10,6 +10,9 @@ class Exchange(BaseModel):
     NAME_CHOICES = ((WALLEX, WALLEX),)
     name = models.CharField(max_length=100, choices=NAME_CHOICES)
 
+    def __str__(self) -> str:
+        return self.name
+
     def get_platform(self):
         if self.name == Exchange.WALLEX:
             return Wallex()
