@@ -1,4 +1,5 @@
 import logging
+import decimal
 import requests
 from .base import BaseExchange
 
@@ -14,7 +15,7 @@ class Bitpin(BaseExchange):
             coins = requests.get(api_addr).json()['results']
             for item in coins:
                 if item['code'] == f'{coin}_{market}':
-                    return round(float(item['price']), 2)
+                    return round(decimal.Decimal(item['price']), 2)
         except Exception as e:
             logger.error(e)
             return None
