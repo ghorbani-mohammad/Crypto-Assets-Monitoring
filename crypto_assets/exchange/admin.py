@@ -25,8 +25,16 @@ class TransactionAdmin(ReadOnlyAdminDateFields, admin.ModelAdmin):
         'profile',
         'coin',
         'type',
-        'price',
-        'quantity',
+        'get_price',
+        'get_quantity',
         'total_price',
         'current_value',
     ]
+
+    @admin.display(description="price")
+    def get_price(self, instance):
+        return instance.get_price
+
+    @admin.display(description="quantity")
+    def get_quantity(self, instance):
+        return instance.get_quantity

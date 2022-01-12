@@ -64,3 +64,11 @@ class Transaction(BaseModel):
     @property
     def current_value(self):
         return round(self.coin.price(self.market) * self.quantity, 4)
+
+    @property
+    def get_price(self):
+        return round(self.price, 4)
+
+    @property
+    def get_quantity(self):
+        return round(self.quantity, 4)
