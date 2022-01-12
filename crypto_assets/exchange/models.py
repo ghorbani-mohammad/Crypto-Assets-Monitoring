@@ -14,8 +14,8 @@ class Exchange(BaseModel):
         if self.name == Exchange.WALLEX:
             return Wallex()
 
-    def price(self, market):
-        return self.get_platform().get_price(market)
+    def price(self, coin, market):
+        return self.get_platform().get_price(coin, market)
 
 
 class Coin(BaseModel):
@@ -24,9 +24,9 @@ class Coin(BaseModel):
     def __str__(self) -> str:
         return self.code
 
-    @property
-    def price(self):
-        pass
+    def price(self, market):
+        exchange = Exchange.objects.first()
+        return exchange.price(self, market)
 
 
 class Transaction(BaseModel):
