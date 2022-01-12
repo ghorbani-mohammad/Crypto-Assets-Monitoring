@@ -26,8 +26,8 @@ class TransactionAdmin(ReadOnlyAdminDateFields, admin.ModelAdmin):
         'type',
         'get_quantity',
         'get_price',
-        'get_current_price',
         'total_price',
+        'get_current_price',
         'current_value',
     ]
 
