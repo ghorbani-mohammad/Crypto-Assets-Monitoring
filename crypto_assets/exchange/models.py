@@ -7,7 +7,8 @@ from reusable.models import BaseModel
 
 class Exchange(BaseModel):
     WALLEX = 'wallex'
-    NAME_CHOICES = ((WALLEX, WALLEX),)
+    BITPIN = 'bitpin'
+    NAME_CHOICES = ((WALLEX, WALLEX), (BITPIN, BITPIN))
     name = models.CharField(max_length=100, choices=NAME_CHOICES)
 
     def __str__(self) -> str:
@@ -28,7 +29,7 @@ class Coin(BaseModel):
         return self.code
 
     def price(self, market):
-        exchange = Exchange.objects.first()
+        exchange = Exchange.objects.last()
         return exchange.price(self, market)
 
 
