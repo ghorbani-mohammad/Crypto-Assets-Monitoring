@@ -11,7 +11,7 @@ class Bitpin(BaseExchange):
         logger.info(f"Bitpin.get_price({coin}, {market})")
         api_addr = 'https://api.bitpin.ir/v1/mkt/markets/'
         try:
-            coins = requests.get(api_addr).json()['result']
+            coins = requests.get(api_addr).json()['results']
             for coin in coins:
                 if coin['code'] == f'{coin}_{market}':
                     return round(float(coin['price']), 2)
