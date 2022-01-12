@@ -12,3 +12,8 @@ class CoinAdmin(ReadOnlyAdminDateFields, admin.ModelAdmin):
 @admin.register(models.Exchange)
 class ExchangeAdmin(ReadOnlyAdminDateFields, admin.ModelAdmin):
     list_display = ['pk', 'name']
+
+
+@admin.register(models.Transaction)
+class TransactionAdmin(ReadOnlyAdminDateFields, admin.ModelAdmin):
+    list_display = ['pk', 'profile', 'coin', 'type', 'price', 'quantity']
