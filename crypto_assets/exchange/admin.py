@@ -31,6 +31,7 @@ class TransactionAdmin(ReadOnlyAdminDateFields, admin.ModelAdmin):
         'get_current_value',
         'get_profit_or_loss',
     ]
+    list_filter = ['coin']
 
     @admin.display(description="price")
     def get_price(self, instance):
