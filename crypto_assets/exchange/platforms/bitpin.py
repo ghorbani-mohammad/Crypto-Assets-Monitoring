@@ -14,6 +14,8 @@ class Bitpin(BaseExchange):
             coins = requests.get(api_addr).json()['results']
             for coin in coins:
                 if coin['code'] == f'{coin}_{market}':
+                    logger.info(round(float(coin['price']), 2))
                     return round(float(coin['price']), 2)
-        except:
+        except Exception as e:
+            logger.error(e)
             return None
