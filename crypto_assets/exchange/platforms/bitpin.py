@@ -12,9 +12,10 @@ class Bitpin(BaseExchange):
         api_addr = 'https://api.bitpin.ir/v1/mkt/markets/'
         try:
             coins = requests.get(api_addr).json()['results']
-            logger.info(coins)
-            for coin in coins:
+            for coin in coins[:5]:
                 logger.info(coin)
+                logger.info(f'{coin}_{market}')
+                logger.info(coin['code'])
                 if coin['code'] == f'{coin}_{market}':
                     logger.info(round(float(coin['price']), 2))
                     return round(float(coin['price']), 2)
