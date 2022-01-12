@@ -17,7 +17,7 @@ services:
       - crypto_assets_db
     volumes:
       - /var/www/crypto_assets/static:/app/crypto_assets/static
-      - /var/www/foveo-crypto_assets/log/api:/var/log/app
+      - /var/www/crypto_assets/log/api:/var/log/app
     ports:
       - "127.0.0.1:4381:80"
     env_file:
