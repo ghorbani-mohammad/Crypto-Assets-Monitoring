@@ -28,7 +28,8 @@ class TransactionAdmin(ReadOnlyAdminDateFields, admin.ModelAdmin):
         'get_price',
         'total_price',
         'get_current_price',
-        'current_value',
+        'get_current_value',
+        'get_profit_or_loss',
     ]
 
     @admin.display(description="price")
@@ -42,3 +43,11 @@ class TransactionAdmin(ReadOnlyAdminDateFields, admin.ModelAdmin):
     @admin.display(description="quantity")
     def get_quantity(self, instance):
         return instance.get_quantity
+
+    @admin.display(description="current value")
+    def get_current_value(self, instance):
+        return instance.get_current_value()
+
+    @admin.display(description="profit/loss")
+    def get_profit_or_loss(self, instance):
+        return instance.get_profit_or_loss
