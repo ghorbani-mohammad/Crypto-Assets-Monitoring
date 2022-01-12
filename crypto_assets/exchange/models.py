@@ -17,8 +17,7 @@ class Exchange(BaseModel):
         return self.get_platform().get_price(market)
 
 
-class Market(BaseModel):
-    title = models.CharField(max_length=100)
+class Coin(BaseModel):
     code = models.CharField(max_length=20, unique=True)
 
     def __str__(self) -> str:
