@@ -13,7 +13,7 @@ class Exchange(BaseModel):
         if self.name == Exchange.WALLEX:
             return Wallex()
 
-    def tether_price(self, market):
+    def price(self, market):
         return self.get_platform().get_price(market)
 
 
