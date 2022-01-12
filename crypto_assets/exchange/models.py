@@ -60,3 +60,7 @@ class Transaction(BaseModel):
     @property
     def total_price(self):
         return self.price * self.quantity
+
+    @property
+    def current_value(self):
+        return self.coin.price(self.market) * self.quantity

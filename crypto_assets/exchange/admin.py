@@ -20,4 +20,13 @@ class ExchangeAdmin(ReadOnlyAdminDateFields, admin.ModelAdmin):
 
 @admin.register(models.Transaction)
 class TransactionAdmin(ReadOnlyAdminDateFields, admin.ModelAdmin):
-    list_display = ['pk', 'profile', 'coin', 'type', 'price', 'quantity', 'total_price']
+    list_display = [
+        'pk',
+        'profile',
+        'coin',
+        'type',
+        'price',
+        'quantity',
+        'total_price',
+        'current_value',
+    ]
