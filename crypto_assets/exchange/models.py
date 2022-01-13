@@ -76,7 +76,7 @@ class Transaction(BaseModel):
 
     @property
     def get_quantity(self):
-        return round(self.quantity, 4)
+        return float(round(self.quantity, 6))
 
     @property
     def get_profit_or_loss(self):
