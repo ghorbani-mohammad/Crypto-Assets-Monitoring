@@ -80,4 +80,4 @@ class Transaction(BaseModel):
 
     @property
     def get_profit_or_loss(self):
-        return round((self.get_current_value - self.total_price), 4)
+        return int(self.get_current_value - self.total_price)
