@@ -60,15 +60,15 @@ class Transaction(BaseModel):
 
     @property
     def total_price(self):
-        return round(self.price * self.quantity, 4)
+        return float(round(self.price * self.quantity, 4))
 
     @cached_property
     def get_current_value(self):
-        return round(self.coin.price(self.market) * self.quantity, 4)
+        return float(round(self.coin.price(self.market) * self.quantity, 4))
 
     @property
     def get_price(self):
-        return round(self.price, 4)
+        return float(round(self.price, 4))
 
     @property
     def get_current_price(self):
