@@ -72,7 +72,9 @@ class Transaction(BaseModel):
 
     @property
     def get_current_price(self):
-        number = int(int(self.coin.price(self.market)) /10)
+        number = int(self.coin.price(self.market))
+        if self.market == Transaction.TOMAN:
+            number = int(number / 10)
         return '{:,}'.format(number)
 
     @property
