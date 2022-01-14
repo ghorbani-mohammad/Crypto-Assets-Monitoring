@@ -92,3 +92,7 @@ class Transaction(BaseModel):
     @property
     def get_total_price(self):
         return '{:,}'.format(self.total_price)
+
+    @property
+    def get_current_value_admin(self):
+        return '{:,}'.format(self.get_current_value)
