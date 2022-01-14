@@ -82,3 +82,7 @@ class Transaction(BaseModel):
     def get_profit_or_loss(self):
         number = int(self.get_current_value - self.total_price)
         return '{:,}'.format(number)
+    
+    @property
+    def get_total_price(self):
+        return '{:,}'.format(self.total_price)
