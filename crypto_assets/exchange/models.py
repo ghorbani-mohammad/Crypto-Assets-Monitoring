@@ -68,6 +68,9 @@ class Transaction(BaseModel):
 
     @property
     def get_price(self):
+        if self.market == Transaction.TOMAN:
+            number = int(self.price)
+            return '{:,}'.format(number)
         return float(round(self.price, 4))
 
     @property
