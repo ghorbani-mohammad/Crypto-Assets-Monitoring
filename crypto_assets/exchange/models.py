@@ -71,7 +71,7 @@ class Transaction(BaseModel):
         if self.market == Transaction.TOMAN:
             number = int(self.price)
             return '{:,}'.format(number)
-        return float(round(self.price, 4))
+        return float(round(self.price, 2))
 
     @property
     def get_current_price(self):
