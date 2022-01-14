@@ -60,7 +60,8 @@ class Transaction(BaseModel):
 
     @property
     def total_price(self):
-        return int(self.price * self.quantity)
+        number = int(self.price * self.quantity)
+        return '{:,}'.format(number) 
 
     @cached_property
     def get_current_value(self):
