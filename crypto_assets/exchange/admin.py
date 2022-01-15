@@ -6,11 +6,15 @@ from reusable.admins import ReadOnlyAdminDateFields
 
 @admin.register(models.Coin)
 class CoinAdmin(ReadOnlyAdminDateFields, admin.ModelAdmin):
-    list_display = ['pk', 'code', 'get_current_usdt_price']
+    list_display = ['pk', 'code', 'get_current_usdt_price', 'get_current_toman_price']
 
     @admin.display(description="usdt price")
     def get_current_usdt_price(self, instance):
         return instance.price('USDT')
+    
+    @admin.display(description="toman price")
+    def get_current_toman_price(self, instance):
+        return instance.price('toman')
 
 
 @admin.register(models.Exchange)
