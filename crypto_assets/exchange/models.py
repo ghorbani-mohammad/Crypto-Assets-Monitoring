@@ -26,6 +26,9 @@ class Exchange(BaseModel):
     def price(self, coin, market):
         return self.get_platform().get_price(coin, market)
 
+    def cache_all_prices(self):
+        return self.get_platform().cache_all_prices()
+
 
 class Coin(BaseModel):
     code = models.CharField(max_length=20, unique=True)
@@ -42,12 +45,6 @@ class Coin(BaseModel):
     def price(self, market):
         exchange = Exchange.objects.last()
         return exchange.price(self, market)
-
-    @staticmethod
-    def update_prices():
-        for coin in Coin.objects.all():
-            for market in [Transaction.TETHER, Transaction.TOMAN]:
-                coin.price(market)
 
 
 class Transaction(BaseModel):

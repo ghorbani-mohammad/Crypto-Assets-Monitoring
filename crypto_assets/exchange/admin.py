@@ -8,6 +8,12 @@ from reusable.admins import ReadOnlyAdminDateFields
 class CoinAdmin(ReadOnlyAdminDateFields, admin.ModelAdmin):
     list_display = ['pk', 'code', 'get_current_usdt_price', 'get_current_toman_price']
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        exchange = models.Exchange.objects.last()
+        if exchange:
+            exchange.cache_all_prices()
+
     @admin.display(description="usdt price")
     def get_current_usdt_price(self, instance):
         return instance.get_price('USDT')
@@ -37,6 +43,12 @@ class TransactionAdmin(ReadOnlyAdminDateFields, admin.ModelAdmin):
         'get_date',
     ]
     list_filter = ['coin', 'market']
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        exchange = models.Exchange.objects.last()
+        if exchange:
+            exchange.cache_all_prices()
 
     @admin.display(description="price")
     def get_price(self, instance):

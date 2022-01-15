@@ -29,6 +29,12 @@ class Bitpin(BaseExchange):
             logger.error(e)
             return None
 
+    def cache_all_prices(self, ttl=2):
+        coins = requests.get(self.api_addr).json()['results']
+        for coin in coins:
+            price = round(decimal.Decimal(coin['price']), 2)
+            cache.set(coin['code'], price, ttl)
+
     def market_mapper(self, market):
         if market == 'tether':
             return 'USDT'
