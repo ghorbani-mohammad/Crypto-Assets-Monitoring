@@ -42,7 +42,6 @@ class Coin(BaseModel):
     def price(self, market):
         exchange = Exchange.objects.last()
         return exchange.price(self, market)
-    
 
 
 class Transaction(BaseModel):
@@ -87,7 +86,7 @@ class Transaction(BaseModel):
         if self.market == Transaction.TOMAN:
             number = int(self.coin.price(self.market))
             return '{:,}'.format(number)
-        return float(round(self.coin.price(self.market),2))
+        return float(round(self.coin.price(self.market), 2))
 
     @property
     def get_quantity(self):
@@ -97,7 +96,7 @@ class Transaction(BaseModel):
     def get_profit_or_loss(self):
         number = int(self.get_current_value - self.total_price)
         return '{:,}'.format(number)
-    
+
     @property
     def get_total_price(self):
         return '{:,}'.format(self.total_price)

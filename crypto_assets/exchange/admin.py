@@ -11,7 +11,7 @@ class CoinAdmin(ReadOnlyAdminDateFields, admin.ModelAdmin):
     @admin.display(description="usdt price")
     def get_current_usdt_price(self, instance):
         return instance.get_price('USDT')
-    
+
     @admin.display(description="toman price")
     def get_current_toman_price(self, instance):
         return instance.get_price('toman')
@@ -57,7 +57,7 @@ class TransactionAdmin(ReadOnlyAdminDateFields, admin.ModelAdmin):
     @admin.display(description="profit/loss")
     def get_profit_or_loss(self, instance):
         return instance.get_profit_or_loss
-    
+
     @admin.display(description="total price")
     def get_total_price(self, instance):
         return instance.get_total_price
