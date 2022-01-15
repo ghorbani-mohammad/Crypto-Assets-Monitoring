@@ -34,7 +34,7 @@ class TransactionAdmin(ReadOnlyAdminDateFields, admin.ModelAdmin):
         'get_current_price',
         'get_current_value',
         'get_profit_or_loss',
-        'jdate',
+        'get_date',
     ]
     list_filter = ['coin', 'market']
 
@@ -61,3 +61,7 @@ class TransactionAdmin(ReadOnlyAdminDateFields, admin.ModelAdmin):
     @admin.display(description="total price")
     def get_total_price(self, instance):
         return instance.get_total_price
+
+    @admin.display(description="date")
+    def get_date(self, instance):
+        return instance.jdate

@@ -43,6 +43,12 @@ class Coin(BaseModel):
         exchange = Exchange.objects.last()
         return exchange.price(self, market)
 
+    @staticmethod
+    def update_prices():
+        for coin in Coin.objects.all():
+            for market in [Transaction.TETHER, Transaction.TOMAN]:
+                coin.price(market)
+
 
 class Transaction(BaseModel):
     BUY = 'buy'
