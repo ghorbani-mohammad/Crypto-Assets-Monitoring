@@ -10,11 +10,11 @@ class CoinAdmin(ReadOnlyAdminDateFields, admin.ModelAdmin):
 
     @admin.display(description="usdt price")
     def get_current_usdt_price(self, instance):
-        return instance.price('USDT')
+        return instance.get_price('USDT')
     
     @admin.display(description="toman price")
     def get_current_toman_price(self, instance):
-        return instance.price('toman')
+        return instance.get_price('toman')
 
 
 @admin.register(models.Exchange)
