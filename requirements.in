@@ -1,5 +1,6 @@
 celery
 django
+django_jalali
 django-admin-sortable2
 django-cors-headers
 django-filter
@@ -8,6 +9,7 @@ djangorestframework
 envparse
 gunicorn
 ipython
+Pillow
 pip-tools
 psycopg2-binary
 pyaes
@@ -15,4 +17,3 @@ pycryptodome
 redis
 requests
 unidecode
-Pillow

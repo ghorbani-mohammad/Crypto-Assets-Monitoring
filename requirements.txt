@@ -41,6 +41,7 @@ django==3.2.9
     #   django-admin-sortable2
     #   django-cors-headers
     #   django-filter
+    #   django-jalali
     #   django-redis
     #   djangorestframework
 django-admin-sortable2==1.0.2
@@ -48,6 +49,8 @@ django-admin-sortable2==1.0.2
 django-cors-headers==3.10.0
     # via -r requirements.in
 django-filter==21.1
+    # via -r requirements.in
+django-jalali==5.0.0
     # via -r requirements.in
 django-redis==5.0.0
     # via -r requirements.in
@@ -61,6 +64,8 @@ idna==3.3
     # via requests
 ipython==7.29.0
     # via -r requirements.in
+jdatetime==3.8.0
+    # via django-jalali
 jedi==0.18.1
     # via ipython
 kombu==5.2.2
