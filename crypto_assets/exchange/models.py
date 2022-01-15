@@ -1,4 +1,5 @@
 from django.db import models
+from django_jalali.db import models as jmodels
 from django.utils.functional import cached_property
 
 from user.models import Profile
@@ -54,6 +55,7 @@ class Transaction(BaseModel):
     profile = models.ForeignKey(
         Profile, related_name='transactions', on_delete=models.CASCADE
     )
+    jdate = jmodels.jDateField(null=True, blank=True)
 
     def __str__(self) -> str:
         return f"<{self.pk} - {self.type} - {self.coin}>"
