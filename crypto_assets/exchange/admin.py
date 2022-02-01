@@ -50,6 +50,9 @@ class TransactionAdmin(ReadOnlyAdminDateFields, admin.ModelAdmin):
         if exchange:
             exchange.cache_all_prices()
 
+    def get_ordering(self, request):
+        return ["-jdate"]
+
     @admin.display(description="price")
     def get_price(self, instance):
         return instance.get_price
