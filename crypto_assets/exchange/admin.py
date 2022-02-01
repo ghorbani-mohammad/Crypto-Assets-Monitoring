@@ -74,6 +74,6 @@ class TransactionAdmin(ReadOnlyAdminDateFields, admin.ModelAdmin):
     def get_total_price(self, instance):
         return instance.get_total_price
 
-    @admin.display(description="date")
+    @admin.display(description="date", ordering='jdate')
     def get_date(self, instance):
         return instance.jdate
