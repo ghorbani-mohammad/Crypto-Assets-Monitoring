@@ -8,6 +8,8 @@ services:
     restart: unless-stopped
     env_file:
       - .env
+    volumes:
+      - crypto_assets_db:/var/lib/postgresql/data
 
   crypto_assets_api:
     container_name: crypto_assets_api
@@ -51,3 +53,6 @@ services:
     container_name : crypto_assets_redis
     image: redis:6.2
     restart: unless-stopped
+
+volumes:
+  crypto_assets_db:

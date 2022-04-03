@@ -1,4 +1,5 @@
 from django.db import models
+from django_jalali.db import models as jmodels
 from django.utils.functional import cached_property
 
 from user.models import Profile
@@ -25,12 +26,21 @@ class Exchange(BaseModel):
     def price(self, coin, market):
         return self.get_platform().get_price(coin, market)
 
+    def cache_all_prices(self):
+        return self.get_platform().cache_all_prices()
+
 
 class Coin(BaseModel):
     code = models.CharField(max_length=20, unique=True)
 
     def __str__(self) -> str:
         return self.code
+
+    def get_price(self, market):
+        if market == Transaction.TOMAN:
+            number = int(self.price(market))
+            return '{:,}'.format(number)
+        return float(round(self.price(market), 2))
 
     def price(self, market):
         exchange = Exchange.objects.last()
@@ -54,25 +64,32 @@ class Transaction(BaseModel):
     profile = models.ForeignKey(
         Profile, related_name='transactions', on_delete=models.CASCADE
     )
+    jdate = jmodels.jDateField(null=True, blank=True)
 
     def __str__(self) -> str:
         return f"<{self.pk} - {self.type} - {self.coin}>"
 
     @property
     def total_price(self):
-        return float(round(self.price * self.quantity, 4))
+        return int(self.price * self.quantity)
 
     @cached_property
     def get_current_value(self):
-        return float(round(self.coin.price(self.market) * self.quantity, 4))
+        return int(self.coin.price(self.market) * self.quantity)
 
     @property
     def get_price(self):
-        return float(round(self.price, 4))
+        if self.market == Transaction.TOMAN:
+            number = int(self.price)
+            return '{:,}'.format(number)
+        return float(round(self.price, 2))
 
     @property
     def get_current_price(self):
-        return float(round(self.coin.price(self.market), 4))
+        if self.market == Transaction.TOMAN:
+            number = int(self.coin.price(self.market))
+            return '{:,}'.format(number)
+        return float(round(self.coin.price(self.market), 2))
 
     @property
     def get_quantity(self):
@@ -82,3 +99,11 @@ class Transaction(BaseModel):
     def get_profit_or_loss(self):
         number = int(self.get_current_value - self.total_price)
         return '{:,}'.format(number)
+
+    @property
+    def get_total_price(self):
+        return '{:,}'.format(self.total_price)
+
+    @property
+    def get_current_value_admin(self):
+        return '{:,}'.format(self.get_current_value)
