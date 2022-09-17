@@ -19,6 +19,7 @@ DEFAULT_QUEUE = 'celery'
 
 
 if not settings.DEBUG:
+
     @app.task(bind=True)
     def debug_task(self):
         print('Request: {0!r}'.format(self.request))
@@ -27,4 +28,5 @@ if not settings.DEBUG:
     def config_loggers(*args, **kwags):
         from logging.config import dictConfig
         from django.conf import settings
+
         dictConfig(settings.LOGGING)
