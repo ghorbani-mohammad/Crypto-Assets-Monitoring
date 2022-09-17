@@ -1,4 +1,13 @@
-# [0.2.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/compare/v0.1.0...v0.2.0) (2022-09-17)
+# [1.1.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/compare/v1.0.0...v1.1.0) (2022-09-17)
+
+
+### Features
+
+* minor improve ([4fdb306](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/commit/4fdb30610a63bfffd792ba761316195ddd5684b9))
+
+
+
+# [1.0.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/compare/v0.2.0...v1.0.0) (2022-09-17)
 
 
 ### Features
