@@ -122,28 +122,32 @@ ADMIN_EMAIL_LOG = env("ADMIN_EMAIL_LOG", default=None)
 ADMINS = (("Log Admin", ADMIN_EMAIL_LOG),)
 SERVER_EMAIL = EMAIL_HOST_USER
 
-# LOG
-log_path = "/var/log/app/"
-os.makedirs(os.path.dirname(log_path), exist_ok=True)
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'formatters': {
-        'standard': {'format': '%(asctime)s [%(levelname)s] %(name)s: %(message)s'},
-    },
-    'handlers': {
-        'general_log_file': {
-            'level': 'INFO',
-            'class': 'logging.handlers.WatchedFileHandler',
-            'filename': os.path.join(log_path, 'logs.log'),
-            'formatter': 'standard',
+# Logging (Just Email Handler)
+if EMAIL_HOST_USER and ADMIN_EMAIL_LOG:
+    LOGGING = {
+        "version": 1,
+        "disable_existing_loggers": False,
+        "formatters": {
+            "simple": {"format": "%(levelname)s %(message)s"},
         },
-    },
-    'loggers': {
-        # all modules
-        '': {
-            'handlers': ['general_log_file'],
-            'level': 'INFO',
+        "handlers": {
+            "mail_admins": {
+                "level": "ERROR",
+                "class": "django.utils.log.AdminEmailHandler",
+                "formatter": "simple",
+            },
         },
-    },
-}
+        "loggers": {
+            # all modules
+            "": {
+                "handlers": ["mail_admins"],
+                "level": "ERROR",
+                "propagate": False,
+            },
+            "celery": {
+                "handlers": ["mail_admins"],
+                "level": "ERROR",
+                "propagate": False,
+            },
+        },
+    }
