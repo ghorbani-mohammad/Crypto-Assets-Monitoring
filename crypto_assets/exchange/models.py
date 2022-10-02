@@ -9,8 +9,8 @@ from reusable.models import BaseModel
 
 
 class Exchange(BaseModel):
-    WALLEX = 'wallex'
-    BITPIN = 'bitpin'
+    WALLEX = "wallex"
+    BITPIN = "bitpin"
     NAME_CHOICES = ((WALLEX, WALLEX), (BITPIN, BITPIN))
     name = models.CharField(max_length=100, choices=NAME_CHOICES)
 
@@ -39,7 +39,7 @@ class Coin(BaseModel):
     def get_price(self, market):
         if market == Transaction.TOMAN:
             number = int(self.price(market))
-            return '{:,}'.format(number)
+            return "{:,}".format(number)
         return float(round(self.price(market), 2))
 
     def price(self, market):
@@ -48,21 +48,21 @@ class Coin(BaseModel):
 
 
 class Transaction(BaseModel):
-    BUY = 'buy'
-    SELL = 'sell'
+    BUY = "buy"
+    SELL = "sell"
     TYPE_CHOICES = ((BUY, BUY), (SELL, SELL))
     type = models.CharField(max_length=10, choices=TYPE_CHOICES)
-    TOMAN = 'toman'
-    TETHER = 'tether'
+    TOMAN = "toman"
+    TETHER = "tether"
     MARKET_CHOICES = ((TOMAN, TOMAN), (TETHER, TETHER))
     market = models.CharField(max_length=10, choices=MARKET_CHOICES, null=True)
     price = models.DecimalField(max_digits=20, decimal_places=10)
     quantity = models.DecimalField(max_digits=20, decimal_places=10)
     coin = models.ForeignKey(
-        Coin, related_name='transactions', on_delete=models.CASCADE
+        Coin, related_name="transactions", on_delete=models.CASCADE
     )
     profile = models.ForeignKey(
-        Profile, related_name='transactions', on_delete=models.CASCADE
+        Profile, related_name="transactions", on_delete=models.CASCADE
     )
     jdate = jmodels.jDateField(null=True, blank=True)
 
@@ -81,14 +81,14 @@ class Transaction(BaseModel):
     def get_price(self):
         if self.market == Transaction.TOMAN:
             number = int(self.price)
-            return '{:,}'.format(number)
+            return "{:,}".format(number)
         return float(round(self.price, 2))
 
     @property
     def get_current_price(self):
         if self.market == Transaction.TOMAN:
             number = int(self.coin.price(self.market))
-            return '{:,}'.format(number)
+            return "{:,}".format(number)
         return float(round(self.coin.price(self.market), 2))
 
     @property
@@ -98,12 +98,12 @@ class Transaction(BaseModel):
     @property
     def get_profit_or_loss(self):
         number = int(self.get_current_value - self.total_price)
-        return '{:,}'.format(number)
+        return "{:,}".format(number)
 
     @property
     def get_total_price(self):
-        return '{:,}'.format(self.total_price)
+        return "{:,}".format(self.total_price)
 
     @property
     def get_current_value_admin(self):
-        return '{:,}'.format(self.get_current_value)
+        return "{:,}".format(self.get_current_value)
