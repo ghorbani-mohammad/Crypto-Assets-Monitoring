@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.urls import path
 
 urlpatterns = [
-    path('secret-admin/', admin.site.urls),
+    path("secret-admin/", admin.site.urls),
 ]
 
 admin.site.index_title = "Crypto Assets"
