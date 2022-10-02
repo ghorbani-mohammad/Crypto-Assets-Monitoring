@@ -6,7 +6,7 @@ from reusable.admins import ReadOnlyAdminDateFields
 
 @admin.register(models.Coin)
 class CoinAdmin(ReadOnlyAdminDateFields, admin.ModelAdmin):
-    list_display = ['pk', 'code', 'get_current_usdt_price', 'get_current_toman_price']
+    list_display = ["pk", "code", "get_current_usdt_price", "get_current_toman_price"]
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -16,33 +16,33 @@ class CoinAdmin(ReadOnlyAdminDateFields, admin.ModelAdmin):
 
     @admin.display(description="usdt price")
     def get_current_usdt_price(self, instance):
-        return instance.get_price('USDT')
+        return instance.get_price("USDT")
 
     @admin.display(description="toman price")
     def get_current_toman_price(self, instance):
-        return instance.get_price('toman')
+        return instance.get_price("toman")
 
 
 @admin.register(models.Exchange)
 class ExchangeAdmin(ReadOnlyAdminDateFields, admin.ModelAdmin):
-    list_display = ['pk', 'name']
+    list_display = ["pk", "name"]
 
 
 @admin.register(models.Transaction)
 class TransactionAdmin(ReadOnlyAdminDateFields, admin.ModelAdmin):
     list_display = [
-        'pk',
-        'coin',
-        'type',
-        'get_quantity',
-        'get_price',
-        'get_total_price',
-        'get_current_price',
-        'get_current_value',
-        'get_profit_or_loss',
-        'get_date',
+        "pk",
+        "coin",
+        "type",
+        "get_quantity",
+        "get_price",
+        "get_total_price",
+        "get_current_price",
+        "get_current_value",
+        "get_profit_or_loss",
+        "get_date",
     ]
-    list_filter = ['coin', 'market']
+    list_filter = ["coin", "market"]
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -77,6 +77,6 @@ class TransactionAdmin(ReadOnlyAdminDateFields, admin.ModelAdmin):
     def get_total_price(self, instance):
         return instance.get_total_price
 
-    @admin.display(description="date", ordering='jdate')
+    @admin.display(description="date", ordering="jdate")
     def get_date(self, instance):
         return instance.jdate
