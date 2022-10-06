@@ -151,3 +151,5 @@ if EMAIL_HOST_USER and ADMIN_EMAIL_LOG:
             },
         },
     }
+
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
