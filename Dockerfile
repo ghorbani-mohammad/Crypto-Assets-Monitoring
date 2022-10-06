@@ -1,19 +1,16 @@
-FROM python:3.10
-
+FROM python:3.10-alpine
 WORKDIR /app
 
-RUN apt-get update && apt-get install --no-install-recommends -y \
-  vim-tiny \
-  binutils \
-  libproj-dev \
-  gdal-bin \
-  python3-gdal \
-  && rm -rf /var/lib/apt/lists/*
+RUN apk update && \
+    apk add --virtual .tmp build-base python3-dev \
+    libpq postgresql-dev gcc jpeg-dev zlib-dev libffi-dev && \
+    apk del .tmp
+COPY requirements.in .
+RUN pip install pip-tools && pip-compile && pip install -r requirements.txt && \
+    apk add postgresql-dev jpeg-dev 
 
-COPY requirements.txt /app/requirements.txt
-RUN pip install --no-cache-dir -r requirements.txt
-
-COPY . /app
+COPY . .
 ENV PYTHONUNBUFFERED 1
+ENV PYTHONDONTWRITEBYTECODE 1
 
 CMD ["gunicorn", "--reload", "--workers=2", "--worker-tmp-dir", "/dev/shm", "--bind=0.0.0.0:80", "--chdir", "/app/crypto_assets", "crypto_assets.wsgi"]
