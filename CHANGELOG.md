@@ -1,3 +1,12 @@
+# [1.2.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/compare/v1.1.0...v1.2.0) (2022-10-06)
+
+
+### Features
+
+* use alpine distribution in Dockerfile ([a743cbe](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/commit/a743cbeea17312533f958929dcd938ec3519cc17))
+
+
+
 # [1.1.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/compare/v1.0.0...v1.1.0) (2022-09-17)
 
 
