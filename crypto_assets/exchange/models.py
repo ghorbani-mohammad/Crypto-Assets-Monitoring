@@ -14,7 +14,7 @@ class Exchange(BaseModel):
     NAME_CHOICES = ((WALLEX, WALLEX), (BITPIN, BITPIN))
     name = models.CharField(max_length=100, choices=NAME_CHOICES)
 
-    def __str__(self) -> str:
+    def __str__(self):
         return self.name
 
     def get_platform(self):
