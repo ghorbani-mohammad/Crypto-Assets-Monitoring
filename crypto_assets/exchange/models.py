@@ -55,16 +55,16 @@ class Transaction(BaseModel):
     TOMAN = "toman"
     TETHER = "tether"
     MARKET_CHOICES = ((TOMAN, TOMAN), (TETHER, TETHER))
-    market = models.CharField(max_length=10, choices=MARKET_CHOICES, null=True)
+    jdate = jmodels.jDateField(null=True, blank=True)
     price = models.DecimalField(max_digits=20, decimal_places=10)
     quantity = models.DecimalField(max_digits=20, decimal_places=10)
+    market = models.CharField(max_length=10, choices=MARKET_CHOICES, null=True)
     coin = models.ForeignKey(
         Coin, related_name="transactions", on_delete=models.CASCADE
     )
     profile = models.ForeignKey(
         Profile, related_name="transactions", on_delete=models.CASCADE
     )
-    jdate = jmodels.jDateField(null=True, blank=True)
 
     def __str__(self) -> str:
         return f"({self.pk} - {self.type} - {self.coin})"
