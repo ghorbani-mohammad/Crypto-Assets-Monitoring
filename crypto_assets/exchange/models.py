@@ -67,7 +67,7 @@ class Transaction(BaseModel):
     jdate = jmodels.jDateField(null=True, blank=True)
 
     def __str__(self) -> str:
-        return f"<{self.pk} - {self.type} - {self.coin}>"
+        return f"({self.pk} - {self.type} - {self.coin})"
 
     @property
     def total_price(self):
