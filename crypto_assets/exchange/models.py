@@ -15,7 +15,7 @@ class Exchange(BaseModel):
     name = models.CharField(max_length=100, choices=NAME_CHOICES)
 
     def __str__(self):
-        return self.name
+        return f"({self.pk} - {self.name})"
 
     def get_platform(self):
         if self.name == Exchange.WALLEX:
