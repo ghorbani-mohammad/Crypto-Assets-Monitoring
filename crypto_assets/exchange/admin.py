@@ -30,6 +30,7 @@ class ExchangeAdmin(ReadOnlyAdminDateFields, admin.ModelAdmin):
 
 @admin.register(models.Transaction)
 class TransactionAdmin(ReadOnlyAdminDateFields, admin.ModelAdmin):
+    list_filter = ["coin", "market"]
     list_display = [
         "pk",
         "coin",
@@ -42,7 +43,6 @@ class TransactionAdmin(ReadOnlyAdminDateFields, admin.ModelAdmin):
         "get_profit_or_loss",
         "get_date",
     ]
-    list_filter = ["coin", "market"]
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
