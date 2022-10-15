@@ -8,8 +8,8 @@ class ProfileAdmin(admin.ModelAdmin):
     search_fields = ("username",)
     list_display = (
         "pk",
-        "first_name",
-        "last_name",
-        "mobile_number",
         "username",
+        "last_name",
+        "first_name",
+        "mobile_number",
     )
