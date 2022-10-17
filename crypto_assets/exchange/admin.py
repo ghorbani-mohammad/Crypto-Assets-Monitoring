@@ -36,12 +36,12 @@ class TransactionAdmin(ReadOnlyAdminDateFields, admin.ModelAdmin):
         "coin",
         "type",
         "get_quantity",
+        "get_date",
         "get_price",
         "get_total_price",
         "get_current_price",
         "get_current_value",
         "get_profit_or_loss",
-        "get_date",
     )
 
     def __init__(self, *args, **kwargs):
