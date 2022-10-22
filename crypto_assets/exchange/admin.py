@@ -6,7 +6,12 @@ from reusable.admins import ReadOnlyAdminDateFields
 
 @admin.register(models.Coin)
 class CoinAdmin(ReadOnlyAdminDateFields, admin.ModelAdmin):
-    list_display = ("pk", "code", "get_current_usdt_price", "get_current_toman_price")
+    list_display = (
+        "pk",
+        "code",
+        "get_current_usdt_price",
+        "get_current_toman_price",
+    )
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
