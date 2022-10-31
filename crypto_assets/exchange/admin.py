@@ -35,7 +35,10 @@ class ExchangeAdmin(ReadOnlyAdminDateFields, admin.ModelAdmin):
 
 @admin.register(models.Transaction)
 class TransactionAdmin(ReadOnlyAdminDateFields, admin.ModelAdmin):
-    list_filter = ("coin", "market")
+    list_filter = (
+        "coin",
+        "market",
+    )
     list_display = (
         "pk",
         "coin",
