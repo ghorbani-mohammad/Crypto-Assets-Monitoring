@@ -38,8 +38,7 @@ class Coin(BaseModel):
 
     def get_price(self, market):
         if market == Transaction.TOMAN:
-            number = int(self.price(market))
-            return "{:,}".format(number)
+            return "{:,}".format(int(self.price(market)))
         return float(round(self.price(market), 2))
 
     def price(self, market):
