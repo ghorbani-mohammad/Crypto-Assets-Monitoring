@@ -105,9 +105,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # CELERY
 BROKER_URL = "redis://crypto_assets_redis:6379"
 CELERY_RESULT_BACKEND = "redis://crypto_assets_redis:6379"
-CELERY_ACCEPT_CONTENT = [
-    "application/json",
-]
+CELERY_ACCEPT_CONTENT = ["application/json"]
 CELERY_TASK_SERIALIZER = "json"
 CELERY_RESULT_SERIALIZER = "json"
 CELERY_TIMEZONE = "Asia/Tehran"
