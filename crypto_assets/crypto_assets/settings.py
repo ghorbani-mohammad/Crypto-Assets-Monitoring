@@ -93,11 +93,7 @@ if not DEBUG:
     MEDIA_URL = "/static/media/"
 else:
     MEDIA_URL = "/media/"
-MEDIA_ROOT = os.path.join(
-    BASE_DIR,
-    "static",
-    "media",
-)
+MEDIA_ROOT = os.path.join(BASE_DIR, "static", "media")
 
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
