@@ -145,9 +145,9 @@ if EMAIL_HOST_USER and ADMIN_EMAIL_LOG:
                 "propagate": False,
             },
             "celery": {
-                "handlers": ["mail_admins"],
                 "level": "ERROR",
                 "propagate": False,
+                "handlers": ["mail_admins"],
             },
         },
     }
