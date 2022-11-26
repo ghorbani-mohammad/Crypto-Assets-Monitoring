@@ -129,9 +129,9 @@ AUTH_USER_MODEL = "user.Profile"
 # Email Configs
 EMAIL_HOST = "smtp-mail.outlook.com"
 EMAIL_PORT = 587
+EMAIL_USE_TLS = True
 EMAIL_HOST_USER = env("EMAIL_HOST_USER", default=None)
 EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD", default=None)
-EMAIL_USE_TLS = True
 
 # Email Logging Configs
 ADMIN_EMAIL_LOG = env("ADMIN_EMAIL_LOG", default=None)
