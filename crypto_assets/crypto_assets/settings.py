@@ -153,3 +153,11 @@ if EMAIL_HOST_USER and ADMIN_EMAIL_LOG:
     }
 
 SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+
+
+CACHES = {
+    "default": {
+        "LOCATION": "redis://crypto_assets_redis:6379/10",
+        "BACKEND": "django.core.cache.backends.redis.RedisCache",
+    }
+}
