@@ -20,7 +20,7 @@ services:
     volumes:
       - .:/app
     ports:
-      - 4381:80
+      - "127.0.0.1:4381:80"
     command: ["python", "/app/crypto_assets/manage.py", "runserver", "0:80"]
     env_file:
       - .env
