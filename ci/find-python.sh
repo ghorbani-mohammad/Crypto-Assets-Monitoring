@@ -3,5 +3,6 @@
 set -e
 
 find . -type f \
-	-name "*.py" -regex '.*\(src\)/.*' \
+    ! -path "./*/migrations/*" \
+	-name "*.py" -regex '.*\(crypto_assets\)/.*' \
 	-exec "$@" {} +
