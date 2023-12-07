@@ -21,10 +21,11 @@ class Bitpin(BaseExchange):
         try:
             coins = requests.get(self.api_addr).json()["results"]
             for item in coins:
-                if item["code"] == coin_key:
-                    price = round(decimal.Decimal(item["price"]), 2)
-                    cache.set(coin_key, price, 2)
-                    return price
+                if item["code"] != coin_key:
+                    continue
+                price = round(decimal.Decimal(item["price"]), 2)
+                cache.set(coin_key, price, 2)
+                return price
         except Exception as e:
             logger.error(e)
             return None
