@@ -1,3 +1,12 @@
+## [1.3.1](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/compare/v1.3.0...v1.3.1) (2023-12-07)
+
+
+### Bug Fixes
+
+* **platform:** solves the issue of getting prices ([b957540](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/commit/b957540a04ad673ca3ae89e0908b4140e457d912))
+
+
+
 # [1.3.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/compare/v1.2.0...v1.3.0) (2023-12-07)
 
 
@@ -22,15 +31,6 @@
 ### Features
 
 * minor improve ([4fdb306](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/commit/4fdb30610a63bfffd792ba761316195ddd5684b9))
-
-
-
-# [1.0.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/compare/v0.2.0...v1.0.0) (2022-09-17)
-
-
-### Features
-
-* add email logging configurations ([bbb631f](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/commit/bbb631f13daa7a0d45d6559c3a4c5793fa39ed47))
 
 
 
