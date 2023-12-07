@@ -13,10 +13,9 @@ class Bitpin(BaseExchange):
     def __init__(self):
         self.api_addr = "https://api.bitpin.ir/v1/mkt/markets/"
 
-    def get_price(self, coin: str, market: str) -> Decimal:
+    def get_price(self, coin, market: str) -> Decimal:
         market = self.market_mapper(market)
-        coin = coin.code
-        coin_key = f"{coin}_{market}"
+        coin_key = f"{coin.code}_{market}"
         cache_price = cache.get(coin_key)
         if cache_price:
             return cache_price
