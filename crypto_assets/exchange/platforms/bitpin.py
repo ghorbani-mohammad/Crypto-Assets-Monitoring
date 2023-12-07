@@ -13,24 +13,25 @@ class Bitpin(BaseExchange):
     def __init__(self):
         self.api_addr = "https://api.bitpin.ir/v1/mkt/markets/"
 
-    def get_price(self, coin: str, market: str) -> Decimal:
+    def get_price(self, coin, market: str) -> Decimal:
         market = self.market_mapper(market)
-        coin_key = f"{coin}_{market}"
-        if cache.get(coin_key):
-            return cache.get(coin_key)
+        coin_key = f"{coin.code}_{market}"
+        cache_price = cache.get(coin_key)
+        if cache_price:
+            return cache_price
         try:
             coins = requests.get(self.api_addr).json()["results"]
             for item in coins:
                 if item["code"] != coin_key:
                     continue
                 price = round(Decimal(item["price"]), 2)
-                cache.set(coin_key, price, 2)
+                cache.set(coin_key, price, 60)
                 return price
         except Exception as e:
             logger.error(e)
             return None
 
-    def cache_all_prices(self, ttl=2):
+    def cache_all_prices(self, ttl=60):
         coins = requests.get(self.api_addr).json()["results"]
         for coin in coins:
             price = round(Decimal(coin["price"]), 2)
