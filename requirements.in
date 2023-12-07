@@ -1,5 +1,5 @@
 celery
-django==4.1
+django>=4.1
 django_jalali
 django-admin-sortable2
 django-cors-headers
