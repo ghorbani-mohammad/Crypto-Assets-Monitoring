@@ -13,7 +13,7 @@ class Bitpin(BaseExchange):
     def __init__(self):
         self.api_addr = "https://api.bitpin.ir/v1/mkt/markets/"
 
-    def get_price(self, coin, market):
+    def get_price(self, coin: str, market: str):
         market = self.market_mapper(market)
         coin_key = f"{coin}_{market}"
         if cache.get(coin_key):
@@ -36,7 +36,7 @@ class Bitpin(BaseExchange):
             price = round(decimal.Decimal(coin["price"]), 2)
             cache.set(coin["code"], price, ttl)
 
-    def market_mapper(self, market):
+    def market_mapper(self, market: str):
         if market == "tether":
             return "USDT"
         elif market == "toman":
