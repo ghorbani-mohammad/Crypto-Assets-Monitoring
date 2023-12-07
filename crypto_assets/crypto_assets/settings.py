@@ -4,7 +4,7 @@ from pathlib import Path
 
 DEBUG = env.bool("DEBUG")
 SECRET_KEY = env.str("SECRET_KEY")
-ALLOWED_HOSTS = ["crypto.m-gh.com"]
+ALLOWED_HOSTS = ["localhost", "crypto.m-gh.com"]
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
