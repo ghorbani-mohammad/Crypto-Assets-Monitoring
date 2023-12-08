@@ -1,3 +1,12 @@
+# [1.4.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/compare/v1.3.1...v1.4.0) (2023-12-08)
+
+
+### Features
+
+* **platform:** adds market to TransactionAdmin ([556920a](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/commit/556920a031dd9050844623191c649ea6077f7fd1))
+
+
+
 ## [1.3.1](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/compare/v1.3.0...v1.3.1) (2023-12-07)
 
 
