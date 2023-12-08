@@ -34,6 +34,7 @@ class TransactionAdmin(ReadOnlyAdminDateFields, admin.ModelAdmin):
     list_display = (
         "pk",
         "coin",
+        "market",
         "type",
         "get_date",
         "get_price",
