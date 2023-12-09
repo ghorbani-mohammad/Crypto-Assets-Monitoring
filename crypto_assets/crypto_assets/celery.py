@@ -34,8 +34,8 @@ if not settings.DEBUG:
 
 
 app.conf.beat_schedule = {
-    "check-agencies-300-seconds": {
-        "task": "check_agencies",
+    "update-bitpin-prices-30": {
+        "task": "update_bitpin_prices",
         "schedule": 30,
     }
 }
