@@ -1,3 +1,12 @@
+# [1.5.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/compare/v1.4.0...v1.5.0) (2023-12-09)
+
+
+### Features
+
+* **platform:** adds price updater ([fd6da67](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/commit/fd6da672a36006e17b55b9c14a6bb10cf85a9f73))
+
+
+
 # [1.4.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/compare/v1.3.1...v1.4.0) (2023-12-08)
 
 
@@ -31,15 +40,6 @@
 ### Features
 
 * use alpine distribution in Dockerfile ([a743cbe](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/commit/a743cbeea17312533f958929dcd938ec3519cc17))
-
-
-
-# [1.1.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/compare/v1.0.0...v1.1.0) (2022-09-17)
-
-
-### Features
-
-* minor improve ([4fdb306](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/commit/4fdb30610a63bfffd792ba761316195ddd5684b9))
 
 
 
