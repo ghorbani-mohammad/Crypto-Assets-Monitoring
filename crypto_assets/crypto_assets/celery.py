@@ -16,6 +16,7 @@ app.config_from_object("django.conf:settings")
 app.autodiscover_tasks(lambda: settings.INSTALLED_APPS)
 
 DEFAULT_QUEUE = "celery"
+MINUTE = 60
 
 
 if not settings.DEBUG:
@@ -30,3 +31,11 @@ if not settings.DEBUG:
         from django.conf import settings
 
         dictConfig(settings.LOGGING)
+
+
+app.conf.beat_schedule = {
+    "check-agencies-300-seconds": {
+        "task": "check_agencies",
+        "schedule": 30,
+    }
+}
