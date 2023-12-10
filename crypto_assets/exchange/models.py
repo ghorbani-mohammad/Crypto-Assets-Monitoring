@@ -81,13 +81,13 @@ class Transaction(BaseModel):
     @property
     def get_price(self):
         if self.market == Transaction.TOMAN:
-            return f"{self.price:,}"
+            return f"{int(self.price):,}"
         return float(round(self.price, 2))
 
     @property
     def get_current_price(self):
         if self.market == Transaction.TOMAN:
-            return f"{self.coin.price(self.market):,}"
+            return f"{int(self.coin.price(self.market)):,}"
         return float(round(self.coin.price(self.market), 2))
 
     @property
