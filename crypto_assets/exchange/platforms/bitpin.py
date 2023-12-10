@@ -1,6 +1,6 @@
 import logging
-import requests
 from decimal import Decimal
+import requests
 from django.core.cache import cache
 
 from .base import BaseExchange
@@ -20,7 +20,7 @@ class Bitpin(BaseExchange):
         if cache_price:
             return cache_price
         try:
-            coins = requests.get(self.api_addr).json()["results"]
+            coins = requests.get(self.api_addr, timeout=10).json()["results"]
             for item in coins:
                 if item["code"] != coin_key:
                     continue
@@ -32,7 +32,7 @@ class Bitpin(BaseExchange):
             return None
 
     def cache_all_prices(self, ttl=60):
-        coins = requests.get(self.api_addr).json()["results"]
+        coins = requests.get(self.api_addr, timeout=10).json()["results"]
         for coin in coins:
             price = round(Decimal(coin["price"]), 2)
             cache.set(coin["code"], price, ttl)
