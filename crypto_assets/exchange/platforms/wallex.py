@@ -11,10 +11,12 @@ class Wallex(BaseExchange):
         logger.info(f"Wallex.get_price({coin}, {market})")
         api_addr = "https://api.wallex.ir/v1/markets"
         try:
-            coin = requests.get(api_addr).json()["result"]["symbols"][f"{coin}{market}"]
+            coin = requests.get(api_addr, timeout=10).json()["result"]["symbols"][
+                f"{coin}{market}"
+            ]
             return round(float(coin["stats"]["lastPrice"]), 2)
-        except:
+        except Exception:
             return None
 
-    def cache_all_prices():
+    def cache_all_prices(self):
         pass
