@@ -40,6 +40,6 @@ class Bitpin(BaseExchange):
     def market_mapper(self, market: str):
         if market == "tether":
             return "USDT"
-        elif market == "toman":
+        if market == "toman":
             return "IRT"
         return market
