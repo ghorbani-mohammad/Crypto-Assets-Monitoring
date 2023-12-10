@@ -1,6 +1,6 @@
 from django.db import models
-from django_jalali.db import models as jmodels
 from django.utils.functional import cached_property
+from django_jalali.db import models as jmodels
 
 from user.models import Profile
 from .platforms.bitpin import Bitpin

@@ -1,6 +1,8 @@
 import os
-from envparse import env
 from pathlib import Path
+
+from envparse import env
+
 
 DEBUG = env.bool("DEBUG")
 SECRET_KEY = env.str("SECRET_KEY")
