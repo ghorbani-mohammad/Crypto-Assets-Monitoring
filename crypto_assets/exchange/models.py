@@ -3,9 +3,10 @@ from django.utils.functional import cached_property
 from django_jalali.db import models as jmodels
 
 from user.models import Profile
+from reusable.models import BaseModel
+
 from .platforms.bitpin import Bitpin
 from .platforms.wallex import Wallex
-from reusable.models import BaseModel
 
 
 class Exchange(BaseModel):
@@ -39,7 +40,7 @@ class Coin(BaseModel):
 
     def get_price(self, market):
         if market == Transaction.TOMAN:
-            return "{:,}".format(int(self.price(market)))
+            return f"{self.price(market):,}"
         return float(round(self.price(market), 2))
 
     def price(self, market):
@@ -80,13 +81,13 @@ class Transaction(BaseModel):
     @property
     def get_price(self):
         if self.market == Transaction.TOMAN:
-            return "{:,}".format(int(self.price))
+            return f"{self.price:,}"
         return float(round(self.price, 2))
 
     @property
     def get_current_price(self):
         if self.market == Transaction.TOMAN:
-            return "{:,}".format(int(self.coin.price(self.market)))
+            return f"{self.coin.price(self.market):,}"
         return float(round(self.coin.price(self.market), 2))
 
     @property
@@ -95,12 +96,12 @@ class Transaction(BaseModel):
 
     @property
     def get_profit_or_loss(self):
-        return "{:,}".format(int(self.get_current_value - self.total_price))
+        return f"{int(self.get_current_value - self.total_price):,}"
 
     @property
     def get_total_price(self):
-        return "{:,}".format(self.total_price)
+        return f"{self.total_price:,}"
 
     @property
     def get_current_value_admin(self):
-        return "{:,}".format(self.get_current_value)
+        return f"{self.get_current_value:,}"
