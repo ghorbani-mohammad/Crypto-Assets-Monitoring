@@ -20,8 +20,9 @@ class Exchange(BaseModel):
     def get_platform(self):
         if self.name == Exchange.WALLEX:
             return Wallex()
-        elif self.name == Exchange.BITPIN:
+        if self.name == Exchange.BITPIN:
             return Bitpin()
+        raise Exception("Exchange name is not valid")
 
     def price(self, coin, market):
         return self.get_platform().get_price(coin, market)

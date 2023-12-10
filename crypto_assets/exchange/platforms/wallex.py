@@ -15,3 +15,6 @@ class Wallex(BaseExchange):
             return round(float(coin["stats"]["lastPrice"]), 2)
         except:
             return None
+
+    def cache_all_prices():
+        pass

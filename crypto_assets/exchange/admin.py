@@ -1,7 +1,8 @@
 from django.contrib import admin
 
-from . import models
 from reusable.admins import ReadOnlyAdminDateFields
+
+from . import models
 
 
 @admin.register(models.Coin)
