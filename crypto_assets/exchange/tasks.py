@@ -1,6 +1,6 @@
 from crypto_assets.celery import app
 
-from exchange.platforms.bitpin import Bitpin
+from .platforms.bitpin import Bitpin
 
 
 @app.task(name="update_bitpin_prices")
