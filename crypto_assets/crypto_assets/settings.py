@@ -20,6 +20,7 @@ INSTALLED_APPS = [
     "django_jalali",
     "user",
     "exchange",
+    "notification",
 ]
 
 MIDDLEWARE = [
