@@ -1,6 +1,6 @@
 import logging
 import requests
-from .base import BaseExchange
+from exchange.platforms.base import BaseExchange
 
 
 logger = logging.getLogger(__name__)

@@ -3,7 +3,7 @@ from decimal import Decimal
 import requests
 from django.core.cache import cache
 
-from .base import BaseExchange
+from exchange.platforms.base import BaseExchange
 
 
 logger = logging.getLogger(__name__)
