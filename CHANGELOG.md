@@ -1,3 +1,12 @@
+# [1.6.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/compare/v1.5.0...v1.6.0) (2023-12-11)
+
+
+### Features
+
+* **notification:** adds Telegram model ([464bd2f](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/commit/464bd2f6bdab984a6f0822e2eda2d4f094b8fdf5))
+
+
+
 # [1.5.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/compare/v1.4.0...v1.5.0) (2023-12-09)
 
 
@@ -31,15 +40,6 @@
 ### Features
 
 * **settings:** adds localhost to allowed-hosts ([4f0a82a](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/commit/4f0a82ae325b85a36a82c5c14592a5a046cea245))
-
-
-
-# [1.2.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/compare/v1.1.0...v1.2.0) (2022-10-06)
-
-
-### Features
-
-* use alpine distribution in Dockerfile ([a743cbe](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/commit/a743cbeea17312533f958929dcd938ec3519cc17))
 
 
 
