@@ -1,3 +1,12 @@
+# [1.7.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/compare/v1.6.0...v1.7.0) (2023-12-11)
+
+
+### Features
+
+* **notification:** adds notification checker task ([69b367f](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/commit/69b367f41bee9de0bd4d8d9527b810e529adba3c))
+
+
+
 # [1.6.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/compare/v1.5.0...v1.6.0) (2023-12-11)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * **platform:** solves the issue of getting prices ([b957540](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/commit/b957540a04ad673ca3ae89e0908b4140e457d912))
-
-
-
-# [1.3.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/compare/v1.2.0...v1.3.0) (2023-12-07)
-
-
-### Features
-
-* **settings:** adds localhost to allowed-hosts ([4f0a82a](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/commit/4f0a82ae325b85a36a82c5c14592a5a046cea245))
 
 
 
