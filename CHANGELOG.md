@@ -1,3 +1,12 @@
+# [1.8.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/compare/v1.7.0...v1.8.0) (2023-12-12)
+
+
+### Features
+
+* **notification:** adds get cached keys ([e24284c](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/commit/e24284c563123a45c9ebfd8aa54451818647e53d))
+
+
+
 # [1.7.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/compare/v1.6.0...v1.7.0) (2023-12-11)
 
 
@@ -31,15 +40,6 @@
 ### Features
 
 * **platform:** adds market to TransactionAdmin ([556920a](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/commit/556920a031dd9050844623191c649ea6077f7fd1))
-
-
-
-## [1.3.1](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/compare/v1.3.0...v1.3.1) (2023-12-07)
-
-
-### Bug Fixes
-
-* **platform:** solves the issue of getting prices ([b957540](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/commit/b957540a04ad673ca3ae89e0908b4140e457d912))
 
 
 
