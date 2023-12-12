@@ -14,6 +14,7 @@ def send_telegram_message(token: str, chat_id: str, message: str):
     response = requests.get(send_text, timeout=10)
     return response.json()
 
+
 def get_coin_cached_prices():
     # get all keys
     coins = cache.get("*")
