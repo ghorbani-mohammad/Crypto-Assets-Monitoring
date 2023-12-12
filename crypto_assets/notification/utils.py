@@ -18,5 +18,7 @@ def send_telegram_message(token: str, chat_id: str, message: str):
 def get_coin_cached_prices():
     # get all keys
     coins = cache.get("*")
+    if not coins:
+        return None
     for coin in coins:
         print(coin)
