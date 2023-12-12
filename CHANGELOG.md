@@ -1,3 +1,12 @@
+# [1.9.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/compare/v1.8.0...v1.9.0) (2023-12-12)
+
+
+### Features
+
+* **notification:** adds NotificationAdmin class ([6999e5a](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/commit/6999e5a67586fa5a4028b1d913b7b4ee1562abaf))
+
+
+
 # [1.8.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/compare/v1.7.0...v1.8.0) (2023-12-12)
 
 
@@ -31,15 +40,6 @@
 ### Features
 
 * **platform:** adds price updater ([fd6da67](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/commit/fd6da672a36006e17b55b9c14a6bb10cf85a9f73))
-
-
-
-# [1.4.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/compare/v1.3.1...v1.4.0) (2023-12-08)
-
-
-### Features
-
-* **platform:** adds market to TransactionAdmin ([556920a](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/commit/556920a031dd9050844623191c649ea6077f7fd1))
 
 
 
