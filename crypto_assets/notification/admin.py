@@ -7,4 +7,4 @@ from . import models
 
 @admin.register(models.Notification)
 class NotificationAdmin(ReadOnlyAdminDateFields, admin.ModelAdmin):
-    list_display = ("pk", "price", "coin", "profile","status")
+    list_display = ("pk", "price", "coin", "profile", "status")
