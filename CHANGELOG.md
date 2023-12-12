@@ -1,3 +1,12 @@
+# [1.10.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/compare/v1.9.0...v1.10.0) (2023-12-12)
+
+
+### Features
+
+* **notification:** adds notif checker to celery scheduler ([45658c7](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/commit/45658c719be5f03bf8721c4aa86990f0220a27b1))
+
+
+
 # [1.9.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/compare/v1.8.0...v1.9.0) (2023-12-12)
 
 
@@ -31,15 +40,6 @@
 ### Features
 
 * **notification:** adds Telegram model ([464bd2f](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/commit/464bd2f6bdab984a6f0822e2eda2d4f094b8fdf5))
-
-
-
-# [1.5.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/compare/v1.4.0...v1.5.0) (2023-12-09)
-
-
-### Features
-
-* **platform:** adds price updater ([fd6da67](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/commit/fd6da672a36006e17b55b9c14a6bb10cf85a9f73))
 
 
 
