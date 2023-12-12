@@ -36,5 +36,9 @@ app.conf.beat_schedule = {
     "update-bitpin-prices-30": {
         "task": "update_bitpin_prices",
         "schedule": 30,
-    }
+    },
+    "check_notifications-60": {
+        "task": "check_notifications",
+        "schedule": 60,
+    },
 }

@@ -12,6 +12,8 @@ def check_notifications():
     TELEGRAM_BOT_TOKEN = settings.TELEGRAM_BOT_TOKEN
     notifications = models.Notification.objects.filter(status=True)
     prices = utils.get_coin_cached_prices()
+    if not prices:
+        return
     for notification in notifications:
         # TODO: add the logic for checking the price,
         # then send the message to the user
