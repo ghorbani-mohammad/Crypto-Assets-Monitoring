@@ -27,7 +27,9 @@ services:
       - .:/app
     ports:
       - "127.0.0.1:4381:80"
+      # - "127.0.0.1:5678:5678"
     command: ["python", "/app/crypto_assets/manage.py", "runserver", "0:80"]
+    # command: ["sh", "-c", "pip install debugpy -t /tmp && python /tmp/debugpy --wait-for-client --listen 0.0.0.0:5678 /app/crypto_assets/manage.py runserver 0.0.0.0:80"]
     env_file:
       - .env
 
