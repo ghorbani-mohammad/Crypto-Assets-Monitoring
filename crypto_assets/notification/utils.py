@@ -1,4 +1,6 @@
 import requests
+import redis
+import pickle
 from django.core.cache import cache
 
 
@@ -16,9 +18,11 @@ def send_telegram_message(token: str, chat_id: str, message: str):
 
 
 def get_coin_cached_prices():
-    # get all keys
-    coins = cache.get("*")
-    if not coins:
-        return None
-    for coin in coins:
-        print(coin)
+    result = {}
+    redis_client = redis.StrictRedis(host='crypto_assets_redis', port=6379, db=10)
+    coin_keys = redis_client.keys('*coin_*')
+    for coin_key in coin_keys:
+        coin_price = pickle.loads(redis_client.get(coin_key))
+        coin_key = coin_key.decode().split("coin_")[-1]
+        result[coin_key] = coin_price
+    return result
