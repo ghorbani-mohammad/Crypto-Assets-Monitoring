@@ -1,7 +1,7 @@
 from django.db import models
 
 from user.models import Profile
-from exchange.models import Coin
+from exchange.models import Coin, Transaction
 from reusable.models import BaseModel
 
 
@@ -25,3 +25,5 @@ class Notification(BaseModel):
     status = models.CharField(
         max_length=10, choices=STATUS_CHOICES, null=True, blank=True
     )
+
+    market = models.CharField(max_length=10, choices=Transaction.MARKET_CHOICES, null=True)
