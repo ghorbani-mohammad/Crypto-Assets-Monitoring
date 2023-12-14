@@ -8,5 +8,5 @@ class BaseExchange(ABC):
         pass
 
     @abstractmethod
-    def cache_all_prices(self, ttl=60) -> None:
+    def cache_all_prices(self) -> None:
         pass
