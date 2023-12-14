@@ -1,3 +1,12 @@
+# [1.11.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/compare/v1.10.0...v1.11.0) (2023-12-14)
+
+
+### Features
+
+* **bitpin:** improves the code ([d0ca22d](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/commit/d0ca22d66e90139a1ee6e1c55817685904f585d3))
+
+
+
 # [1.10.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/compare/v1.9.0...v1.10.0) (2023-12-12)
 
 
@@ -31,15 +40,6 @@
 ### Features
 
 * **notification:** adds notification checker task ([69b367f](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/commit/69b367f41bee9de0bd4d8d9527b810e529adba3c))
-
-
-
-# [1.6.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/compare/v1.5.0...v1.6.0) (2023-12-11)
-
-
-### Features
-
-* **notification:** adds Telegram model ([464bd2f](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/commit/464bd2f6bdab984a6f0822e2eda2d4f094b8fdf5))
 
 
 
