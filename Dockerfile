@@ -6,7 +6,7 @@ RUN apk update && \
     libpq postgresql-dev gcc jpeg-dev zlib-dev libffi-dev
 
 COPY requirements.in .
-RUN pip install pip-tools && pip-compile && pip install -r requirements.txt && \
+RUN pip install -r requirements.txt && \
     apk del .tmp && apk add postgresql-dev jpeg-dev
 COPY . .
 
