@@ -38,7 +38,7 @@ class Bitpin(BaseExchange):
         coins = requests.get(self.api_addr, timeout=10).json()["results"]
         for coin in coins:
             price = round(Decimal(coin["price"]), self.price_round)
-            cache.set(get_coin_key(coin['code']), price, self.cache_price_ttl)
+            cache.set(get_coin_key(coin["code"]), price, self.cache_price_ttl)
 
     def market_mapper(self, market: str):
         if market == "tether":
