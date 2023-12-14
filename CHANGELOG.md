@@ -1,3 +1,12 @@
+# [1.13.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/compare/v1.12.0...v1.13.0) (2023-12-14)
+
+
+### Features
+
+* **notifications:** adds field market to notification ([fbcc6ba](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/commit/fbcc6ba4ef3fb12b9f5e50da1845bce730e668bb))
+
+
+
 # [1.12.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/compare/v1.11.0...v1.12.0) (2023-12-14)
 
 
@@ -31,15 +40,6 @@
 ### Features
 
 * **notification:** adds NotificationAdmin class ([6999e5a](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/commit/6999e5a67586fa5a4028b1d913b7b4ee1562abaf))
-
-
-
-# [1.8.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/compare/v1.7.0...v1.8.0) (2023-12-12)
-
-
-### Features
-
-* **notification:** adds get cached keys ([e24284c](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/commit/e24284c563123a45c9ebfd8aa54451818647e53d))
 
 
 
