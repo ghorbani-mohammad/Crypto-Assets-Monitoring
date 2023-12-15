@@ -16,7 +16,7 @@ def check_notifications():
     if not prices:
         return
     for notification in notifications:
-        coin_key = f"{notification.coin.code}_{notification.market}".upper()
+        coin_key = f"{notification.coin.code}_{notification.market}".lower()
         price = prices.get(coin_key)
         if price is None:
             continue
