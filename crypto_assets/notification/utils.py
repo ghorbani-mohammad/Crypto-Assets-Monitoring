@@ -9,7 +9,7 @@ def send_telegram_message(token: str, chat_id: str, message: str):
         "https://api.telegram.org/bot"
         + token
         + "/sendMessage?chat_id="
-        + chat_id
+        + str(chat_id)
         + "&parse_mode=Markdown&text="
         + message
     )
