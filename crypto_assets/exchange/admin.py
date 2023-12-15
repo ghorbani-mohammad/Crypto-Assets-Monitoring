@@ -7,7 +7,7 @@ from . import models
 
 @admin.register(models.Coin)
 class CoinAdmin(ReadOnlyAdminDateFields, admin.ModelAdmin):
-    list_display = ("pk", "code", "get_current_usdt_price", "get_current_toman_price")
+    list_display = ("pk", "code", "get_current_usdt_price", "get_current_irt_price")
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -17,11 +17,11 @@ class CoinAdmin(ReadOnlyAdminDateFields, admin.ModelAdmin):
 
     @admin.display(description="usdt price")
     def get_current_usdt_price(self, instance):
-        return instance.get_price("USDT")
+        return instance.get_price("usdt")
 
     @admin.display(description="toman price")
-    def get_current_toman_price(self, instance):
-        return instance.get_price("toman")
+    def get_current_irt_price(self, instance):
+        return instance.get_price("irt")
 
 
 @admin.register(models.Exchange)
