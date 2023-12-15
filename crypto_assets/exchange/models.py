@@ -53,8 +53,8 @@ class Transaction(BaseModel):
     SELL = "sell"
     TYPE_CHOICES = ((BUY, BUY), (SELL, SELL))
     type = models.CharField(max_length=10, choices=TYPE_CHOICES)
-    TOMAN = "toman"
-    TETHER = "tether"
+    TOMAN = "irt"
+    TETHER = "usdt"
     MARKET_CHOICES = ((TOMAN, TOMAN), (TETHER, TETHER))
     jdate = jmodels.jDateField(null=True, blank=True)
     price = models.DecimalField(max_digits=20, decimal_places=10)
