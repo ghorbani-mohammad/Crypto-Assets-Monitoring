@@ -17,8 +17,7 @@ class Bitpin(BaseExchange):
         self.cache_price_ttl = 60
 
     def get_price(self, coin, market: str) -> Decimal:
-        market = self.market_mapper(market)
-        coin_key = f"{coin.code}_{market}"
+        coin_key = f"{coin.code}_{market}".upper()
         cache_price = cache.get(coin_key)
         if cache_price:
             return cache_price
@@ -39,6 +38,3 @@ class Bitpin(BaseExchange):
         for coin in coins:
             price = round(Decimal(coin["price"]), self.price_round)
             cache.set(get_coin_key(coin["code"]), price, self.cache_price_ttl)
-
-    def market_mapper(self, market: str):
-        return market.upper()
