@@ -21,7 +21,9 @@ class Notification(BaseModel):
         Profile, related_name="notifications", on_delete=models.CASCADE
     )
 
-    STATUS_CHOICES = (("upper", "upper"), ("lower", "lower"))
+    UPPER = "upper"
+    LOWER = "lower"
+    STATUS_CHOICES = ((UPPER, UPPER), (LOWER, LOWER))
     status = models.CharField(
         max_length=10, choices=STATUS_CHOICES, null=True, blank=True
     )
