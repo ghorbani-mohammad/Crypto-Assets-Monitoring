@@ -1,3 +1,12 @@
+# [1.15.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/compare/v1.14.0...v1.15.0) (2023-12-15)
+
+
+### Features
+
+* **notification:** adds notification messages ([0683403](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/commit/0683403f6a2f130a996b839687b9c840a027a674))
+
+
+
 # [1.14.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/compare/v1.13.0...v1.14.0) (2023-12-15)
 
 
@@ -31,15 +40,6 @@
 ### Features
 
 * **bitpin:** improves the code ([d0ca22d](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/commit/d0ca22d66e90139a1ee6e1c55817685904f585d3))
-
-
-
-# [1.10.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/compare/v1.9.0...v1.10.0) (2023-12-12)
-
-
-### Features
-
-* **notification:** adds notif checker to celery scheduler ([45658c7](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/commit/45658c719be5f03bf8721c4aa86990f0220a27b1))
 
 
 
