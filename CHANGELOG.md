@@ -1,3 +1,12 @@
+# [1.16.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/compare/v1.15.0...v1.16.0) (2023-12-15)
+
+
+### Features
+
+* **notification:** sending price notifications ([b135362](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/commit/b13536284cdfdd5c476f864a23219b0efc89f4b9))
+
+
+
 # [1.15.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/compare/v1.14.0...v1.15.0) (2023-12-15)
 
 
@@ -31,15 +40,6 @@
 ### Features
 
 * **notification:** adds get-coin-cached-prices ([c373dad](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/commit/c373dadceb5644bd48e42ba6b4718b7ec90f2c8c))
-
-
-
-# [1.11.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/compare/v1.10.0...v1.11.0) (2023-12-14)
-
-
-### Features
-
-* **bitpin:** improves the code ([d0ca22d](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/commit/d0ca22d66e90139a1ee6e1c55817685904f585d3))
 
 
 
