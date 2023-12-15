@@ -26,4 +26,6 @@ class Notification(BaseModel):
         max_length=10, choices=STATUS_CHOICES, null=True, blank=True
     )
 
-    market = models.CharField(max_length=10, choices=Transaction.MARKET_CHOICES, null=True)
+    market = models.CharField(
+        max_length=10, choices=Transaction.MARKET_CHOICES, null=True
+    )
