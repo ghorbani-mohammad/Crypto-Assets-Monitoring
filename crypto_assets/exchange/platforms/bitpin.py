@@ -41,8 +41,4 @@ class Bitpin(BaseExchange):
             cache.set(get_coin_key(coin["code"]), price, self.cache_price_ttl)
 
     def market_mapper(self, market: str):
-        if market == "tether":
-            return "USDT"
-        if market == "toman":
-            return "IRT"
-        return market
+        return market.upper()
