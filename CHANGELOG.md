@@ -1,3 +1,12 @@
+# [1.14.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/compare/v1.13.0...v1.14.0) (2023-12-15)
+
+
+### Features
+
+* **platform:** change words of market ([c229187](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/commit/c2291872459b75d3ff80dc519f6b8fec8394cad7))
+
+
+
 # [1.13.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/compare/v1.12.0...v1.13.0) (2023-12-14)
 
 
@@ -31,15 +40,6 @@
 ### Features
 
 * **notification:** adds notif checker to celery scheduler ([45658c7](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/commit/45658c719be5f03bf8721c4aa86990f0220a27b1))
-
-
-
-# [1.9.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/compare/v1.8.0...v1.9.0) (2023-12-12)
-
-
-### Features
-
-* **notification:** adds NotificationAdmin class ([6999e5a](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/commit/6999e5a67586fa5a4028b1d913b7b4ee1562abaf))
 
 
 
