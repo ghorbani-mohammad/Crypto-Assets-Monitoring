@@ -52,7 +52,6 @@ def check_coin_notifications():
             and notification.status == models.Notification.LOWER
         ):
             if notification.interval:
-                # should calculate (now - last_sent) > interval, then send the message
                 if notification.last_sent:
                     time_diff = datetime.now(pytz.UTC) - notification.last_sent
                     if time_diff.seconds / 60 < notification.interval:
