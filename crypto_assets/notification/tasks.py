@@ -28,13 +28,13 @@ def check_coin_notifications():
         tg_account = notification.profile.telegram_account.chat_id
         if not tg_account:
             continue
+
         price = prices.get(coin_key)
         if price is None:
             continue
 
-        message = (
-            f"{notification.coin.code} is now {float(price):,} {notification.market}"
-        )
+        price = f"{float(price):,}".rstrip(".0")
+        message = f"{notification.coin.code} is now {price} {notification.market}"
 
         if (
             price > notification.price
