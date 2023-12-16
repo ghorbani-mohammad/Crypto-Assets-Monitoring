@@ -33,12 +33,12 @@ if not settings.DEBUG:
 
 
 app.conf.beat_schedule = {
-    "update-bitpin-prices-30": {
+    "update-bitpin-prices-120": {
         "task": "update_bitpin_prices",
-        "schedule": 30,
+        "schedule": 120,
     },
-    "check_notifications-60": {
-        "task": "check_notifications",
-        "schedule": 60,
+    "check_notifications-120": {
+        "task": "check_coin_notifications",
+        "schedule": 120,
     },
 }

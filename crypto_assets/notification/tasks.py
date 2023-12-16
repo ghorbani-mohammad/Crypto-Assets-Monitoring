@@ -9,8 +9,14 @@ from . import models, utils
 logger = get_task_logger(__name__)
 
 
-@app.task(name="check_notifications")
-def check_notifications():
+@app.task(name="check_coin_notifications")
+def check_coin_notifications():
+    # This task will check all notifications and send a telegram message,
+    #  if the price is reached
+    # User can set a notification for a coin's price and market
+    #  and if the target hit, a telegram message will be sent
+    # User should define when the notification should be sent, at
+    #   upper or lower price
     TELEGRAM_BOT_TOKEN = settings.TELEGRAM_BOT_TOKEN
     notifications = models.Notification.objects.filter(~Q(status=None))
     prices = utils.get_coin_cached_prices()
@@ -33,3 +39,8 @@ def check_notifications():
             notification.last_sent = datetime.now()
             notification.save()
             utils.send_telegram_message(TELEGRAM_BOT_TOKEN, 110374168, message)
+
+
+@app.task(name="check_transaction_notifications")
+def check_transaction_notifications():
+    pass
