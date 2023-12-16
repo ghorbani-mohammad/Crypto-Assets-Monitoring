@@ -33,8 +33,8 @@ def check_coin_notifications():
         if price is None:
             continue
 
-        price = f"{float(price):,}".rstrip(".0")
-        message = f"{notification.coin.code} is now {price} {notification.market}"
+        price_repr = f"{float(price):,}".rstrip(".0")
+        message = f"{notification.coin.code} is now {price_repr} {notification.market}"
 
         if (
             price > notification.price
