@@ -1,7 +1,6 @@
 import requests
 import redis
 import pickle
-from django.core.cache import cache
 
 
 def send_telegram_message(token: str, chat_id: str, message: str):

@@ -1,5 +1,5 @@
-import pytz
 from datetime import datetime
+import pytz
 
 from django.db import models
 
@@ -42,7 +42,7 @@ class Notification(BaseModel):
     )
 
     @property
-    def passed_interval(self)-> bool:
+    def passed_interval(self) -> bool:
         if not self.last_sent:
             return True
         time_diff = datetime.now(pytz.UTC) - self.last_sent

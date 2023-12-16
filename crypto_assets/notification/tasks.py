@@ -1,7 +1,8 @@
+from datetime import datetime
+
 from celery.utils.log import get_task_logger
 from django.conf import settings
 from django.db.models import Q
-from datetime import datetime
 
 from crypto_assets.celery import app
 from . import models, utils
@@ -17,7 +18,7 @@ def check_coin_notifications():
     #  and if the target hit, a telegram message will be sent
     # User should define when the notification should be sent, at
     #   upper or lower price
-    TELEGRAM_BOT_TOKEN = settings.TELEGRAM_BOT_TOKEN
+    bot_token = settings.TELEGRAM_BOT_TOKEN
     prices = utils.get_coin_cached_prices()
     if not prices:
         return
@@ -25,16 +26,16 @@ def check_coin_notifications():
     notifications = models.Notification.objects.filter(~Q(status=None))
     for notification in notifications:
         coin_key = f"{notification.coin.code}_{notification.market}".lower()
-        tg_account = notification.profile.telegram_account.chat_id
-        if not tg_account:
-            continue
 
+        tg_account = notification.profile.telegram_account.chat_id
         price = prices.get(coin_key)
-        if price is None:
+        if not tg_account or price is None:
             continue
 
         price_repr = f"{float(price):,}"
         message = f"{notification.coin.code} is now {price_repr} {notification.market}"
+
+        send_message = False
 
         if (
             price > notification.price
@@ -45,9 +46,7 @@ def check_coin_notifications():
                     continue
             else:
                 notification.status = None
-            notification.last_sent = datetime.now()
-            notification.save()
-            utils.send_telegram_message(TELEGRAM_BOT_TOKEN, tg_account, message)
+            send_message = True
         if (
             price < notification.price
             and notification.status == models.Notification.LOWER
@@ -57,9 +56,12 @@ def check_coin_notifications():
                     continue
             else:
                 notification.status = None
+            send_message = True
+
+        if send_message:
             notification.last_sent = datetime.now()
             notification.save()
-            utils.send_telegram_message(TELEGRAM_BOT_TOKEN, tg_account, message)
+            utils.send_telegram_message(bot_token, tg_account, message)
 
 
 @app.task(name="check_transaction_notifications")
