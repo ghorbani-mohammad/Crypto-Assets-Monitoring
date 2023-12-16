@@ -2,6 +2,7 @@ import logging
 from decimal import Decimal
 import requests
 from django.core.cache import cache
+from django.conf import settings
 
 from exchange.platforms.base import BaseExchange
 
@@ -13,7 +14,7 @@ class Bitpin(BaseExchange):
     def __init__(self):
         self.api_addr = "https://api.bitpin.ir/v1/mkt/markets/"
         self.price_round = 5
-        self.cache_price_ttl = 60
+        self.cache_price_ttl = settings.BITPIN_PRICE_CACHE_TTL
 
     def get_price(self, coin, market: str) -> Decimal:
         coin_key = f"coin_{coin.code}_{market}".lower()
