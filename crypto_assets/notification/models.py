@@ -31,3 +31,4 @@ class Notification(BaseModel):
     market = models.CharField(
         max_length=10, choices=Transaction.MARKET_CHOICES, null=True
     )
+    last_sent = models.DateTimeField(null=True, blank=True)
