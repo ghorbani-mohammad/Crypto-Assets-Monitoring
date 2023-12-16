@@ -34,4 +34,6 @@ class Notification(BaseModel):
 
     last_sent = models.DateTimeField(null=True, blank=True)
     # using 0 to indicate that the notification is not recurring
-    interval = models.PositiveIntegerField(default=0, null=True, blank=True, help_text="in minutes")
+    interval = models.PositiveIntegerField(
+        default=0, null=True, blank=True, help_text="in minutes"
+    )
