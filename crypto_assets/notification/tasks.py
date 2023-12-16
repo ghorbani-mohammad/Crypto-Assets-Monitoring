@@ -25,7 +25,7 @@ def check_coin_notifications():
         return
     for notification in notifications:
         coin_key = f"{notification.coin.code}_{notification.market}".lower()
-        tg_account = notification.profile.telegram_account
+        tg_account = notification.profile.telegram_account.chat_id
         if not tg_account:
             continue
         price = prices.get(coin_key)
