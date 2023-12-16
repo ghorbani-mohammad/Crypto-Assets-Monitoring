@@ -25,6 +25,9 @@ def check_coin_notifications():
         return
     for notification in notifications:
         coin_key = f"{notification.coin.code}_{notification.market}".lower()
+        tg_account = notification.profile.telegram_account
+        if not tg_account:
+            continue
         price = prices.get(coin_key)
         if price is None:
             continue
@@ -41,12 +44,12 @@ def check_coin_notifications():
                         continue
                 notification.last_sent = datetime.now()
                 notification.save()
-                utils.send_telegram_message(TELEGRAM_BOT_TOKEN, 110374168, message)
+                utils.send_telegram_message(TELEGRAM_BOT_TOKEN, tg_account, message)
             else:
                 notification.status = None
                 notification.last_sent = datetime.now()
                 notification.save()
-                utils.send_telegram_message(TELEGRAM_BOT_TOKEN, 110374168, message)
+                utils.send_telegram_message(TELEGRAM_BOT_TOKEN, tg_account, message)
         if (
             price < notification.price
             and notification.status == models.Notification.LOWER
@@ -58,12 +61,12 @@ def check_coin_notifications():
                         continue
                 notification.last_sent = datetime.now()
                 notification.save()
-                utils.send_telegram_message(TELEGRAM_BOT_TOKEN, 110374168, message)
+                utils.send_telegram_message(TELEGRAM_BOT_TOKEN, tg_account, message)
             else:
                 notification.status = None
                 notification.last_sent = datetime.now()
                 notification.save()
-                utils.send_telegram_message(TELEGRAM_BOT_TOKEN, 110374168, message)
+                utils.send_telegram_message(TELEGRAM_BOT_TOKEN, tg_account, message)
 
 
 @app.task(name="check_transaction_notifications")
