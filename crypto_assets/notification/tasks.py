@@ -64,7 +64,9 @@ def check_coin_notifications():
             else:
                 if notification.status is None:
                     continue
-                message = f"{notification.coin.code} is now {price:,} {notification.market}"
+                message = (
+                    f"{notification.coin.code} is now {price:,} {notification.market}"
+                )
                 notification.status = None
                 notification.last_sent = datetime.now()
                 notification.save()
