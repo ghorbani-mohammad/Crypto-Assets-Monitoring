@@ -6,10 +6,12 @@ from envparse import env
 
 DEBUG = env.bool("DEBUG")
 SECRET_KEY = env.str("SECRET_KEY")
-TELEGRAM_BOT_TOKEN = env.str("TELEGRAM_BOT_TOKEN", default=None)
 ALLOWED_HOSTS = ["localhost", "crypto.m-gh.com"]
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# Other configs
+TELEGRAM_BOT_TOKEN = env.str("TELEGRAM_BOT_TOKEN", default=None)
+BITPIN_PRICE_CACHE_TTL = env.int("BITPIN_PRICE_CACHE_TTL", default=180)
 
 INSTALLED_APPS = [
     "django.contrib.admin",
