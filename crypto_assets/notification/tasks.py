@@ -33,7 +33,7 @@ def check_coin_notifications():
             continue
 
         price_repr = f"{float(price):,}"
-        message = f"{notification.coin.code} --> {price_repr} {notification.market}"
+        message = f"{notification.coin.code}: {price_repr} {notification.market}"
 
         send_message = False
 
