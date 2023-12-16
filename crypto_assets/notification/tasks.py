@@ -31,7 +31,11 @@ def check_coin_notifications():
         price = prices.get(coin_key)
         if price is None:
             continue
-        message = f"{notification.coin.code} is now {price:,} {notification.market}"
+
+        message = (
+            f"{notification.coin.code} is now {float(price):,} {notification.market}"
+        )
+
         if (
             price > notification.price
             and notification.status == models.Notification.UPPER
