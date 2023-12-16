@@ -66,6 +66,7 @@ class Transaction(BaseModel):
     profile = models.ForeignKey(
         Profile, related_name="transactions", on_delete=models.CASCADE
     )
+    change = models.DecimalField(max_digits=5, decimal_places=2, null=True, blank=True)
 
     def __str__(self) -> str:
         return f"({self.pk} - {self.type} - {self.coin})"

@@ -44,6 +44,7 @@ class TransactionAdmin(ReadOnlyAdminDateFields, admin.ModelAdmin):
         "get_current_price",
         "get_current_value",
         "get_profit_or_loss",
+        "change",
     )
 
     def __init__(self, *args, **kwargs):
