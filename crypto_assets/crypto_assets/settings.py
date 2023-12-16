@@ -75,7 +75,7 @@ AUTH_PASSWORD_VALIDATORS = [
 USE_TZ = True
 USE_I18N = True
 USE_L10N = True
-TIME_ZONE = "UTC"
+TIME_ZONE = env.str("TIME_ZONE", default="UTC")
 LANGUAGE_CODE = "en-us"
 
 
