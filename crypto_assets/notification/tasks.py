@@ -1,6 +1,7 @@
 from celery.utils.log import get_task_logger
 from django.conf import settings
 from django.db.models import Q
+from datetime import datetime
 
 from crypto_assets.celery import app
 from . import models, utils
@@ -23,10 +24,12 @@ def check_notifications():
         if price > notification.price and notification.status == models.Notification.UPPER:
             message = f"{notification.coin.code} is now {price:,} {notification.market}"
             notification.status = None
+            notification.last_sent = datetime.now()
             notification.save()
             utils.send_telegram_message(TELEGRAM_BOT_TOKEN, 110374168, message)
         if price < notification.price and notification.status == models.Notification.LOWER:
             message = f"{notification.coin.code} is now {price:,} {notification.market}"
             notification.status = None
+            notification.last_sent = datetime.now()
             notification.save()
             utils.send_telegram_message(TELEGRAM_BOT_TOKEN, 110374168, message)
