@@ -7,3 +7,8 @@ from . import models
 class ProfileAdmin(admin.ModelAdmin):
     search_fields = ("username",)
     list_display = ("pk", "username", "last_name", "first_name", "mobile_number")
+
+
+@admin.register(models.TelegramAccount)
+class TelegramAccountAdmin(admin.ModelAdmin):
+    list_display = ("pk", "profile", "chat_id")
