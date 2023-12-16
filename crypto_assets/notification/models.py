@@ -1,3 +1,6 @@
+import pytz
+from datetime import datetime
+
 from django.db import models
 
 from user.models import Profile
@@ -37,3 +40,12 @@ class Notification(BaseModel):
     interval = models.PositiveIntegerField(
         default=0, null=True, blank=True, help_text="in minutes"
     )
+
+    @property
+    def passed_interval(self)-> bool:
+        if not self.last_sent:
+            return True
+        time_diff = datetime.now(pytz.UTC) - self.last_sent
+        if time_diff.seconds / 60 > self.interval:
+            return True
+        return False
