@@ -17,6 +17,10 @@ class Notification(BaseModel):
     coin = models.ForeignKey(
         Coin, related_name="notifications", on_delete=models.CASCADE
     )
+    market = models.CharField(
+        max_length=10, choices=Transaction.MARKET_CHOICES, null=True
+    )
+
     profile = models.ForeignKey(
         Profile, related_name="notifications", on_delete=models.CASCADE
     )
@@ -28,7 +32,6 @@ class Notification(BaseModel):
         max_length=10, choices=STATUS_CHOICES, null=True, blank=True
     )
 
-    market = models.CharField(
-        max_length=10, choices=Transaction.MARKET_CHOICES, null=True
-    )
     last_sent = models.DateTimeField(null=True, blank=True)
+    # using 0 to indicate that the notification is not recurring
+    interval = models.PositiveIntegerField(default=0, null=True, blank=True, help_text="in minutes")

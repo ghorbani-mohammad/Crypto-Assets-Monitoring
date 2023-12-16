@@ -32,19 +32,43 @@ def check_coin_notifications():
             and notification.status == models.Notification.UPPER
         ):
             message = f"{notification.coin.code} is now {price:,} {notification.market}"
-            notification.status = None
-            notification.last_sent = datetime.now()
-            notification.save()
-            utils.send_telegram_message(TELEGRAM_BOT_TOKEN, 110374168, message)
+            if notification.interval:
+                # should calculate (now - last_sent) > interval, then send the message
+                if notification.last_sent:
+                    time_diff = datetime.now() - notification.last_sent
+                    if time_diff.seconds / 60 < notification.interval:
+                        continue
+                notification.last_sent = datetime.now()
+                notification.save()
+                utils.send_telegram_message(TELEGRAM_BOT_TOKEN, 110374168, message)
+            else:
+                if notification.status is None:
+                    continue
+                notification.status = None
+                notification.last_sent = datetime.now()
+                notification.save()
+                utils.send_telegram_message(TELEGRAM_BOT_TOKEN, 110374168, message)
         if (
             price < notification.price
             and notification.status == models.Notification.LOWER
         ):
-            message = f"{notification.coin.code} is now {price:,} {notification.market}"
-            notification.status = None
-            notification.last_sent = datetime.now()
-            notification.save()
-            utils.send_telegram_message(TELEGRAM_BOT_TOKEN, 110374168, message)
+            if notification.interval:
+                # should calculate (now - last_sent) > interval, then send the message
+                if notification.last_sent:
+                    time_diff = datetime.now() - notification.last_sent
+                    if time_diff.seconds / 60 < notification.interval:
+                        continue
+                notification.last_sent = datetime.now()
+                notification.save()
+                utils.send_telegram_message(TELEGRAM_BOT_TOKEN, 110374168, message)
+            else:
+                if notification.status is None:
+                    continue
+                message = f"{notification.coin.code} is now {price:,} {notification.market}"
+                notification.status = None
+                notification.last_sent = datetime.now()
+                notification.save()
+                utils.send_telegram_message(TELEGRAM_BOT_TOKEN, 110374168, message)
 
 
 @app.task(name="check_transaction_notifications")
