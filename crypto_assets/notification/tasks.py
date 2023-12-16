@@ -27,13 +27,19 @@ def check_coin_notifications():
         price = prices.get(coin_key)
         if price is None:
             continue
-        if price > notification.price and notification.status == models.Notification.UPPER:
+        if (
+            price > notification.price
+            and notification.status == models.Notification.UPPER
+        ):
             message = f"{notification.coin.code} is now {price:,} {notification.market}"
             notification.status = None
             notification.last_sent = datetime.now()
             notification.save()
             utils.send_telegram_message(TELEGRAM_BOT_TOKEN, 110374168, message)
-        if price < notification.price and notification.status == models.Notification.LOWER:
+        if (
+            price < notification.price
+            and notification.status == models.Notification.LOWER
+        ):
             message = f"{notification.coin.code} is now {price:,} {notification.market}"
             notification.status = None
             notification.last_sent = datetime.now()
