@@ -10,7 +10,7 @@ class NotificationAdmin(ReadOnlyAdminDateFields, admin.ModelAdmin):
     readonly_fields = ("last_sent",)
     list_display = (
         "pk",
-        "price",
+        "get_price",
         "coin",
         "market",
         "profile",
@@ -18,3 +18,7 @@ class NotificationAdmin(ReadOnlyAdminDateFields, admin.ModelAdmin):
         "last_sent",
         "interval",
     )
+
+    @admin.display(description="price")
+    def get_price(self, instance):
+        return f"{float(instance.price):,}"
