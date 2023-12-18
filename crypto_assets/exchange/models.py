@@ -39,9 +39,7 @@ class Coin(BaseModel):
         return f"({self.pk} - {self.code})"
 
     def get_price(self, market):
-        if market == Transaction.TOMAN:
-            return f"{self.price(market):,}"
-        return float(round(self.price(market), 2))
+        return f"{float(self.price(market)):,}"
 
     def price(self, market):
         exchange = Exchange.objects.last()
