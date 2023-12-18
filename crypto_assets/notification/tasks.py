@@ -41,6 +41,7 @@ def check_coin_notifications():
             price > notification.price
             and notification.status == models.Notification.UPPER
         ):
+            message = f"🟢 {message}"
             if notification.interval:
                 if not notification.passed_interval:
                     continue
@@ -51,6 +52,7 @@ def check_coin_notifications():
             price < notification.price
             and notification.status == models.Notification.LOWER
         ):
+            message = f"🔴 {message}"
             if notification.interval:
                 if not notification.passed_interval:
                     continue
