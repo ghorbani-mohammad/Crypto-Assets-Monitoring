@@ -1,12 +1,12 @@
 from django.contrib import admin
 
-from reusable.admins import ReadOnlyAdminDateFields
+from reusable.admins import ReadOnlyAdminDateFieldsMIXIN
 
 from . import models
 
 
 @admin.register(models.Coin)
-class CoinAdmin(ReadOnlyAdminDateFields, admin.ModelAdmin):
+class CoinAdmin(ReadOnlyAdminDateFieldsMIXIN, admin.ModelAdmin):
     list_display = ("pk", "code", "get_current_usdt_price", "get_current_irt_price")
 
     def __init__(self, *args, **kwargs):
@@ -25,12 +25,12 @@ class CoinAdmin(ReadOnlyAdminDateFields, admin.ModelAdmin):
 
 
 @admin.register(models.Exchange)
-class ExchangeAdmin(ReadOnlyAdminDateFields, admin.ModelAdmin):
+class ExchangeAdmin(ReadOnlyAdminDateFieldsMIXIN, admin.ModelAdmin):
     list_display = ("pk", "name")
 
 
 @admin.register(models.Transaction)
-class TransactionAdmin(ReadOnlyAdminDateFields, admin.ModelAdmin):
+class TransactionAdmin(ReadOnlyAdminDateFieldsMIXIN, admin.ModelAdmin):
     list_filter = ("coin", "market")
     list_display = (
         "pk",
