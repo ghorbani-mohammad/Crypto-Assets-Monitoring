@@ -7,7 +7,13 @@ from . import models
 
 @admin.register(models.Coin)
 class CoinAdmin(ReadOnlyAdminDateFieldsMIXIN, admin.ModelAdmin):
-    list_display = ("pk", "code", "get_current_usdt_price", "get_current_irt_price")
+    list_display = (
+        "pk",
+        "code",
+        "market",
+        "get_current_usdt_price",
+        "get_current_irt_price",
+    )
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

@@ -35,6 +35,11 @@ class Exchange(BaseModel):
 class Coin(BaseModel):
     code = models.CharField(max_length=20, unique=True)
 
+    TOMAN = "irt"
+    TETHER = "usdt"
+    MARKET_CHOICES = ((TOMAN, TOMAN), (TETHER, TETHER))
+    market = models.CharField(max_length=10, choices=MARKET_CHOICES, null=True)
+
     def __str__(self):
         return f"({self.pk} - {self.code})"
 
