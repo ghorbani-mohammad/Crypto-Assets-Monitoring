@@ -1,3 +1,12 @@
+# [1.19.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/compare/v1.18.0...v1.19.0) (2023-12-20)
+
+
+### Features
+
+* **platform:** adds market to coin model ([7aa3ec2](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/commit/7aa3ec224518e5722cf4728fcd15e5077e3efd1b))
+
+
+
 # [1.18.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/compare/v1.17.0...v1.18.0) (2023-12-20)
 
 
@@ -31,15 +40,6 @@
 ### Features
 
 * **notification:** adds notification messages ([0683403](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/commit/0683403f6a2f130a996b839687b9c840a027a674))
-
-
-
-# [1.14.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/compare/v1.13.0...v1.14.0) (2023-12-15)
-
-
-### Features
-
-* **platform:** change words of market ([c229187](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/commit/c2291872459b75d3ff80dc519f6b8fec8394cad7))
 
 
 
