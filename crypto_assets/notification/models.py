@@ -61,3 +61,11 @@ class Notification(BaseModel):
         if time_diff.seconds / 60 > self.interval:
             return True
         return False
+
+    @property
+    def is_coin(self) -> bool:
+        return bool(self.coin)
+
+    @property
+    def is_transaction(self) -> bool:
+        return bool(self.transaction)
