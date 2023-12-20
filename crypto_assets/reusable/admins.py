@@ -1,5 +1,6 @@
 from django.contrib import admin
 
+
 # pylint: disable=too-few-public-methods
 class ReadOnlyAdminDateFieldsMIXIN(admin.ModelAdmin):
     base_readonly_fields = ("created_at", "updated_at", "deleted_at")

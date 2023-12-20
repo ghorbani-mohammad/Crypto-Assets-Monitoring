@@ -18,7 +18,11 @@ class Telegram(BaseModel):
 class Notification(BaseModel):
     price = models.DecimalField(max_digits=20, decimal_places=10)
     coin = models.ForeignKey(
-        Coin, related_name="notifications", on_delete=models.CASCADE
+        Coin,
+        related_name="notifications",
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
     )
     market = models.CharField(
         max_length=10, choices=Transaction.MARKET_CHOICES, null=True
@@ -33,6 +37,14 @@ class Notification(BaseModel):
     STATUS_CHOICES = ((UPPER, UPPER), (LOWER, LOWER))
     status = models.CharField(
         max_length=10, choices=STATUS_CHOICES, null=True, blank=True
+    )
+
+    transaction = models.ForeignKey(
+        Transaction,
+        related_name="notifications",
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
     )
 
     last_sent = models.DateTimeField(null=True, blank=True)
