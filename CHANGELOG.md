@@ -1,3 +1,12 @@
+# [1.20.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/compare/v1.19.0...v1.20.0) (2023-12-22)
+
+
+### Features
+
+* **notification:** adds percentage to notification ([5d873c1](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/commit/5d873c15e2a14e9ab62530d344d85fa3b9effb1c))
+
+
+
 # [1.19.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/compare/v1.18.0...v1.19.0) (2023-12-20)
 
 
@@ -31,15 +40,6 @@
 ### Features
 
 * **notification:** sending price notifications ([b135362](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/commit/b13536284cdfdd5c476f864a23219b0efc89f4b9))
-
-
-
-# [1.15.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/compare/v1.14.0...v1.15.0) (2023-12-15)
-
-
-### Features
-
-* **notification:** adds notification messages ([0683403](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/commit/0683403f6a2f130a996b839687b9c840a027a674))
 
 
 
