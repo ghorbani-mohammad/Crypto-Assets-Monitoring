@@ -17,6 +17,8 @@ class NotificationAdmin(ReadOnlyAdminDateFieldsMIXIN, admin.ModelAdmin):
         "status",
         "last_sent",
         "interval",
+        "transaction",
+        "percentage",
     )
 
     @admin.display(description="price")
