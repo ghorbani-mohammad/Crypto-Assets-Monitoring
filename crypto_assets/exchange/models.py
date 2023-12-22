@@ -88,7 +88,7 @@ class Transaction(BaseModel):
             return f"{int(self.price):,}"
         return float(round(self.price, 2))
 
-    @property
+    @cached_property
     def get_current_price(self):
         if self.market == Transaction.TOMAN:
             return f"{int(self.coin.price(self.market)):,}"
@@ -102,10 +102,19 @@ class Transaction(BaseModel):
     def get_profit_or_loss(self):
         return f"{int(self.get_current_value - self.total_price):,}"
 
-    @property
+    @cached_property
     def get_total_price(self):
         return f"{self.total_price:,}"
 
     @property
     def get_current_value_admin(self):
         return f"{self.get_current_value:,}"
+
+    @cached_property
+    def get_change_percentage(self):
+        # shows the percentage of profit or loss
+        if self.total_price == 0:
+            return 0
+        return round(
+            ((self.get_current_value - self.total_price) / self.total_price) * 100, 2
+        )

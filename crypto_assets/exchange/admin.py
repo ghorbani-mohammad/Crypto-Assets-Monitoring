@@ -50,7 +50,7 @@ class TransactionAdmin(ReadOnlyAdminDateFieldsMIXIN, admin.ModelAdmin):
         "get_current_price",
         "get_current_value",
         "get_profit_or_loss",
-        "change",
+        "get_change_percentage",
     )
 
     def __init__(self, *args, **kwargs):
