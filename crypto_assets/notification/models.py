@@ -2,6 +2,7 @@ from datetime import datetime
 import pytz
 
 from django.db import models
+from django.core.validators import MinValueValidator
 
 from user.models import Profile
 from exchange.models import Coin, Transaction
@@ -39,6 +40,13 @@ class Notification(BaseModel):
         max_length=10, choices=STATUS_CHOICES, null=True, blank=True
     )
 
+    percentage = models.DecimalField(
+        max_digits=5,
+        decimal_places=2,
+        validators=[MinValueValidator(1)],
+        null=True,
+        blank=True,
+    )
     transaction = models.ForeignKey(
         Transaction,
         related_name="notifications",
