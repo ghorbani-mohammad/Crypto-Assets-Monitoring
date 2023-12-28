@@ -2,4 +2,4 @@
 
 set -e
 
-ci/find-python.sh black -t py38
+ci/find-python.sh black -t py311

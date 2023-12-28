@@ -1,11 +1,12 @@
 from django.db import models
-from django_jalali.db import models as jmodels
 from django.utils.functional import cached_property
+from django_jalali.db import models as jmodels
 
 from user.models import Profile
+from reusable.models import BaseModel
+
 from .platforms.bitpin import Bitpin
 from .platforms.wallex import Wallex
-from reusable.models import BaseModel
 
 
 class Exchange(BaseModel):
@@ -20,8 +21,9 @@ class Exchange(BaseModel):
     def get_platform(self):
         if self.name == Exchange.WALLEX:
             return Wallex()
-        elif self.name == Exchange.BITPIN:
+        if self.name == Exchange.BITPIN:
             return Bitpin()
+        raise Exception("Exchange name is not valid")
 
     def price(self, coin, market):
         return self.get_platform().get_price(coin, market)
@@ -33,13 +35,16 @@ class Exchange(BaseModel):
 class Coin(BaseModel):
     code = models.CharField(max_length=20, unique=True)
 
+    TOMAN = "irt"
+    TETHER = "usdt"
+    MARKET_CHOICES = ((TOMAN, TOMAN), (TETHER, TETHER))
+    market = models.CharField(max_length=10, choices=MARKET_CHOICES, null=True)
+
     def __str__(self):
         return f"({self.pk} - {self.code})"
 
     def get_price(self, market):
-        if market == Transaction.TOMAN:
-            return "{:,}".format(int(self.price(market)))
-        return float(round(self.price(market), 2))
+        return f"{float(self.price(market)):,}"
 
     def price(self, market):
         exchange = Exchange.objects.last()
@@ -51,8 +56,8 @@ class Transaction(BaseModel):
     SELL = "sell"
     TYPE_CHOICES = ((BUY, BUY), (SELL, SELL))
     type = models.CharField(max_length=10, choices=TYPE_CHOICES)
-    TOMAN = "toman"
-    TETHER = "tether"
+    TOMAN = "irt"
+    TETHER = "usdt"
     MARKET_CHOICES = ((TOMAN, TOMAN), (TETHER, TETHER))
     jdate = jmodels.jDateField(null=True, blank=True)
     price = models.DecimalField(max_digits=20, decimal_places=10)
@@ -64,6 +69,7 @@ class Transaction(BaseModel):
     profile = models.ForeignKey(
         Profile, related_name="transactions", on_delete=models.CASCADE
     )
+    change = models.DecimalField(max_digits=5, decimal_places=2, null=True, blank=True)
 
     def __str__(self) -> str:
         return f"({self.pk} - {self.type} - {self.coin})"
@@ -79,13 +85,13 @@ class Transaction(BaseModel):
     @property
     def get_price(self):
         if self.market == Transaction.TOMAN:
-            return "{:,}".format(int(self.price))
+            return f"{int(self.price):,}"
         return float(round(self.price, 2))
 
-    @property
+    @cached_property
     def get_current_price(self):
         if self.market == Transaction.TOMAN:
-            return "{:,}".format(int(self.coin.price(self.market)))
+            return f"{int(self.coin.price(self.market)):,}"
         return float(round(self.coin.price(self.market), 2))
 
     @property
@@ -94,12 +100,21 @@ class Transaction(BaseModel):
 
     @property
     def get_profit_or_loss(self):
-        return "{:,}".format(int(self.get_current_value - self.total_price))
+        return f"{int(self.get_current_value - self.total_price):,}"
 
-    @property
+    @cached_property
     def get_total_price(self):
-        return "{:,}".format(self.total_price)
+        return f"{self.total_price:,}"
 
     @property
     def get_current_value_admin(self):
-        return "{:,}".format(self.get_current_value)
+        return f"{self.get_current_value:,}"
+
+    @cached_property
+    def get_change_percentage(self):
+        # shows the percentage of profit or loss
+        if self.total_price == 0:
+            return 0
+        return round(
+            ((self.get_current_value - self.total_price) / self.total_price) * 100, 2
+        )

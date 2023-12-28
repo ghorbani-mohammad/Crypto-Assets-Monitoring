@@ -1,12 +1,17 @@
 import os
-from envparse import env
 from pathlib import Path
+
+from envparse import env
+
 
 DEBUG = env.bool("DEBUG")
 SECRET_KEY = env.str("SECRET_KEY")
-ALLOWED_HOSTS = ["crypto.m-gh.com"]
+ALLOWED_HOSTS = ["localhost", "crypto.m-gh.com"]
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# Other configs
+TELEGRAM_BOT_TOKEN = env.str("TELEGRAM_BOT_TOKEN", default=None)
+BITPIN_PRICE_CACHE_TTL = env.int("BITPIN_PRICE_CACHE_TTL", default=180)
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -18,6 +23,7 @@ INSTALLED_APPS = [
     "django_jalali",
     "user",
     "exchange",
+    "notification",
 ]
 
 MIDDLEWARE = [
@@ -69,14 +75,12 @@ AUTH_PASSWORD_VALIDATORS = [
 USE_TZ = True
 USE_I18N = True
 USE_L10N = True
-TIME_ZONE = "UTC"
+TIME_ZONE = env.str("TIME_ZONE", default="UTC")
 LANGUAGE_CODE = "en-us"
 
 
 STATIC_URL = "/static/"
-if DEBUG:
-    STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
-else:
+if not DEBUG:
     STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 if not DEBUG:

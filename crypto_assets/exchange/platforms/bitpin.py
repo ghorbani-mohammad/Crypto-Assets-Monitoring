@@ -1,9 +1,10 @@
 import logging
-import decimal
+from decimal import Decimal
 import requests
 from django.core.cache import cache
+from django.conf import settings
 
-from .base import BaseExchange
+from exchange.platforms.base import BaseExchange
 
 
 logger = logging.getLogger(__name__)
@@ -12,33 +13,28 @@ logger = logging.getLogger(__name__)
 class Bitpin(BaseExchange):
     def __init__(self):
         self.api_addr = "https://api.bitpin.ir/v1/mkt/markets/"
+        self.price_round = 5
+        self.cache_price_ttl = settings.BITPIN_PRICE_CACHE_TTL
 
-    def get_price(self, coin, market):
-        market = self.market_mapper(market)
-        coin_key = f"{coin}_{market}"
-        if cache.get(coin_key):
-            return cache.get(coin_key)
+    def get_price(self, coin, market: str) -> Decimal:
+        coin_key = f"coin_{coin.code}_{market}".lower()
+        cache_price = cache.get(coin_key)
+        if cache_price:
+            return cache_price
         try:
-            coins = requests.get(self.api_addr).json()["results"]
+            coins = requests.get(self.api_addr, timeout=10).json()["results"]
             for item in coins:
-                if item["code"] != coin_key:
+                if item["code"].lower() != coin_key:
                     continue
-                price = round(decimal.Decimal(item["price"]), 2)
-                cache.set(coin_key, price, 2)
+                price = round(Decimal(item["price"]), self.price_round)
+                cache.set(coin_key, price, self.cache_price_ttl)
                 return price
         except Exception as e:
             logger.error(e)
             return None
 
-    def cache_all_prices(self, ttl=2):
-        coins = requests.get(self.api_addr).json()["results"]
+    def cache_all_prices(self):
+        coins = requests.get(self.api_addr, timeout=10).json()["results"]
         for coin in coins:
-            price = round(decimal.Decimal(coin["price"]), 2)
-            cache.set(coin["code"], price, ttl)
-
-    def market_mapper(self, market):
-        if market == "tether":
-            return "USDT"
-        elif market == "toman":
-            return "IRT"
-        return market
+            price = round(Decimal(coin["price"]), self.price_round)
+            cache.set(f"coin_{coin['code']}".lower(), price, self.cache_price_ttl)

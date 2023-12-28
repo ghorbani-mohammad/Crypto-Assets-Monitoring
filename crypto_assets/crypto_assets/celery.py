@@ -1,10 +1,12 @@
 from __future__ import absolute_import
 
 import os
+from logging.config import dictConfig
 
 from celery import Celery
-from django.conf import settings
 from celery.signals import setup_logging
+from django.conf import settings
+
 
 # set the default Django settings module for the 'celery' program.
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "crypto_assets.settings")
@@ -16,17 +18,27 @@ app.config_from_object("django.conf:settings")
 app.autodiscover_tasks(lambda: settings.INSTALLED_APPS)
 
 DEFAULT_QUEUE = "celery"
+MINUTE = 60
 
 
 if not settings.DEBUG:
 
     @app.task(bind=True)
     def debug_task(self):
-        print("Request: {0!r}".format(self.request))
+        print(f"Request: {self.request!r}")
 
     @setup_logging.connect
-    def config_loggers(*args, **kwags):
-        from logging.config import dictConfig
-        from django.conf import settings
-
+    def config_loggers(*_args, **_kwargs):
         dictConfig(settings.LOGGING)
+
+
+app.conf.beat_schedule = {
+    "update-bitpin-prices-120": {
+        "task": "update_bitpin_prices",
+        "schedule": 120,
+    },
+    "check_notifications-120": {
+        "task": "check_coin_notifications",
+        "schedule": 120,
+    },
+}
