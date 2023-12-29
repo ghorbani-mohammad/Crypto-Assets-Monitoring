@@ -34,6 +34,7 @@ class Exchange(BaseModel):
 
 
 class Coin(BaseModel):
+    title = models.CharField(max_length=100, unique=True, null=True)
     code = models.CharField(max_length=20, unique=True)
 
     TOMAN = "irt"
@@ -71,6 +72,7 @@ class Transaction(BaseModel):
         Profile, related_name="transactions", on_delete=models.CASCADE
     )
     change = models.DecimalField(max_digits=5, decimal_places=2, null=True, blank=True)
+    platform_id = models.CharField(max_length=100, null=True, blank=True)
 
     def __str__(self) -> str:
         return f"({self.pk} - {self.type} - {self.coin})"
