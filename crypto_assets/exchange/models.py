@@ -64,7 +64,9 @@ class Transaction(BaseModel):
     jdate = jmodels.jDateField(null=True, blank=True)
     price = models.DecimalField(max_digits=20, decimal_places=10)
     quantity = models.DecimalField(max_digits=20, decimal_places=10)
-    market = models.CharField(max_length=10, choices=MARKET_CHOICES, null=True)
+    market = models.CharField(
+        max_length=10, choices=MARKET_CHOICES, null=True, blank=True
+    )
     coin = models.ForeignKey(
         Coin, related_name="transactions", on_delete=models.CASCADE
     )
