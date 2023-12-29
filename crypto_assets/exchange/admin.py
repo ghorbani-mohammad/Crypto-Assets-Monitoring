@@ -52,6 +52,7 @@ class TransactionAdmin(ReadOnlyAdminDateFieldsMIXIN, admin.ModelAdmin):
         "get_current_value",
         "get_profit_or_loss",
         "get_change_percentage",
+        "created_at",
     )
 
     def __init__(self, *args, **kwargs):
@@ -95,3 +96,4 @@ class TransactionAdmin(ReadOnlyAdminDateFieldsMIXIN, admin.ModelAdmin):
 @admin.register(models.Importer)
 class ImporterAdmin(ReadOnlyAdminDateFieldsMIXIN, admin.ModelAdmin):
     list_display = ("pk", "file", "profile", "success_count", "fail_count")
+    readonly_fields = ("success_count", "fail_count", "errors")

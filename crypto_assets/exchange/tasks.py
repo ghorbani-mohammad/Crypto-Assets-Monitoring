@@ -41,6 +41,7 @@ def process_importer(importer_id):
     success_counter = 0
     fail_counter = 0
     importer = models.Importer.objects.get(pk=importer_id)
+    importer.errors = importer.errors or ""
     with open(importer.file.path, "r") as csv_file:
         csv_reader = csv.reader(csv_file)
         next(csv_reader)  # Skip the header row
@@ -54,20 +55,23 @@ def process_importer(importer_id):
                 market = "irt"
             try:
                 coin = models.Coin.objects.get(title=title)
-                models.Transaction.objects.create(
-                    coin=coin,
-                    platform_id=date,
-                    type=trade_type,
-                    quantity=Decimal(amount),
-                    price=Decimal(price),
-                    jdate=date,
-                    profile=importer.profile,
+                transaction_data = {
+                    "coin": coin,
+                    "type": trade_type,
+                    "quantity": Decimal(amount),
+                    "price": Decimal(price),
+                    "jdate": date,
+                    "profile": importer.profile,
+                    "market": market,
+                }
+                models.Transaction.objects.update_or_create(
+                    platform_id=date, defaults=transaction_data
                 )
                 success_counter += 1
             except Exception as e:
-                print(e)
-                # Handle any exceptions and update fail_count
+                importer.errors += f"{e}\n"
                 fail_counter += 1
+
     importer.success_count = success_counter
     importer.fail_count = fail_counter
     importer.save()
