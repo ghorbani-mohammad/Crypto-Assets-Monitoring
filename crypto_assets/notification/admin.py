@@ -20,6 +20,7 @@ class NotificationAdmin(ReadOnlyAdminDateFieldsMIXIN, admin.ModelAdmin):
         "transaction",
         "percentage",
     )
+    list_filter = ("coin",)
 
     @admin.display(description="price")
     def get_price(self, instance):
