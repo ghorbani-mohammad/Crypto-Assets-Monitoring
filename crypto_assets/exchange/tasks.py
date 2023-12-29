@@ -69,7 +69,7 @@ def process_importer(importer_id):
                 )
                 success_counter += 1
             except Exception as e:
-                importer.errors += f"{e}\n"
+                importer.errors += f"error:{e}\nrow: {row}"
                 fail_counter += 1
 
     importer.success_count = success_counter
