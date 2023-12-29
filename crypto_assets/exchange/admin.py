@@ -10,6 +10,7 @@ class CoinAdmin(ReadOnlyAdminDateFieldsMIXIN, admin.ModelAdmin):
     list_display = (
         "pk",
         "code",
+        "title",
         "market",
         "get_current_usdt_price",
         "get_current_irt_price",
