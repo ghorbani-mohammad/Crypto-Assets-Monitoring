@@ -34,6 +34,8 @@ services:
     depends_on:
       - crypto_assets_db
       - crypto_assets_redis
+    volumes:
+      - ./static:/app/crypto_assets/static
     env_file:
       - .env
 
