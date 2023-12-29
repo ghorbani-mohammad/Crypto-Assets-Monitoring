@@ -95,5 +95,5 @@ class TransactionAdmin(ReadOnlyAdminDateFieldsMIXIN, admin.ModelAdmin):
 
 @admin.register(models.Importer)
 class ImporterAdmin(ReadOnlyAdminDateFieldsMIXIN, admin.ModelAdmin):
-    list_display = ("pk", "file", "profile", "success_count", "fail_count")
+    list_display = ("pk", "file", "profile", "success_count", "fail_count", "created_at")
     readonly_fields = ("success_count", "fail_count", "errors")
