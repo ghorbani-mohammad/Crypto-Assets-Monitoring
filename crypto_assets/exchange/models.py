@@ -111,6 +111,8 @@ class Transaction(BaseModel):
 
     @property
     def get_profit_or_loss(self):
+        if self.type == Transaction.SELL:
+            return "-"
         return f"{int(self.get_current_value - self.total_price):,}"
 
     @cached_property
