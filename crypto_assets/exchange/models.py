@@ -83,7 +83,11 @@ class Transaction(BaseModel):
 
     @cached_property
     def get_current_value(self):
-        return int(self.coin.price(self.market) * self.quantity)
+        return int(self.current_price * self.quantity)
+
+    @cached_property
+    def current_price(self):
+        return self.coin.price(self.market) or 0
 
     @property
     def get_price(self):
@@ -94,8 +98,8 @@ class Transaction(BaseModel):
     @cached_property
     def get_current_price(self):
         if self.market == Transaction.TOMAN:
-            return f"{int(self.coin.price(self.market)):,}"
-        return float(round(self.coin.price(self.market), 2))
+            return f"{int(self.current_price):,}"
+        return float(round(self.current_price, 2))
 
     @property
     def get_quantity(self):
@@ -130,6 +134,7 @@ class Importer(BaseModel):
     )
     success_count = models.IntegerField(default=0)
     fail_count = models.IntegerField(default=0)
+    errors = models.TextField(null=True, blank=True)
 
     def __str__(self):
         return f"({self.pk} - {self.file})"
