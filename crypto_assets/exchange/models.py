@@ -118,3 +118,15 @@ class Transaction(BaseModel):
         return round(
             ((self.get_current_value - self.total_price) / self.total_price) * 100, 2
         )
+
+
+class Importer(BaseModel):
+    file = models.FileField(upload_to="importer")
+    profile = models.ForeignKey(
+        Profile, related_name="importers", on_delete=models.CASCADE
+    )
+    success_count = models.IntegerField(default=0)
+    fail_count = models.IntegerField(default=0)
+
+    def __str__(self):
+        return f"({self.pk} - {self.file})"
