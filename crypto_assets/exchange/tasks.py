@@ -54,7 +54,7 @@ def process_importer(importer_id):
             if market == "toman":
                 market = "irt"
             try:
-                coin = models.Coin.objects.get(title=title)
+                coin = models.Coin.objects.get(title__iexact=title)
                 transaction_data = {
                     "coin": coin,
                     "type": trade_type,
@@ -69,7 +69,7 @@ def process_importer(importer_id):
                 )
                 success_counter += 1
             except Exception as e:
-                importer.errors += f"error:{e}\nrow: {row}"
+                importer.errors += f"\n\nerror:{e}\nrow: {row}"
                 fail_counter += 1
 
     importer.success_count = success_counter
