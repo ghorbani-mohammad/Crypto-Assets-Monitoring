@@ -89,3 +89,8 @@ class TransactionAdmin(ReadOnlyAdminDateFieldsMIXIN, admin.ModelAdmin):
     @admin.display(description="date", ordering="jdate")
     def get_date(self, instance):
         return instance.jdate
+
+
+@admin.register(models.Importer)
+class ImporterAdmin(ReadOnlyAdminDateFieldsMIXIN, admin.ModelAdmin):
+    list_display = ("pk", "file", "profile", "success_count", "fail_count")
