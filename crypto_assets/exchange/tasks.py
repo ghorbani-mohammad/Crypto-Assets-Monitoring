@@ -53,6 +53,8 @@ def process_importer(importer_id):
             market = market.split("/")[1].lower()
             if market == "toman":
                 market = "irt"
+            if market == "tether":
+                market = "usdt"
             try:
                 coin = models.Coin.objects.get(title__iexact=title)
                 transaction_data = {

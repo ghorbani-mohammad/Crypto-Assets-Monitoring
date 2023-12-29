@@ -148,6 +148,5 @@ class Importer(BaseModel):
 
     def save(self, *args, **kwargs):
         with transaction.atomic():
-            if not self.pk:
-                transaction.on_commit(lambda: tasks.process_importer.delay(self.pk))
+            transaction.on_commit(lambda: tasks.process_importer.delay(self.pk))
             super().save(*args, **kwargs)
