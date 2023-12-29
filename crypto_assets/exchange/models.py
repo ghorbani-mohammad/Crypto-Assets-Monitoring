@@ -1,4 +1,4 @@
-from django.db import models
+from django.db import models, transaction
 from django.utils.functional import cached_property
 from django_jalali.db import models as jmodels
 
@@ -7,6 +7,7 @@ from reusable.models import BaseModel
 
 from .platforms.bitpin import Bitpin
 from .platforms.wallex import Wallex
+from . import tasks
 
 
 class Exchange(BaseModel):
@@ -130,3 +131,12 @@ class Importer(BaseModel):
 
     def __str__(self):
         return f"({self.pk} - {self.file})"
+
+    def process(self):
+        print("process importer")
+
+    def save(self, *args, **kwargs):
+        with transaction.atomic():
+            if not self.pk:
+                transaction.on_commit(lambda: tasks.process_importer.delay(self.pk))
+            super().save(*args, **kwargs)
