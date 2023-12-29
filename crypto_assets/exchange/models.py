@@ -125,6 +125,8 @@ class Transaction(BaseModel):
 
     @cached_property
     def get_change_percentage(self):
+        if self.type == Transaction.SELL:
+            return "-"
         # shows the percentage of profit or loss
         if self.total_price == 0:
             return 0
