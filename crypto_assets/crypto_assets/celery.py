@@ -39,6 +39,6 @@ app.conf.beat_schedule = {
     },
     "check_notifications-120": {
         "task": "check_coin_notifications",
-        "schedule": MINUTE * 3,
+        "schedule": MINUTE * 2,
     },
 }
