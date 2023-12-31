@@ -1,3 +1,12 @@
+# [1.22.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/compare/v1.21.0...v1.22.0) (2023-12-31)
+
+
+### Features
+
+* **notification:** adds transaction notifier ([ee26b54](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/commit/ee26b5455a485e5bf0493dc06e60f873911861f3))
+
+
+
 # [1.21.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/compare/v1.20.0...v1.21.0) (2023-12-29)
 
 
@@ -31,15 +40,6 @@
 ### Features
 
 * **notification:** adds transaction to notification ([148f0bf](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/commit/148f0bf149abeab1e88a3f13957b5cb1fd4689bd))
-
-
-
-# [1.17.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/compare/v1.16.0...v1.17.0) (2023-12-16)
-
-
-### Features
-
-* **notification:** adds interval to coin-notifier ([05ab924](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/commit/05ab92488b6ea6913b2bed3bc7f1c3ca7907572e))
 
 
 
