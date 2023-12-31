@@ -24,6 +24,7 @@ INSTALLED_APPS = [
     "user",
     "exchange",
     "notification",
+    "asset",
 ]
 
 MIDDLEWARE = [
