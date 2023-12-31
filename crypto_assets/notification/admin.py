@@ -7,8 +7,8 @@ from . import models
 
 @admin.register(models.Notification)
 class NotificationAdmin(ReadOnlyAdminDateFieldsMIXIN, admin.ModelAdmin):
-    readonly_fields = ("last_sent",)
     raw_id_fields = ("transaction",)
+    readonly_fields = ("last_sent",)
     list_display = (
         "pk",
         "coin",
