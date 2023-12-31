@@ -41,6 +41,7 @@ class TransactionAdmin(ReadOnlyAdminDateFieldsMIXIN, admin.ModelAdmin):
     list_filter = ("coin", "market")
     list_display = (
         "pk",
+        "profile",
         "coin",
         "market",
         "type",
