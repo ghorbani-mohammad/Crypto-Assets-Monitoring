@@ -68,4 +68,26 @@ def check_coin_notifications():
 
 @app.task(name="check_transaction_notifications")
 def check_transaction_notifications():
-    pass
+    notifications = models.Notification.objects.filter(
+        transaction__isnull=False, percentage__isnull=False
+    )
+    for notification in notifications:
+        transaction = notification.transaction
+        if notification.status == models.Notification.UPPER:
+            if transaction.get_change_percentage >= notification.percentage:
+                # notification.status = None
+                # notification.save()
+                utils.send_telegram_message(
+                    settings.TELEGRAM_BOT_TOKEN,
+                    notification.profile.telegram_account.chat_id,
+                    f"🟢 {transaction.coin.code} {transaction.market} {transaction.type} {transaction.get_change_percentage()}%",
+                )
+        if notification.status == models.Notification.LOWER:
+            if transaction.get_change_percentage() <= notification.percentage:
+                # notification.status = None
+                # notification.save()
+                utils.send_telegram_message(
+                    settings.TELEGRAM_BOT_TOKEN,
+                    notification.profile.telegram_account.chat_id,
+                    f"🔴 {transaction.coin.code} {transaction.market} {transaction.type} {transaction.get_change_percentage()}%",
+                )
