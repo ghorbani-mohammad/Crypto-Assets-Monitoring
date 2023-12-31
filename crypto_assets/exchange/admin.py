@@ -92,6 +92,10 @@ class TransactionAdmin(ReadOnlyAdminDateFieldsMIXIN, admin.ModelAdmin):
     def get_date(self, instance):
         return instance.jdate
 
+    @admin.display(description="change percentage")
+    def get_change_percentage(self, instance):
+        return instance.get_change_percentage
+
 
 @admin.register(models.Importer)
 class ImporterAdmin(ReadOnlyAdminDateFieldsMIXIN, admin.ModelAdmin):
