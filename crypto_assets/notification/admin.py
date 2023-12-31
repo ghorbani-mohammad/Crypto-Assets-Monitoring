@@ -10,18 +10,19 @@ class NotificationAdmin(ReadOnlyAdminDateFieldsMIXIN, admin.ModelAdmin):
     readonly_fields = ("last_sent",)
     list_display = (
         "pk",
-        "get_price",
         "coin",
+        "transaction",
+        "get_price",
+        "percentage",
         "market",
         "profile",
         "status",
         "last_sent",
         "interval",
-        "transaction",
-        "percentage",
     )
     list_filter = ("coin",)
 
     @admin.display(description="price")
     def get_price(self, instance):
-        return f"{float(instance.price):,}"
+        if instance.price:
+            return f"{float(instance.price):,}"

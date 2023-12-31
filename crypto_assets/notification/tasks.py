@@ -83,7 +83,7 @@ def check_transaction_notifications():
                     f"🟢 {transaction.coin.code} {transaction.market} {transaction.type} {transaction.get_change_percentage()}%",
                 )
         if notification.status == models.Notification.LOWER:
-            if transaction.get_change_percentage() <= notification.percentage:
+            if transaction.get_change_percentage <= notification.percentage:
                 # notification.status = None
                 # notification.save()
                 utils.send_telegram_message(
