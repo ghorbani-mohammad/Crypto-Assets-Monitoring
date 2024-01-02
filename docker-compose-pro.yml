@@ -9,7 +9,7 @@ services:
     env_file:
       - .env
     volumes:
-      - crypto_assets_db:/var/lib/postgresql/data
+      - ./crypto_assets_db:/var/lib/postgresql/data
 
   crypto_assets_api:
     container_name: crypto_assets_api
