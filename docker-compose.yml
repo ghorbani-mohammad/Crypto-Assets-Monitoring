@@ -8,7 +8,7 @@ services:
     env_file:
       - .env
     volumes:
-      - crypto_assets_db:/var/lib/postgresql/data
+      - ./crypto_assets_db:/var/lib/postgresql/data
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -q -U postgres"]
       interval: 5s
