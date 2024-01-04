@@ -41,7 +41,7 @@ def process_importer(importer_id):
     success_counter = 0
     fail_counter = 0
     importer = models.Importer.objects.get(pk=importer_id)
-    importer.errors = importer.errors or ""
+    errors = importer.errors or ""
     with open(importer.file.path, "r") as csv_file:
         csv_reader = csv.reader(csv_file)
         next(csv_reader)  # Skip the header row
@@ -66,14 +66,15 @@ def process_importer(importer_id):
                     "profile": importer.profile,
                     "market": market,
                 }
-                models.Transaction.objects.update_or_create(
+                _, created = models.Transaction.objects.update_or_create(
                     platform_id=date, defaults=transaction_data
                 )
-                success_counter += 1
+                if created:
+                    success_counter += 1
             except Exception as e:
-                importer.errors += f"\n\nerror:{e}\nrow: {row}"
+                errors += f"\n\nerror:{e}\nrow: {row}"
                 fail_counter += 1
 
-    importer.success_count = success_counter
-    importer.fail_count = fail_counter
-    importer.save()
+    models.Importer.objects.filter(pk=importer_id).update(
+        errors=errors, success_count=success_counter, fail_count=fail_counter
+    )
