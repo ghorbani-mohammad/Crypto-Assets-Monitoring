@@ -1,3 +1,12 @@
+## [1.22.1](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/compare/v1.22.0...v1.22.1) (2024-01-04)
+
+
+### Bug Fixes
+
+* **importer:** solves the issue of infinite call ([6518f86](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/commit/6518f86e63342dfb5b709a7abd64982dd7fb3e5b))
+
+
+
 # [1.22.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/compare/v1.21.0...v1.22.0) (2023-12-31)
 
 
@@ -31,15 +40,6 @@
 ### Features
 
 * **platform:** adds market to coin model ([7aa3ec2](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/commit/7aa3ec224518e5722cf4728fcd15e5077e3efd1b))
-
-
-
-# [1.18.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/compare/v1.17.0...v1.18.0) (2023-12-20)
-
-
-### Features
-
-* **notification:** adds transaction to notification ([148f0bf](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/commit/148f0bf149abeab1e88a3f13957b5cb1fd4689bd))
 
 
 
