@@ -49,17 +49,23 @@ def process_importer(importer_id):
         for row in csv_reader:
             date, market, trade_type, amount, total, price, fee = row
             date = get_georgina(date)
-            print(date)
             title = market.split("/")[0].lower()
             market = market.split("/")[1].lower()
             if market == "toman":
                 market = "irt"
             if market == "tether":
                 market = "usdt"
-            platform_id = f"{date}-{market}-{trade_type}-{amount}-{price}"
-            print(platform_id)
+            coin = models.Coin.objects.get(title__iexact=title)
+            platform_id_components = [
+                str(date).split()[0],
+                coin.code,
+                market,
+                trade_type,
+                str(float(amount)),
+                str(float(price))
+            ]
+            platform_id = "|".join(platform_id_components).lower()
             try:
-                coin = models.Coin.objects.get(title__iexact=title)
                 transaction_data = {
                     "coin": coin,
                     "type": trade_type,
@@ -70,7 +76,7 @@ def process_importer(importer_id):
                     "market": market,
                 }
                 _, created = models.Transaction.objects.update_or_create(
-                    platform_id=date, defaults=transaction_data
+                    platform_id=platform_id, defaults=transaction_data
                 )
                 if created:
                     success_counter += 1
