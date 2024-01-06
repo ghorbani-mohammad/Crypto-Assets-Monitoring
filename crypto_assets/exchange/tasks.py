@@ -85,8 +85,19 @@ def process_importer(importer_id):
 
 @shared_task
 def update_transaction_ids():
-    transactions = models.Transaction.objects.all()
+    transactions = models.Transaction.objects.select_related("coin")
+    updated_transactions = []
+
     for transaction in transactions:
-        transaction.platform_id = f"{transaction.jdate}-{transaction.market}\
-            -{transaction.type}-{transaction.quantity}-{float(transaction.price)}"
-        transaction.save()
+        platform_id_components = [
+            str(transaction.jdate),
+            transaction.coin.code,
+            transaction.market,
+            transaction.type,
+            str(float(transaction.quantity)),
+            str(float(transaction.price))
+        ]
+        transaction.platform_id = "|".join(platform_id_components).lower()
+        updated_transactions.append(transaction)
+
+    models.Transaction.objects.bulk_update(updated_transactions, ['platform_id'])

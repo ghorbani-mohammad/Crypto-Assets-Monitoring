@@ -123,6 +123,18 @@ class Transaction(BaseModel):
     def get_current_value_admin(self):
         return f"{self.get_current_value:,}"
 
+    @property
+    def construct_platform_id(self):
+        platform_id_components = [
+            str(self.jdate),
+            self.coin.code,
+            self.market,
+            self.type,
+            str(float(self.quantity)),
+            str(float(self.price))
+        ]
+        return "|".join(platform_id_components).lower()
+
     @cached_property
     def get_change_percentage(self):
         if self.type == Transaction.SELL:
