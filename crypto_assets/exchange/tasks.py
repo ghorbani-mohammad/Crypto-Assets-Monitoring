@@ -87,5 +87,6 @@ def process_importer(importer_id):
 def update_transaction_ids():
     transactions = models.Transaction.objects.all()
     for transaction in transactions:
-        transaction.platform_id = f"{transaction.jdate}-{transaction.market}-{transaction.type}-{transaction.quantity}-{transaction.price}"
+        transaction.platform_id = f"{transaction.jdate}-{transaction.market}\
+            -{transaction.type}-{transaction.quantity}-{float(transaction.price)}"
         transaction.save()
