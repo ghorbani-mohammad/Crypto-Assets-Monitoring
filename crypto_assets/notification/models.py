@@ -17,7 +17,7 @@ class Telegram(BaseModel):
 
 
 class Notification(BaseModel):
-    price = models.DecimalField(max_digits=20, decimal_places=10)
+    price = models.DecimalField(max_digits=20, decimal_places=10, null=True, blank=True)
     coin = models.ForeignKey(
         Coin,
         related_name="notifications",
@@ -26,7 +26,7 @@ class Notification(BaseModel):
         blank=True,
     )
     market = models.CharField(
-        max_length=10, choices=Transaction.MARKET_CHOICES, null=True
+        max_length=10, choices=Transaction.MARKET_CHOICES, null=True, blank=True
     )
 
     profile = models.ForeignKey(

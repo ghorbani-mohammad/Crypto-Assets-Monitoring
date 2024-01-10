@@ -10,6 +10,7 @@ class CoinAdmin(ReadOnlyAdminDateFieldsMIXIN, admin.ModelAdmin):
     list_display = (
         "pk",
         "code",
+        "title",
         "market",
         "get_current_usdt_price",
         "get_current_irt_price",
@@ -37,9 +38,11 @@ class ExchangeAdmin(ReadOnlyAdminDateFieldsMIXIN, admin.ModelAdmin):
 
 @admin.register(models.Transaction)
 class TransactionAdmin(ReadOnlyAdminDateFieldsMIXIN, admin.ModelAdmin):
+    readonly_fields = ("platform_id",)
     list_filter = ("coin", "market")
     list_display = (
         "pk",
+        "profile",
         "coin",
         "market",
         "type",
@@ -51,6 +54,7 @@ class TransactionAdmin(ReadOnlyAdminDateFieldsMIXIN, admin.ModelAdmin):
         "get_current_value",
         "get_profit_or_loss",
         "get_change_percentage",
+        "created_at",
     )
 
     def __init__(self, *args, **kwargs):
@@ -89,3 +93,20 @@ class TransactionAdmin(ReadOnlyAdminDateFieldsMIXIN, admin.ModelAdmin):
     @admin.display(description="date", ordering="jdate")
     def get_date(self, instance):
         return instance.jdate
+
+    @admin.display(description="change percentage")
+    def get_change_percentage(self, instance):
+        return instance.get_change_percentage
+
+
+@admin.register(models.Importer)
+class ImporterAdmin(ReadOnlyAdminDateFieldsMIXIN, admin.ModelAdmin):
+    list_display = (
+        "pk",
+        "file",
+        "profile",
+        "success_count",
+        "fail_count",
+        "created_at",
+    )
+    readonly_fields = ("success_count", "fail_count", "errors")

@@ -66,6 +66,39 @@ def check_coin_notifications():
             utils.send_telegram_message(bot_token, tg_account, message)
 
 
+def format_message(transaction, change_percentage):
+    icon = "🟢" if change_percentage >= 0 else "🔴"
+    message = f"{icon} #{transaction.pk}"
+    message += f"\n\ncoin: {transaction.coin.code} {transaction.market.upper()}"
+    message += f"\nquantity: {transaction.quantity}"
+    message += f"\nbought price: {transaction.get_price}"
+    message += f"\ncurrent price: {transaction.get_current_price}"
+    message += f"\n\nprofit/loss percentage: {change_percentage}%"
+    message += f"\nprofit/loss value: {transaction.get_profit_or_loss}"
+    return message
+
+
 @app.task(name="check_transaction_notifications")
 def check_transaction_notifications():
-    pass
+    notifications = models.Notification.objects.filter(
+        transaction__isnull=False, percentage__isnull=False
+    ).select_related("transaction", "profile").order_by("?")
+
+    for notification in notifications:
+        transaction = notification.transaction
+        change_percentage = transaction.get_change_percentage
+        should_notify = (
+            notification.status == models.Notification.UPPER
+            and change_percentage >= notification.percentage
+        ) or (
+            notification.status == models.Notification.LOWER
+            and change_percentage <= notification.percentage
+        )
+
+        if should_notify:
+            message = format_message(transaction, change_percentage)
+            utils.send_telegram_message(
+                settings.TELEGRAM_BOT_TOKEN,
+                notification.profile.telegram_account.chat_id,
+                message,
+            )

@@ -1,16 +1,27 @@
 import requests
 import redis
 import pickle
+import logging
+import urllib.parse
+
+from django.conf import settings
+
+logger = logging.getLogger(__name__)
 
 
 def send_telegram_message(token: str, chat_id: str, message: str):
+    if settings.DEBUG:
+        logger.info("sending telegram message is disabled in DEBUG mode")
+        logger.info(f"send_telegram_message: {chat_id}, {message}")
+        return
+
     send_text = (
         "https://api.telegram.org/bot"
         + token
         + "/sendMessage?chat_id="
         + str(chat_id)
-        + "&parse_mode=Markdown&text="
-        + message
+        + "&text="
+        + urllib.parse.quote(message)
     )
     response = requests.get(send_text, timeout=10)
     return response.json()
