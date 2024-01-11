@@ -127,13 +127,18 @@ ADMIN_EMAIL_LOG = env("ADMIN_EMAIL_LOG", default=None)
 ADMINS = (("Log Admin", ADMIN_EMAIL_LOG),)
 SERVER_EMAIL = EMAIL_HOST_USER
 
+LOG_LEVEL = env("LOG_LEVEL", default="ERROR")
+
 # Logging (Just Email Handler)
 if EMAIL_HOST_USER and ADMIN_EMAIL_LOG:
     LOGGING = {
         "version": 1,
         "disable_existing_loggers": False,
         "formatters": {
-            "simple": {"format": "%(levelname)s %(message)s"},
+            "simple": {
+                "format": "%(asctime)s %(levelname)s %(message)s",
+                "datefmt": "%Y-%m-%d %H:%M:%S",  # Custom date/time format
+            }
         },
         "handlers": {
             "mail_admins": {
@@ -141,18 +146,61 @@ if EMAIL_HOST_USER and ADMIN_EMAIL_LOG:
                 "class": "django.utils.log.AdminEmailHandler",
                 "formatter": "simple",
             },
+            "log_db": {
+                "class": "reusable.logging.DBHandler",
+                "level": "ERROR",
+            },
+            "log_all_info": {
+                "class": "logging.FileHandler",
+                "filename": "/app/crypto_assets/logs/all_info.log",
+                "mode": "a",
+                "level": "INFO",
+                "formatter": "simple",
+            },
+            "log_all_error": {
+                "class": "logging.FileHandler",
+                "filename": "/app/crypto_assets/logs/all_error.log",
+                "mode": "a",
+                "level": "ERROR",
+                "formatter": "simple",
+            },
+            "log_celery_info": {
+                "class": "logging.FileHandler",
+                "filename": "/app/crypto_assets/logs/celery_info.log",
+                "mode": "a",
+                "level": "INFO",
+                "formatter": "simple",
+            },
+            "log_celery_error": {
+                "class": "logging.FileHandler",
+                "filename": "/app/crypto_assets/logs/celery_error.log",
+                "mode": "a",
+                "level": "ERROR",
+                "formatter": "simple",
+            },
         },
         "loggers": {
             # all modules
             "": {
-                "level": "ERROR",
+                "handlers": [
+                    "mail_admins",
+                    "log_db",
+                    "log_all_info",
+                    "log_all_error",
+                ],
+                "level": f"{LOG_LEVEL}",
                 "propagate": False,
-                "handlers": ["mail_admins"],
             },
+            # celery modules
             "celery": {
-                "level": "ERROR",
-                "propagate": False,
-                "handlers": ["mail_admins"],
+                "handlers": [
+                    "mail_admins",
+                    "log_db",
+                    "log_celery_info",
+                    "log_celery_error",
+                ],
+                "level": f"{LOG_LEVEL}",
+                "propagate": False,  # if True, will propagate to root logger
             },
         },
     }

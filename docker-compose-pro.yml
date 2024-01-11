@@ -18,7 +18,8 @@ services:
     depends_on:
       - crypto_assets_db
     volumes:
-      - /var/www/crypto_assets/static:/app/crypto_assets/static
+      - ./static:/app/crypto_assets/static
+      - ./logs:/app/crypto_assets/logs
     ports:
       - "127.0.0.1:4381:80"
     env_file:
@@ -35,6 +36,7 @@ services:
       - crypto_assets_redis
     volumes:
       - ./static:/app/crypto_assets/static
+      - ./logs:/app/crypto_assets/logs
     env_file:
       - .env
 
