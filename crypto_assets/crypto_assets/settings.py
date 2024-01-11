@@ -146,10 +146,6 @@ if EMAIL_HOST_USER and ADMIN_EMAIL_LOG:
                 "class": "django.utils.log.AdminEmailHandler",
                 "formatter": "simple",
             },
-            "log_db": {
-                "class": "reusable.logging.DBHandler",
-                "level": "ERROR",
-            },
             "log_all_info": {
                 "class": "logging.FileHandler",
                 "filename": "/app/crypto_assets/logs/all_info.log",
