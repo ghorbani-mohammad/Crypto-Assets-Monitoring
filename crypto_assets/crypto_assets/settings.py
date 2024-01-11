@@ -1,4 +1,5 @@
 import os
+import django
 from pathlib import Path
 
 from envparse import env
@@ -127,6 +128,7 @@ ADMIN_EMAIL_LOG = env("ADMIN_EMAIL_LOG", default=None)
 ADMINS = (("Log Admin", ADMIN_EMAIL_LOG),)
 SERVER_EMAIL = EMAIL_HOST_USER
 
+django.setup()  # we need setup django to have access to apps
 LOG_LEVEL = env("LOG_LEVEL", default="ERROR")
 
 # Logging (Just Email Handler)
