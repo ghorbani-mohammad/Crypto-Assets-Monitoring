@@ -182,7 +182,6 @@ if EMAIL_HOST_USER and ADMIN_EMAIL_LOG:
             "": {
                 "handlers": [
                     "mail_admins",
-                    "log_db",
                     "log_all_info",
                     "log_all_error",
                 ],
@@ -193,7 +192,6 @@ if EMAIL_HOST_USER and ADMIN_EMAIL_LOG:
             "celery": {
                 "handlers": [
                     "mail_admins",
-                    "log_db",
                     "log_celery_info",
                     "log_celery_error",
                 ],
