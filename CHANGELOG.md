@@ -1,3 +1,12 @@
+# [1.23.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/compare/v1.22.1...v1.23.0) (2024-01-11)
+
+
+### Features
+
+* **logging:** improves logging ([4eecaee](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/commit/4eecaee6515ce569260f69fb1db59848041ff89e))
+
+
+
 ## [1.22.1](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/compare/v1.22.0...v1.22.1) (2024-01-04)
 
 
@@ -31,15 +40,6 @@
 ### Features
 
 * **notification:** adds percentage to notification ([5d873c1](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/commit/5d873c15e2a14e9ab62530d344d85fa3b9effb1c))
-
-
-
-# [1.19.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/compare/v1.18.0...v1.19.0) (2023-12-20)
-
-
-### Features
-
-* **platform:** adds market to coin model ([7aa3ec2](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/commit/7aa3ec224518e5722cf4728fcd15e5077e3efd1b))
 
 
 
