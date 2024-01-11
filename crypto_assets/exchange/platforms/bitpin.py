@@ -34,7 +34,15 @@ class Bitpin(BaseExchange):
             return None
 
     def cache_all_prices(self):
-        coins = requests.get(self.api_addr, timeout=10).json()["results"]
+        try:
+            coins = requests.get(self.api_addr, timeout=10).json()["results"]
+        except Exception as e:
+            error = f"Error in getting prices from bitpin: {e}"
+            error += f"\n\n{self.api_addr}"
+            error += f"\n\nresponse: {coins}"
+            error += f"\n\nresponse code: {coins.status_code}"
+            logger.error(e)
+            return None
         for coin in coins:
             price = round(Decimal(coin["price"]), self.price_round)
             cache.set(f"coin_{coin['code']}".lower(), price, self.cache_price_ttl)
