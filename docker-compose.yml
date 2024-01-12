@@ -24,6 +24,7 @@ services:
         condition: service_healthy
     volumes:
       - .:/app
+      - ./logs:/app/crypto_assets/logs
     ports:
       - "127.0.0.1:4381:80"
       # - "127.0.0.1:5678:5678"
@@ -40,6 +41,7 @@ services:
     restart: unless-stopped
     volumes:
       - .:/app
+      - ./logs:/app/crypto_assets/logs
     depends_on:
       crypto_assets_db:
         condition: service_healthy
@@ -56,6 +58,7 @@ services:
     restart: unless-stopped
     volumes:
       - .:/app
+      - ./logs:/app/crypto_assets/logs
     depends_on:
       crypto_assets_db:
         condition: service_healthy
