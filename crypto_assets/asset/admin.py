@@ -20,3 +20,4 @@ class AssetAdmin(ReadOnlyAdminDateFieldsMIXIN, admin.ModelAdmin):
     def get_value(self, instance):
         if instance.value:
             return f"{float(instance.value):,}"
+        return None

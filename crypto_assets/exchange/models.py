@@ -131,7 +131,7 @@ class Transaction(BaseModel):
             self.market,
             self.type,
             str(float(self.quantity)),
-            str(float(self.price))
+            str(float(self.price)),
         ]
         return "|".join(platform_id_components).lower()
 
