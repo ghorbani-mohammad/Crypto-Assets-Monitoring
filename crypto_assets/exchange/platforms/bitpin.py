@@ -39,7 +39,11 @@ class Bitpin(BaseExchange):
                 error += f"\n\nresponse code: {resp.status_code}"
             logger.error(e)
             return None
-        for coin in coins:
+
+        sorted_coins = sorted(coins, key=lambda x: int(x['id']))
+        for coin in sorted_coins[:100]:
             key = f"coin_{coin['code']}".lower()
             price = round(Decimal(coin["price"]), self.price_round)
             cache.set(key, price, self.cache_price_ttl)
+
+        logger.info("Bitpin prices cached successfully")
