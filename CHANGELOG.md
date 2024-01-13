@@ -1,3 +1,12 @@
+## [1.23.1](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/compare/v1.23.0...v1.23.1) (2024-01-13)
+
+
+### Bug Fixes
+
+* **platform:** solves issues related to bitpin ([d6ef421](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/commit/d6ef4210c66eaf5e37e004c2993ee99c07c498b9))
+
+
+
 # [1.23.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/compare/v1.22.1...v1.23.0) (2024-01-11)
 
 
@@ -31,15 +40,6 @@
 ### Features
 
 * **platform:** adds transaction importer ([a7c8def](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/commit/a7c8def949409a5836039882ccc73e2e3e022b5c))
-
-
-
-# [1.20.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/compare/v1.19.0...v1.20.0) (2023-12-22)
-
-
-### Features
-
-* **notification:** adds percentage to notification ([5d873c1](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/commit/5d873c15e2a14e9ab62530d344d85fa3b9effb1c))
 
 
 
