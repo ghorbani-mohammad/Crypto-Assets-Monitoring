@@ -33,7 +33,12 @@ def get_georgina(jdate: str):
 @app.task(name="update_bitpin_prices")
 def update_bitpin_prices():
     bitpin = Bitpin()
-    bitpin.cache_all_prices()
+    coins = models.Coin.objects.all()
+    coins_codes = []
+    for coin in coins:
+        coins_codes.append(f"{coin.code}_irt".lower())
+        coins_codes.append(f"{coin.code}_usdt".lower())
+    bitpin.cache_all_prices(coins_codes)
 
 
 @shared_task

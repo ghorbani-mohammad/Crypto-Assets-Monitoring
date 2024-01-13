@@ -23,7 +23,7 @@ class Bitpin(BaseExchange):
             return cache_price
         return 0
 
-    def cache_all_prices(self):
+    def cache_all_prices(self, req_coins:list[str]=[]):
         resp = None
         try:
             resp = requests.get(self.api_addr, timeout=10)
@@ -40,10 +40,13 @@ class Bitpin(BaseExchange):
             logger.error(e)
             return None
 
-        sorted_coins = sorted(coins, key=lambda x: int(x['id']))
-        for coin in sorted_coins[:100]:
-            key = f"coin_{coin['code']}".lower()
+        logger.info(f"required coins: {req_coins}")
+        for coin in coins:
+            coin_code = coin['code'].lower()
+            if req_coins and coin_code not in req_coins:
+                continue
+            key = f"coin_{coin_code}".lower()
             price = round(Decimal(coin["price"]), self.price_round)
             cache.set(key, price, self.cache_price_ttl)
 
-        logger.info("Bitpin prices cached successfully")
+        logger.info("****** Bitpin prices cached successfully ******")
