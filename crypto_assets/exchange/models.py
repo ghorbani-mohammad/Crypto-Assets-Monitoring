@@ -63,7 +63,7 @@ class Transaction(BaseModel):
     TOMAN = "irt"
     TETHER = "usdt"
     MARKET_CHOICES = ((TOMAN, TOMAN), (TETHER, TETHER))
-    jdate = jmodels.jDateField(null=True, blank=True)
+    jdate = jmodels.jDateTimeField(null=True, blank=True)
     price = models.DecimalField(max_digits=20, decimal_places=10)
     quantity = models.DecimalField(max_digits=20, decimal_places=10)
     market = models.CharField(
