@@ -101,7 +101,7 @@ def update_transaction_ids():
 
     for transaction in transactions:
         platform_id_components = [
-            str(transaction.jdate),
+            str(transaction.jdate).split()[0],
             transaction.coin.code,
             transaction.market,
             transaction.type,
