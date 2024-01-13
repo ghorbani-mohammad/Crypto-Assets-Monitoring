@@ -80,9 +80,13 @@ def format_message(transaction, change_percentage):
 
 @app.task(name="check_transaction_notifications")
 def check_transaction_notifications():
-    notifications = models.Notification.objects.filter(
-        transaction__isnull=False, percentage__isnull=False
-    ).select_related("transaction", "profile").order_by("?")
+    notifications = (
+        models.Notification.objects.filter(
+            transaction__isnull=False, percentage__isnull=False
+        )
+        .select_related("transaction", "profile")
+        .order_by("?")
+    )
 
     for notification in notifications:
         transaction = notification.transaction

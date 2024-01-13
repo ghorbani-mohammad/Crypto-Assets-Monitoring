@@ -52,7 +52,7 @@ def process_importer(importer_id):
         next(csv_reader)  # Skip the header row
 
         for row in csv_reader:
-            date, market, trade_type, amount, total, price, fee = row
+            date, market, trade_type, amount, _total, price, _fee = row
             date = get_georgina(date)
             title = market.split("/")[0].lower()
             market = market.split("/")[1].lower()
@@ -67,7 +67,7 @@ def process_importer(importer_id):
                 market,
                 trade_type,
                 str(float(amount)),
-                str(float(price))
+                str(float(price)),
             ]
             platform_id = "|".join(platform_id_components).lower()
             try:
@@ -106,9 +106,9 @@ def update_transaction_ids():
             transaction.market,
             transaction.type,
             str(float(transaction.quantity)),
-            str(float(transaction.price))
+            str(float(transaction.price)),
         ]
         transaction.platform_id = "|".join(platform_id_components).lower()
         updated_transactions.append(transaction)
 
-    models.Transaction.objects.bulk_update(updated_transactions, ['platform_id'])
+    models.Transaction.objects.bulk_update(updated_transactions, ["platform_id"])

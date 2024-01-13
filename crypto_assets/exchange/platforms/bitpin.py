@@ -23,7 +23,7 @@ class Bitpin(BaseExchange):
             return cache_price
         return 0
 
-    def cache_all_prices(self, req_coins:list[str]=[]):
+    def cache_all_prices(self, req_coins: list[str] = []):
         resp = None
         try:
             resp = requests.get(self.api_addr, timeout=10)
@@ -42,7 +42,7 @@ class Bitpin(BaseExchange):
 
         logger.info(f"required coins: {req_coins}")
         for coin in coins:
-            coin_code = coin['code'].lower()
+            coin_code = coin["code"].lower()
             if req_coins and coin_code not in req_coins:
                 continue
             key = f"coin_{coin_code}".lower()

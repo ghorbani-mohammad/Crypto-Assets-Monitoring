@@ -13,7 +13,7 @@ def send_telegram_message(token: str, chat_id: str, message: str):
     if settings.DEBUG:
         logger.info("sending telegram message is disabled in DEBUG mode")
         logger.info(f"send_telegram_message: {chat_id}, {message}")
-        return
+        return None
 
     send_text = (
         "https://api.telegram.org/bot"

@@ -27,3 +27,4 @@ class NotificationAdmin(ReadOnlyAdminDateFieldsMIXIN, admin.ModelAdmin):
     def get_price(self, instance):
         if instance.price:
             return f"{float(instance.price):,}"
+        return None

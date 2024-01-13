@@ -1,7 +1,6 @@
 import os
-import django
 from pathlib import Path
-
+import django
 from envparse import env
 
 
