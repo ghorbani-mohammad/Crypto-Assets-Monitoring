@@ -16,12 +16,6 @@ class CoinAdmin(ReadOnlyAdminDateFieldsMIXIN, admin.ModelAdmin):
         "get_current_irt_price",
     )
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        exchange = models.Exchange.objects.last()
-        if exchange:
-            exchange.cache_all_prices()
-
     @admin.display(description="usdt price")
     def get_current_usdt_price(self, instance):
         return instance.get_price("usdt")
@@ -56,12 +50,6 @@ class TransactionAdmin(ReadOnlyAdminDateFieldsMIXIN, admin.ModelAdmin):
         "get_change_percentage",
         "created_at",
     )
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        exchange = models.Exchange.objects.last()
-        if exchange:
-            exchange.cache_all_prices()
 
     def get_ordering(self, request):
         return ["-jdate"]
