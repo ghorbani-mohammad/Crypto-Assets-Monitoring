@@ -40,5 +40,6 @@ class Bitpin(BaseExchange):
             logger.error(e)
             return None
         for coin in coins:
+            key = f"coin_{coin['code']}".lower()
             price = round(Decimal(coin["price"]), self.price_round)
-            cache.set(f"coin_{coin['code']}".lower(), price, self.cache_price_ttl)
+            cache.set(key, price, self.cache_price_ttl)
