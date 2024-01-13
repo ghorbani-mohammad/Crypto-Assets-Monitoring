@@ -21,17 +21,7 @@ class Bitpin(BaseExchange):
         cache_price = cache.get(coin_key)
         if cache_price:
             return cache_price
-        try:
-            coins = requests.get(self.api_addr, timeout=10).json()["results"]
-            for item in coins:
-                if item["code"].lower() != "_".join(coin_key.split("_")[1:]):
-                    continue
-                price = round(Decimal(item["price"]), self.price_round)
-                cache.set(coin_key, price, self.cache_price_ttl)
-                return price
-        except Exception as e:
-            logger.error(e)
-            return None
+        return 0
 
     def cache_all_prices(self):
         resp = None
