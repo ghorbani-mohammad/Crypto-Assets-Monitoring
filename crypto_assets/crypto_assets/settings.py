@@ -12,7 +12,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Other configs
 TELEGRAM_BOT_TOKEN = env.str("TELEGRAM_BOT_TOKEN", default=None)
-BITPIN_PRICE_CACHE_TTL = env.int("BITPIN_PRICE_CACHE_TTL", default=180)
+BITPIN_PRICE_CACHE_TTL = env.int("BITPIN_PRICE_CACHE_TTL", default=300)
 
 INSTALLED_APPS = [
     "django.contrib.admin",
