@@ -31,14 +31,14 @@ class Bitpin(BaseExchange):
             coins = resp.json()["results"]
         except TimeoutError as e:
             error = f"TimeoutError in getting prices from bitpin: {e}"
-            logger.error(error)
+            logger.warning(error)
             return []
         except json.JSONDecodeError as e:
             error = f"JSONDecodeError in getting prices from bitpin: {e}"
             error += f"\n\nresponse: {resp}"
             if resp:
                 error += f"\n\nresponse code: {resp.status_code}"
-            logger.error(error)
+            logger.warning(error)
             return []
         except Exception as e:
             error = f"Error in getting prices from bitpin: {e}"
