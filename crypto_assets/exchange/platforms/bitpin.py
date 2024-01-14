@@ -4,6 +4,7 @@ from decimal import Decimal
 import requests
 from django.core.cache import cache
 from django.conf import settings
+from requests.exceptions import ReadTimeout
 
 from exchange.platforms.base import BaseExchange
 
@@ -29,7 +30,7 @@ class Bitpin(BaseExchange):
         try:
             resp = requests.get(self.api_addr, timeout=10)
             coins = resp.json()["results"]
-        except TimeoutError as e:
+        except (TimeoutError, ReadTimeout) as e:
             error = f"TimeoutError in getting prices from bitpin: {e}"
             logger.warning(error)
             return []
