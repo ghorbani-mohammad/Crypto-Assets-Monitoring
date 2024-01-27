@@ -3,8 +3,8 @@ from decimal import Decimal
 from datetime import datetime
 
 from celery import shared_task
-from crypto_assets.celery import app
 from jdatetime import JalaliToGregorian
+from crypto_assets.celery import app
 
 from .platforms.bitpin import Bitpin
 from . import models
