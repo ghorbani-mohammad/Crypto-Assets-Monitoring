@@ -1,8 +1,8 @@
-import requests
+import logging
 import redis
 import pickle
-import logging
 import urllib.parse
+import requests
 
 from django.conf import settings
 
