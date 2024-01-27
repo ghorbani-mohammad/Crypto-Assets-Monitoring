@@ -1,7 +1,7 @@
 import logging
-import redis
 import pickle
 import urllib.parse
+import redis
 import requests
 
 from django.conf import settings
@@ -12,7 +12,7 @@ logger = logging.getLogger(__name__)
 def send_telegram_message(token: str, chat_id: str, message: str):
     if settings.DEBUG:
         logger.info("sending telegram message is disabled in DEBUG mode")
-        logger.info(f"send_telegram_message: %s, %s", chat_id, message)
+        logger.info("send_telegram_message: %s, %s", chat_id, message)
         return None
 
     send_text = (
