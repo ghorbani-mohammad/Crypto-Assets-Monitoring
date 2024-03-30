@@ -1,3 +1,12 @@
+# [1.25.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/compare/v1.24.0...v1.25.0) (2024-03-30)
+
+
+### Features
+
+* **exchange:** improves importer by adding not found exception ([1a6d05c](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/commit/1a6d05c2da14d5e1876ec3f46d6fd160493ca86c))
+
+
+
 # [1.24.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/compare/v1.23.1...v1.24.0) (2024-01-13)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * **importer:** solves the issue of infinite call ([6518f86](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/commit/6518f86e63342dfb5b709a7abd64982dd7fb3e5b))
-
-
-
-# [1.22.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/compare/v1.21.0...v1.22.0) (2023-12-31)
-
-
-### Features
-
-* **notification:** adds transaction notifier ([ee26b54](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/commit/ee26b5455a485e5bf0493dc06e60f873911861f3))
 
 
 
