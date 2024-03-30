@@ -60,7 +60,12 @@ def process_importer(importer_id):
                 market = "irt"
             if market == "tether":
                 market = "usdt"
-            coin = models.Coin.objects.get(title__iexact=title)
+            try:
+                coin = models.Coin.objects.get(title__iexact=title)
+            except models.Coin.DoesNotExist:
+                errors += f"\n\nerror: Coin {title} not found\nrow: {row}"
+                fail_counter += 1
+                continue
             platform_id_components = [
                 str(date).split()[0],
                 coin.code,
