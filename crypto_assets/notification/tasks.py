@@ -67,6 +67,9 @@ def check_coin_notifications():
 
 
 def format_message(transaction, change_percentage):
+    """
+    Format the message to be sent to the user
+    """
     icon = "🟢" if change_percentage >= 0 else "🔴"
     message = f"{icon} #{transaction.pk}"
     message += f"\n\ncoin: {transaction.coin.code} {transaction.market.upper()}"
