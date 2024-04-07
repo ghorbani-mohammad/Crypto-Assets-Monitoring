@@ -83,6 +83,9 @@ def format_message(transaction, change_percentage):
 
 @app.task(name="check_transaction_notifications")
 def check_transaction_notifications():
+    """
+    Check all notifications and send a telegram message if the percentage is reached
+    """
     notifications = (
         models.Notification.objects.filter(
             transaction__isnull=False, percentage__isnull=False
