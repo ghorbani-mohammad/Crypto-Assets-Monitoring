@@ -52,7 +52,7 @@ def process_importer(importer_id):
         next(csv_reader)  # Skip the header row
 
         for row in csv_reader:
-            date, market, trade_type, amount, _total, price, _fee = row
+            date, market, trade_type, mode, amount, _total, price, _fee = row
             date = get_georgina(date)
             title = market.split("/")[0].lower()
             market = market.split("/")[1].lower()
