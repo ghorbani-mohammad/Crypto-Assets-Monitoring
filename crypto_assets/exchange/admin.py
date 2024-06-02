@@ -80,7 +80,7 @@ class TransactionAdmin(ReadOnlyAdminDateFieldsMIXIN, admin.ModelAdmin):
 
     @admin.display(description="date", ordering="jdate")
     def get_date(self, instance):
-        return instance.jdate.split("+")[0]
+        return (instance.jdate).split("+")[0]
 
     @admin.display(description="change percentage")
     def get_change_percentage(self, instance):
