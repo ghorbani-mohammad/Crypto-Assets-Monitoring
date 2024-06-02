@@ -1,3 +1,12 @@
+# [1.26.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/compare/v1.25.0...v1.26.0) (2024-06-02)
+
+
+### Features
+
+* fulfill new format ([fde4362](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/commit/fde4362f0d379cd4531b1c4fff0ea8c1a33a298c))
+
+
+
 # [1.25.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/compare/v1.24.0...v1.25.0) (2024-03-30)
 
 
@@ -31,15 +40,6 @@
 ### Features
 
 * **logging:** improves logging ([4eecaee](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/commit/4eecaee6515ce569260f69fb1db59848041ff89e))
-
-
-
-## [1.22.1](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/compare/v1.22.0...v1.22.1) (2024-01-04)
-
-
-### Bug Fixes
-
-* **importer:** solves the issue of infinite call ([6518f86](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/commit/6518f86e63342dfb5b709a7abd64982dd7fb3e5b))
 
 
 
