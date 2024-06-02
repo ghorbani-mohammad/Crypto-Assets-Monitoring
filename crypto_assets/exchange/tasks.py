@@ -49,10 +49,21 @@ def process_importer(importer_id):
     errors = importer.errors or ""
     with open(importer.file.path, "r") as csv_file:
         csv_reader = csv.reader(csv_file)
-        next(csv_reader)  # Skip the header row
+        # if "mode" in the header row.low(), it's new format
+        # otherwise, it's old format
+        header = next(csv_reader)
+        header = [h.lower() for h in header]
+        new_format = False
+        if "mode" in header:
+            new_format = True
 
         for row in csv_reader:
-            date, market, trade_type, mode, amount, _total, price, _fee = row
+            if new_format:
+                date, market, trade_type, amount, _total, price, _price_limit, _price_stop, _price_limit_oco, fulfilled = row
+                amount = fulfilled
+            else:
+                date, market, trade_type, amount, _total, price, _fee = row
+
             date = get_georgina(date)
             title = market.split("/")[0].lower()
             market = market.split("/")[1].lower()
