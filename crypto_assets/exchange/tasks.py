@@ -61,7 +61,7 @@ def process_importer(importer_id):
             print(row)
             try:
                 if new_format:
-                    date, market, trade_type, amount, _total, price, _price_limit, _price_stop, _price_limit_oco, fulfilled = row
+                    date, market, trade_type, amount, mode, _total, price, _price_limit, _price_stop, _price_limit_oco, fulfilled = row
                     amount = fulfilled
                 else:
                     date, market, trade_type, amount, _total, price, _fee = row
