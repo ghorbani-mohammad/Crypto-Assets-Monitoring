@@ -58,11 +58,14 @@ def process_importer(importer_id):
             new_format = True
 
         for row in csv_reader:
-            if new_format:
-                date, market, trade_type, amount, _total, price, _price_limit, _price_stop, _price_limit_oco, fulfilled = row
-                amount = fulfilled
-            else:
-                date, market, trade_type, amount, _total, price, _fee = row
+            try:
+                if new_format:
+                    date, market, trade_type, amount, _total, price, _price_limit, _price_stop, _price_limit_oco, fulfilled = row
+                    amount = fulfilled
+                else:
+                    date, market, trade_type, amount, _total, price, _fee = row
+            except Exception as e:
+                print(e)
 
             date = get_georgina(date)
             title = market.split("/")[0].lower()
