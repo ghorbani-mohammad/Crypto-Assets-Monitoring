@@ -1,3 +1,12 @@
+# [1.27.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/compare/v1.26.0...v1.27.0) (2024-08-31)
+
+
+### Features
+
+* adds entrypoint for celery beat container ([af7432f](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/commit/af7432f996518ea3634e84051286e7829cfeb41b))
+
+
+
 # [1.26.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/compare/v1.25.0...v1.26.0) (2024-06-02)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * **platform:** solves issues related to bitpin ([d6ef421](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/commit/d6ef4210c66eaf5e37e004c2993ee99c07c498b9))
-
-
-
-# [1.23.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/compare/v1.22.1...v1.23.0) (2024-01-11)
-
-
-### Features
-
-* **logging:** improves logging ([4eecaee](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/commit/4eecaee6515ce569260f69fb1db59848041ff89e))
 
 
 
