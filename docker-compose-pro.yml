@@ -52,7 +52,7 @@ services:
       - ./logs:/app/crypto_assets/logs
     env_file:
       - .env
-    entrypoint: ["./celery-beat-entrypoint.sh"]
+    entrypoint: ["/app/celery-beat-entrypoint.sh"]
 
   crypto_assets_redis:
     container_name : crypto_assets_redis
