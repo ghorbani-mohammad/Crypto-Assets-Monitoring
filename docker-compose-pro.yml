@@ -44,7 +44,6 @@ services:
     container_name: crypto_assets_beat
     build: .
     working_dir: /app/crypto_assets
-    command: ["celery", "-A", "crypto_assets", "beat", "-l", "info", "--pidfile=/tmp/celeryd.pid"]
     restart: unless-stopped
     depends_on:
       - crypto_assets_db
@@ -53,6 +52,7 @@ services:
       - ./logs:/app/crypto_assets/logs
     env_file:
       - .env
+    entrypoint: ["./celery-beat-entrypoint.sh"]
 
   crypto_assets_redis:
     container_name : crypto_assets_redis
