@@ -1,3 +1,12 @@
+# [1.28.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/compare/v1.27.0...v1.28.0) (2024-09-01)
+
+
+### Features
+
+* improves handling errors in calling prices api ([9f099a4](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/commit/9f099a49f5532df881a818a9ca0f7c7123a65b22))
+
+
+
 # [1.27.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/compare/v1.26.0...v1.27.0) (2024-08-31)
 
 
@@ -31,15 +40,6 @@
 ### Features
 
 * **platform:** improves price caching ([aedf674](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/commit/aedf674ff11245bb3931237109e4eb7c2f1e8fc5))
-
-
-
-## [1.23.1](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/compare/v1.23.0...v1.23.1) (2024-01-13)
-
-
-### Bug Fixes
-
-* **platform:** solves issues related to bitpin ([d6ef421](https://github.com/ghorbani-mohammad/Crypto-Assets-Manager/commit/d6ef4210c66eaf5e37e004c2993ee99c07c498b9))
 
 
 
