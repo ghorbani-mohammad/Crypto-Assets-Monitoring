@@ -55,7 +55,7 @@ class Bitpin(BaseExchange):
             error = f"RequestException in getting prices from Bitpin: {e}"
             if resp:
                 error += f"\n\nresponse code: {resp.status_code}"
-            logger.error(error)
+            logger.warning(error)
             return []
 
         # otherwise, log as an error 
