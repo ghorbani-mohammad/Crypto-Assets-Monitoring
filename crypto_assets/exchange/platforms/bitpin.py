@@ -4,7 +4,7 @@ from decimal import Decimal
 import requests
 from django.core.cache import cache
 from django.conf import settings
-from requests.exceptions import ReadTimeout
+from requests.exceptions import ReadTimeout, HTTPError, RequestException
 
 from exchange.platforms.base import BaseExchange
 
@@ -30,10 +30,19 @@ class Bitpin(BaseExchange):
         try:
             resp = requests.get(self.api_addr, timeout=10)
             coins = resp.json()["results"]
+
         except (TimeoutError, ReadTimeout) as e:
             error = f"TimeoutError in getting prices from bitpin: {e}"
             logger.warning(error)
             return []
+
+        except HTTPError as e:
+            error = f"HTTPError in getting prices from Bitpin: {e}"
+            if resp:
+                error += f"\n\nresponse code: {resp.status_code}"
+            logger.warning(error)
+            return []
+
         except json.JSONDecodeError as e:
             error = f"JSONDecodeError in getting prices from bitpin: {e}"
             error += f"\n\nresponse: {resp}"
@@ -41,6 +50,15 @@ class Bitpin(BaseExchange):
                 error += f"\n\nresponse code: {resp.status_code}"
             logger.warning(error)
             return []
+
+        except RequestException as e:
+            error = f"RequestException in getting prices from Bitpin: {e}"
+            if resp:
+                error += f"\n\nresponse code: {resp.status_code}"
+            logger.error(error)
+            return []
+
+        # otherwise, log as an error 
         except Exception as e:
             error = f"Error in getting prices from bitpin: {e}"
             error += f"\n\nresponse: {resp}"
