@@ -23,10 +23,8 @@ def check_coin_notifications():
     if not prices:
         return
 
-    # the oldest should be checked first
-    notifications = models.Notification.objects.filter(~Q(status=None)).order_by(
-        "last_sent"
-    )
+    # check notifications randomly
+    notifications = models.Notification.objects.filter(~Q(status=None)).order_by("?")
     for notification in notifications:
         coin_key = f"{notification.coin.code}_{notification.market}".lower()
 
