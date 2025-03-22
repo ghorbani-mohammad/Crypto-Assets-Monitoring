@@ -5,7 +5,7 @@ from . import models
 
 
 @admin.register(models.Asset)
-class AssetAdmin(ReadOnlyAdminDateFieldsMIXIN, admin.ModelAdmin):
+class AssetAdmin(ReadOnlyAdminDateFieldsMIXIN):
     readonly_fields = ("quantity", "value")
     list_display = (
         "pk",
