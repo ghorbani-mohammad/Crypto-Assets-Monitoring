@@ -1,12 +1,11 @@
 from django.contrib import admin
 
-from reusable.admins import ReadOnlyAdminDateFieldsMIXIN
-
 from . import models
+from reusable.admins import ReadOnlyAdminDateFieldsMIXIN
 
 
 @admin.register(models.Coin)
-class CoinAdmin(ReadOnlyAdminDateFieldsMIXIN, admin.ModelAdmin):
+class CoinAdmin(ReadOnlyAdminDateFieldsMIXIN):
     list_display = (
         "pk",
         "code",
