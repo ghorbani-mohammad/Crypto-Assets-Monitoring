@@ -25,7 +25,7 @@ class CoinAdmin(ReadOnlyAdminDateFieldsMIXIN):
 
 
 @admin.register(models.Exchange)
-class ExchangeAdmin(ReadOnlyAdminDateFieldsMIXIN, admin.ModelAdmin):
+class ExchangeAdmin(ReadOnlyAdminDateFieldsMIXIN):
     list_display = ("pk", "name")
 
 
