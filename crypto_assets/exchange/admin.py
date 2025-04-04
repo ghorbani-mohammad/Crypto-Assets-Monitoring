@@ -87,7 +87,7 @@ class TransactionAdmin(ReadOnlyAdminDateFieldsMIXIN):
 
 
 @admin.register(models.Importer)
-class ImporterAdmin(ReadOnlyAdminDateFieldsMIXIN, admin.ModelAdmin):
+class ImporterAdmin(ReadOnlyAdminDateFieldsMIXIN):
     list_display = (
         "pk",
         "file",
