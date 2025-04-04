@@ -30,7 +30,7 @@ class ExchangeAdmin(ReadOnlyAdminDateFieldsMIXIN):
 
 
 @admin.register(models.Transaction)
-class TransactionAdmin(ReadOnlyAdminDateFieldsMIXIN, admin.ModelAdmin):
+class TransactionAdmin(ReadOnlyAdminDateFieldsMIXIN):
     readonly_fields = ("platform_id",)
     list_filter = ("coin", "market")
     list_display = (
