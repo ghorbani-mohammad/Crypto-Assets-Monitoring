@@ -2,12 +2,11 @@ from django.db import models, transaction
 from django.utils.functional import cached_property
 from django_jalali.db import models as jmodels
 
+from . import tasks
 from user.models import Profile
-from reusable.models import BaseModel
-
 from .platforms.bitpin import Bitpin
 from .platforms.wallex import Wallex
-from . import tasks
+from reusable.models import BaseModel
 
 
 class Exchange(BaseModel):
