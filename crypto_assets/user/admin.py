@@ -12,3 +12,8 @@ class ProfileAdmin(admin.ModelAdmin):
 @admin.register(models.TelegramAccount)
 class TelegramAccountAdmin(admin.ModelAdmin):
     list_display = ("pk", "profile", "chat_id")
+
+
+@admin.register(models.Channel)
+class ChannelAdmin(admin.ModelAdmin):
+    list_display = ("pk", "name", "description")
