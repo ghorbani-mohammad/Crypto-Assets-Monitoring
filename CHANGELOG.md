@@ -1,3 +1,12 @@
+# [1.31.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/compare/v1.30.0...v1.31.0) (2025-04-23)
+
+
+### Features
+
+* register ChannelAdmin for managing Channel model in admin interface ([e670df9](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/commit/e670df995bc04431adcb80d9e778c072cc4a7a7f))
+
+
+
 # [1.30.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/compare/v1.29.0...v1.30.0) (2025-04-23)
 
 
@@ -31,15 +40,6 @@
 ### Features
 
 * adds entrypoint for celery beat container ([af7432f](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/commit/af7432f996518ea3634e84051286e7829cfeb41b))
-
-
-
-# [1.26.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/compare/v1.25.0...v1.26.0) (2024-06-02)
-
-
-### Features
-
-* fulfill new format ([fde4362](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/commit/fde4362f0d379cd4531b1c4fff0ea8c1a33a298c))
 
 
 
