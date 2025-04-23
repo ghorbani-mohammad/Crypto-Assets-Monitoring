@@ -1,3 +1,12 @@
+# [1.30.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/compare/v1.29.0...v1.30.0) (2025-04-23)
+
+
+### Features
+
+* add Channel model with timestamps and description fields ([eb8acc3](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/commit/eb8acc31fb805e7828f4f202951c3dfc257d98e2))
+
+
+
 # [1.29.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/compare/v1.28.0...v1.29.0) (2025-02-01)
 
 
@@ -31,15 +40,6 @@
 ### Features
 
 * fulfill new format ([fde4362](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/commit/fde4362f0d379cd4531b1c4fff0ea8c1a33a298c))
-
-
-
-# [1.25.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/compare/v1.24.0...v1.25.0) (2024-03-30)
-
-
-### Features
-
-* **exchange:** improves importer by adding not found exception ([1a6d05c](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/commit/1a6d05c2da14d5e1876ec3f46d6fd160493ca86c))
 
 
 
