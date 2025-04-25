@@ -3,11 +3,14 @@ from decimal import Decimal
 from datetime import datetime
 
 from celery import shared_task
-from jdatetime import JalaliToGregorian
 from crypto_assets.celery import app
+from jdatetime import JalaliToGregorian
+from celery.utils.log import get_task_logger
 
 from .platforms.bitpin import Bitpin
 from . import models
+
+logger = get_task_logger(__name__)
 
 
 def get_georgina(jdate: str):
@@ -32,6 +35,7 @@ def get_georgina(jdate: str):
 
 @app.task(name="update_bitpin_prices")
 def update_bitpin_prices():
+    logger.info("Updating Bitpin prices started at %s", datetime.now())
     bitpin = Bitpin()
     coins = models.Coin.objects.all()
     coins_codes = []
@@ -39,7 +43,7 @@ def update_bitpin_prices():
         coins_codes.append(f"{coin.code}_irt".lower())
         coins_codes.append(f"{coin.code}_usdt".lower())
     bitpin.cache_all_prices(coins_codes)
-
+    logger.info("Updating Bitpin prices finished at %s", datetime.now())
 
 @shared_task
 def process_importer(importer_id):
