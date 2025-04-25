@@ -1,3 +1,12 @@
+# [1.32.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/compare/v1.31.0...v1.32.0) (2025-04-25)
+
+
+### Features
+
+* add logging to update_bitpin_prices task for better traceability ([b7b794a](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/commit/b7b794aeccf9bbae39331f443926b0a32f099273))
+
+
+
 # [1.31.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/compare/v1.30.0...v1.31.0) (2025-04-23)
 
 
@@ -31,15 +40,6 @@
 ### Features
 
 * improves handling errors in calling prices api ([9f099a4](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/commit/9f099a49f5532df881a818a9ca0f7c7123a65b22))
-
-
-
-# [1.27.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/compare/v1.26.0...v1.27.0) (2024-08-31)
-
-
-### Features
-
-* adds entrypoint for celery beat container ([af7432f](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/commit/af7432f996518ea3634e84051286e7829cfeb41b))
 
 
 
