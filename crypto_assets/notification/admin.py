@@ -16,6 +16,7 @@ class NotificationAdmin(ReadOnlyAdminDateFieldsMIXIN, admin.ModelAdmin):
         "percentage",
         "market",
         "profile",
+        "channel",
         "status",
         "last_sent",
         "interval",

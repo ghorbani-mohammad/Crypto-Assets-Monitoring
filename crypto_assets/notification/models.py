@@ -32,6 +32,13 @@ class Notification(BaseModel):
     profile = models.ForeignKey(
         Profile, related_name="notifications", on_delete=models.CASCADE
     )
+    channel = models.ForeignKey(
+        "user.Channel",
+        related_name="notifications",
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+    )
 
     UPPER = "upper"
     LOWER = "lower"
