@@ -1,6 +1,7 @@
 from django.contrib import admin
 
 from . import models
+from reusable.admins import ReadOnlyAdminDateFieldsMIXIN
 
 
 @admin.register(models.Profile)
@@ -15,5 +16,5 @@ class TelegramAccountAdmin(admin.ModelAdmin):
 
 
 @admin.register(models.Channel)
-class ChannelAdmin(admin.ModelAdmin):
+class ChannelAdmin(ReadOnlyAdminDateFieldsMIXIN):
     list_display = ("pk", "name", "description")
