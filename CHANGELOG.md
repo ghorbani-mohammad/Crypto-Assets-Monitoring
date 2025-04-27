@@ -1,3 +1,12 @@
+# [1.34.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/compare/v1.33.0...v1.34.0) (2025-04-27)
+
+
+### Features
+
+* **notification:** adds channel field to the notification model ([ad88338](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/commit/ad88338ef63a0112a6e7b6cf2ae217cb7777ebd7))
+
+
+
 # [1.33.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/compare/v1.32.0...v1.33.0) (2025-04-27)
 
 
@@ -31,15 +40,6 @@
 ### Features
 
 * add Channel model with timestamps and description fields ([eb8acc3](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/commit/eb8acc31fb805e7828f4f202951c3dfc257d98e2))
-
-
-
-# [1.29.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/compare/v1.28.0...v1.29.0) (2025-02-01)
-
-
-### Features
-
-* randomize notification processing order ([2243dda](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/commit/2243dda9e1502a6e231a67eb8517789471edec3b))
 
 
 
