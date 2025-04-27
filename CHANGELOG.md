@@ -1,3 +1,12 @@
+# [1.36.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/compare/v1.35.0...v1.36.0) (2025-04-27)
+
+
+### Features
+
+* add channel_identifier field to Channel model for unique identification ([06ff430](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/commit/06ff430e6c0e128e3442dfebac0270242e0df2a2))
+
+
+
 # [1.35.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/compare/v1.34.0...v1.35.0) (2025-04-27)
 
 
@@ -31,15 +40,6 @@
 ### Features
 
 * add logging to update_bitpin_prices task for better traceability ([b7b794a](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/commit/b7b794aeccf9bbae39331f443926b0a32f099273))
-
-
-
-# [1.31.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/compare/v1.30.0...v1.31.0) (2025-04-23)
-
-
-### Features
-
-* register ChannelAdmin for managing Channel model in admin interface ([e670df9](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/commit/e670df995bc04431adcb80d9e778c072cc4a7a7f))
 
 
 
