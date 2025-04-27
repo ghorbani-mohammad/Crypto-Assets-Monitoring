@@ -1,3 +1,12 @@
+# [1.35.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/compare/v1.34.0...v1.35.0) (2025-04-27)
+
+
+### Features
+
+* add profile field to Channel model for user association ([030a0a7](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/commit/030a0a7904c317fce3ef55f18b8ae974a58edcd8))
+
+
+
 # [1.34.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/compare/v1.33.0...v1.34.0) (2025-04-27)
 
 
@@ -31,15 +40,6 @@
 ### Features
 
 * register ChannelAdmin for managing Channel model in admin interface ([e670df9](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/commit/e670df995bc04431adcb80d9e778c072cc4a7a7f))
-
-
-
-# [1.30.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/compare/v1.29.0...v1.30.0) (2025-04-23)
-
-
-### Features
-
-* add Channel model with timestamps and description fields ([eb8acc3](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/commit/eb8acc31fb805e7828f4f202951c3dfc257d98e2))
 
 
 
