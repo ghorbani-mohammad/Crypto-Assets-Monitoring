@@ -1,3 +1,12 @@
+# [1.37.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/compare/v1.36.0...v1.37.0) (2025-04-27)
+
+
+### Features
+
+* update ChannelAdmin to include new fields for enhanced display in admin interface ([7406fa7](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/commit/7406fa7996b1e1c7f68bde923e97d26b04fec3bf))
+
+
+
 # [1.36.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/compare/v1.35.0...v1.36.0) (2025-04-27)
 
 
@@ -31,15 +40,6 @@
 ### Features
 
 * extend ChannelAdmin with ReadOnlyAdminDateFieldsMIXIN for enhanced functionality ([d6e74cd](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/commit/d6e74cde9c6368f153e0fdb7423f2cb58f7e5317))
-
-
-
-# [1.32.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/compare/v1.31.0...v1.32.0) (2025-04-25)
-
-
-### Features
-
-* add logging to update_bitpin_prices task for better traceability ([b7b794a](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/commit/b7b794aeccf9bbae39331f443926b0a32f099273))
 
 
 
