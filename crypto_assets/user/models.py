@@ -16,6 +16,9 @@ class Profile(AbstractUser):
 
 
 class Channel(BaseModel):
+    profile = models.ForeignKey(
+        Profile, on_delete=models.CASCADE, related_name="channels"
+    )
     name = models.CharField(max_length=100)
     description = models.TextField(null=True, blank=True)
 
