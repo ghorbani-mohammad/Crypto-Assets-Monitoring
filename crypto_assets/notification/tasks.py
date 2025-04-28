@@ -64,7 +64,17 @@ def check_coin_notifications():
         if send_message:
             notification.last_sent = datetime.now()
             notification.save()
+            # Send message to user's telegram account
             utils.send_telegram_message(bot_token, tg_account, message)
+            
+            # Send message to channel if available
+            if notification.channel:
+                # Use channel's identifier directly as chat_id
+                utils.send_telegram_message(
+                    settings.TELEGRAM_BOT_TOKEN,
+                    notification.channel.channel_identifier,
+                    message,
+                )
 
 
 def format_message(transaction, change_percentage):
@@ -91,7 +101,7 @@ def check_transaction_notifications():
         models.Notification.objects.filter(
             transaction__isnull=False, percentage__isnull=False
         )
-        .select_related("transaction", "profile")
+        .select_related("transaction", "profile", "channel")
         .order_by("?")
     )
 
@@ -108,8 +118,18 @@ def check_transaction_notifications():
 
         if should_notify:
             message = format_message(transaction, change_percentage)
+            # Send message to user's telegram account
             utils.send_telegram_message(
                 settings.TELEGRAM_BOT_TOKEN,
                 notification.profile.telegram_account.chat_id,
                 message,
             )
+            
+            # Send message to channel if available
+            if notification.channel:
+                # Use channel's identifier directly as chat_id
+                utils.send_telegram_message(
+                    settings.TELEGRAM_BOT_TOKEN,
+                    notification.channel.channel_identifier,
+                    message,
+                )
