@@ -1,3 +1,12 @@
+# [1.38.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/compare/v1.37.0...v1.38.0) (2025-04-28)
+
+
+### Features
+
+* **notification:** enhance Telegram notification functionality to include channel messaging ([263da49](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/commit/263da49a10b60c3fd68882c918762c2ff54bf4fb))
+
+
+
 # [1.37.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/compare/v1.36.0...v1.37.0) (2025-04-27)
 
 
@@ -31,15 +40,6 @@
 ### Features
 
 * **notification:** adds channel field to the notification model ([ad88338](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/commit/ad88338ef63a0112a6e7b6cf2ae217cb7777ebd7))
-
-
-
-# [1.33.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/compare/v1.32.0...v1.33.0) (2025-04-27)
-
-
-### Features
-
-* extend ChannelAdmin with ReadOnlyAdminDateFieldsMIXIN for enhanced functionality ([d6e74cd](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/commit/d6e74cde9c6368f153e0fdb7423f2cb58f7e5317))
 
 
 
