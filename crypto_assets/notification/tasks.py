@@ -12,6 +12,10 @@ logger = get_task_logger(__name__)
 
 @app.task(name="check_coin_notifications")
 def check_coin_notifications():
+    # TODO: implement a way to combine all notifications for profile
+    #  and send a single message
+
+
     # This task will check all notifications and send a telegram message,
     #  if the price is reached
     # User can set a notification for a coin's price and market
@@ -37,9 +41,6 @@ def check_coin_notifications():
         message = f"{notification.coin.code}: {price_repr} {notification.market}"
 
         send_message = False
-
-        # TODO: implement a way to combine all notifications for profile
-        #  and send a single message
 
         if (
             price > notification.price
