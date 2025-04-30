@@ -1,3 +1,12 @@
+# [1.39.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/compare/v1.38.0...v1.39.0) (2025-04-30)
+
+
+### Features
+
+* **notification:** add TODO for combining notifications into a single message ([eba3ee6](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/commit/eba3ee60eb1467c3b183f0f98dde935ebc4999c8))
+
+
+
 # [1.38.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/compare/v1.37.0...v1.38.0) (2025-04-28)
 
 
@@ -31,15 +40,6 @@
 ### Features
 
 * add profile field to Channel model for user association ([030a0a7](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/commit/030a0a7904c317fce3ef55f18b8ae974a58edcd8))
-
-
-
-# [1.34.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/compare/v1.33.0...v1.34.0) (2025-04-27)
-
-
-### Features
-
-* **notification:** adds channel field to the notification model ([ad88338](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/commit/ad88338ef63a0112a6e7b6cf2ae217cb7777ebd7))
 
 
 
