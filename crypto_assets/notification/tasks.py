@@ -38,6 +38,9 @@ def check_coin_notifications():
 
         send_message = False
 
+        # TODO: implement a way to combine all notifications for profile
+        #  and send a single message
+
         if (
             price > notification.price
             and notification.status == models.Notification.UPPER
