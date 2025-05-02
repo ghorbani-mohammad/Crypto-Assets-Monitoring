@@ -1,3 +1,12 @@
+## [1.39.1](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/compare/v1.39.0...v1.39.1) (2025-05-02)
+
+
+### Bug Fixes
+
+* **bitpin:** reorder imports for better organization and remove redundancy ([3e9d8ac](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/commit/3e9d8ac0beddcedd68cb4760f58a45ae11943416))
+
+
+
 # [1.39.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/compare/v1.38.0...v1.39.0) (2025-04-30)
 
 
@@ -31,15 +40,6 @@
 ### Features
 
 * add channel_identifier field to Channel model for unique identification ([06ff430](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/commit/06ff430e6c0e128e3442dfebac0270242e0df2a2))
-
-
-
-# [1.35.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/compare/v1.34.0...v1.35.0) (2025-04-27)
-
-
-### Features
-
-* add profile field to Channel model for user association ([030a0a7](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/commit/030a0a7904c317fce3ef55f18b8ae974a58edcd8))
 
 
 
