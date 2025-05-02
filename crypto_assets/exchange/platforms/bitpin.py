@@ -1,10 +1,11 @@
 import json
 import logging
-from decimal import Decimal
 import requests
+from decimal import Decimal
+from requests.exceptions import ReadTimeout, HTTPError, RequestException
+
 from django.core.cache import cache
 from django.conf import settings
-from requests.exceptions import ReadTimeout, HTTPError, RequestException
 
 from exchange.platforms.base import BaseExchange
 
