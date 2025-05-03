@@ -12,9 +12,6 @@ logger = get_task_logger(__name__)
 
 @app.task(name="check_coin_notifications")
 def check_coin_notifications():
-    # TODO: implement a way to combine all notifications for profile
-    #  and send a single message
-
     # This task will check all notifications and send a telegram message,
     #  if the price is reached
     # User can set a notification for a coin's price and market
@@ -28,6 +25,10 @@ def check_coin_notifications():
 
     # check notifications randomly
     notifications = models.Notification.objects.filter(~Q(status=None)).order_by("?")
+
+    # Dictionary to store combined notifications by profile
+    combined_messages = {}
+
     for notification in notifications:
         coin_key = f"{notification.coin.code}_{notification.market}".lower()
 
@@ -67,17 +68,36 @@ def check_coin_notifications():
         if send_message:
             notification.last_sent = datetime.now()
             notification.save()
-            # Send message to user's telegram account
-            utils.send_telegram_message(bot_token, tg_account, message)
 
-            # Send message to channel if available
-            if notification.channel:
-                # Use channel's identifier directly as chat_id
-                utils.send_telegram_message(
-                    settings.TELEGRAM_BOT_TOKEN,
-                    notification.channel.channel_identifier,
-                    message,
-                )
+            # If user wants to combine notifications, add to dictionary
+            if notification.profile.combine_notifications:
+                if tg_account not in combined_messages:
+                    combined_messages[tg_account] = []
+                combined_messages[tg_account].append(message)
+
+                # Add channel messages to a separate entry if channel exists
+                if notification.channel:
+                    channel_id = notification.channel.channel_identifier
+                    if channel_id not in combined_messages:
+                        combined_messages[channel_id] = []
+                    combined_messages[channel_id].append(message)
+            else:
+                # Send message to user's telegram account immediately
+                utils.send_telegram_message(bot_token, tg_account, message)
+
+                # Send message to channel if available
+                if notification.channel:
+                    utils.send_telegram_message(
+                        settings.TELEGRAM_BOT_TOKEN,
+                        notification.channel.channel_identifier,
+                        message,
+                    )
+
+    # Send combined messages
+    for chat_id, messages in combined_messages.items():
+        if messages:
+            combined_text = "📊 Crypto Notifications:\n\n" + "\n".join(messages)
+            utils.send_telegram_message(bot_token, chat_id, combined_text)
 
 
 def format_message(transaction, change_percentage):
@@ -108,6 +128,9 @@ def check_transaction_notifications():
         .order_by("?")
     )
 
+    # Dictionary to store combined notifications by profile
+    combined_messages = {}
+
     for notification in notifications:
         transaction = notification.transaction
         change_percentage = transaction.get_change_percentage
@@ -121,18 +144,41 @@ def check_transaction_notifications():
 
         if should_notify:
             message = format_message(transaction, change_percentage)
-            # Send message to user's telegram account
-            utils.send_telegram_message(
-                settings.TELEGRAM_BOT_TOKEN,
-                notification.profile.telegram_account.chat_id,
-                message,
-            )
 
-            # Send message to channel if available
-            if notification.channel:
-                # Use channel's identifier directly as chat_id
+            # If user wants to combine notifications, add to dictionary
+            if notification.profile.combine_notifications:
+                tg_account = notification.profile.telegram_account.chat_id
+                if tg_account not in combined_messages:
+                    combined_messages[tg_account] = []
+                combined_messages[tg_account].append(message)
+
+                # Add channel messages to a separate entry if channel exists
+                if notification.channel:
+                    channel_id = notification.channel.channel_identifier
+                    if channel_id not in combined_messages:
+                        combined_messages[channel_id] = []
+                    combined_messages[channel_id].append(message)
+            else:
+                # Send message to user's telegram account immediately
                 utils.send_telegram_message(
                     settings.TELEGRAM_BOT_TOKEN,
-                    notification.channel.channel_identifier,
+                    notification.profile.telegram_account.chat_id,
                     message,
                 )
+
+                # Send message to channel if available
+                if notification.channel:
+                    # Use channel's identifier directly as chat_id
+                    utils.send_telegram_message(
+                        settings.TELEGRAM_BOT_TOKEN,
+                        notification.channel.channel_identifier,
+                        message,
+                    )
+
+    # Send combined messages
+    for chat_id, messages in combined_messages.items():
+        if messages:
+            combined_text = "📊 Transaction Notifications:\n\n" + "\n\n".join(messages)
+            utils.send_telegram_message(
+                settings.TELEGRAM_BOT_TOKEN, chat_id, combined_text
+            )

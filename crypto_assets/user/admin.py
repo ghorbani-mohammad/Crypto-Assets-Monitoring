@@ -7,7 +7,15 @@ from reusable.admins import ReadOnlyAdminDateFieldsMIXIN
 @admin.register(models.Profile)
 class ProfileAdmin(admin.ModelAdmin):
     search_fields = ("username",)
-    list_display = ("pk", "username", "last_name", "first_name", "mobile_number")
+    list_display = (
+        "pk",
+        "username",
+        "last_name",
+        "first_name",
+        "mobile_number",
+        "combine_notifications",
+    )
+    list_filter = ("combine_notifications",)
 
 
 @admin.register(models.TelegramAccount)

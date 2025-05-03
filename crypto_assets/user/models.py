@@ -6,6 +6,9 @@ from reusable.models import BaseModel
 
 class Profile(AbstractUser):
     mobile_number = models.SlugField(max_length=11, null=True, blank=True, unique=True)
+    combine_notifications = models.BooleanField(
+        default=False, help_text="Combine multiple notifications into a single message"
+    )
 
     def __str__(self):
         return f"({self.pk} - {self.mobile_number})"
