@@ -59,7 +59,7 @@ class Bitpin(BaseExchange):
             logger.warning(error)
             return []
 
-        # otherwise, log as an error 
+        # otherwise, log as an error
         except Exception as e:
             error = f"Error in getting prices from bitpin: {e}"
             error += f"\n\nresponse: {resp}"

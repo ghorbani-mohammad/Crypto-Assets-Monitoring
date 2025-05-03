@@ -45,6 +45,7 @@ def update_bitpin_prices():
     bitpin.cache_all_prices(coins_codes)
     logger.info("Updating Bitpin prices finished at %s", datetime.now())
 
+
 @shared_task
 def process_importer(importer_id):
     success_counter = 0
@@ -64,7 +65,19 @@ def process_importer(importer_id):
         for row in csv_reader:
             try:
                 if new_format:
-                    date, market, trade_type, mode, amount, _total, price, _price_limit, _price_stop, _price_limit_oco, fulfilled = row
+                    (
+                        date,
+                        market,
+                        trade_type,
+                        mode,
+                        amount,
+                        _total,
+                        price,
+                        _price_limit,
+                        _price_stop,
+                        _price_limit_oco,
+                        fulfilled,
+                    ) = row
                 else:
                     date, market, trade_type, amount, _total, price, _fee = row
             except Exception as e:
