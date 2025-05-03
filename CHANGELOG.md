@@ -1,3 +1,12 @@
+# [1.40.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/compare/v1.39.1...v1.40.0) (2025-05-03)
+
+
+### Features
+
+* **notification:** implement combining of notifications into a single message for user profiles ([2fa484f](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/commit/2fa484f3d22408e42ff8168204c570e145544da4))
+
+
+
 ## [1.39.1](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/compare/v1.39.0...v1.39.1) (2025-05-02)
 
 
@@ -31,15 +40,6 @@
 ### Features
 
 * update ChannelAdmin to include new fields for enhanced display in admin interface ([7406fa7](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/commit/7406fa7996b1e1c7f68bde923e97d26b04fec3bf))
-
-
-
-# [1.36.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/compare/v1.35.0...v1.36.0) (2025-04-27)
-
-
-### Features
-
-* add channel_identifier field to Channel model for unique identification ([06ff430](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/commit/06ff430e6c0e128e3442dfebac0270242e0df2a2))
 
 
 
