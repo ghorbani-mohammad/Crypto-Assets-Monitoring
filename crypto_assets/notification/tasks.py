@@ -15,7 +15,6 @@ def check_coin_notifications():
     # TODO: implement a way to combine all notifications for profile
     #  and send a single message
 
-
     # This task will check all notifications and send a telegram message,
     #  if the price is reached
     # User can set a notification for a coin's price and market
@@ -70,7 +69,7 @@ def check_coin_notifications():
             notification.save()
             # Send message to user's telegram account
             utils.send_telegram_message(bot_token, tg_account, message)
-            
+
             # Send message to channel if available
             if notification.channel:
                 # Use channel's identifier directly as chat_id
@@ -128,7 +127,7 @@ def check_transaction_notifications():
                 notification.profile.telegram_account.chat_id,
                 message,
             )
-            
+
             # Send message to channel if available
             if notification.channel:
                 # Use channel's identifier directly as chat_id

@@ -17,4 +17,11 @@ class TelegramAccountAdmin(admin.ModelAdmin):
 
 @admin.register(models.Channel)
 class ChannelAdmin(ReadOnlyAdminDateFieldsMIXIN):
-    list_display = ("pk", "name", "profile", "channel_identifier", "created_at", "updated_at")
+    list_display = (
+        "pk",
+        "name",
+        "profile",
+        "channel_identifier",
+        "created_at",
+        "updated_at",
+    )
