@@ -1,3 +1,13 @@
+## [1.41.2](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/compare/v1.41.1...v1.41.2) (2025-05-03)
+
+
+### Bug Fixes
+
+* **notification:** prepend header to combined notification text for better context ([c0d680d](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/commit/c0d680daa8e70593eaaa7a42c4c2cd3d5b7ab8e8))
+* **notification:** remove header from combined notification text for improved clarity ([cd2592f](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/commit/cd2592f46750d114648f9b867c838cc49049c3b4))
+
+
+
 ## [1.41.1](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/compare/v1.41.0...v1.41.1) (2025-05-03)
 
 
@@ -36,15 +46,6 @@
 ### Bug Fixes
 
 * **bitpin:** reorder imports for better organization and remove redundancy ([3e9d8ac](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/commit/3e9d8ac0beddcedd68cb4760f58a45ae11943416))
-
-
-
-# [1.39.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/compare/v1.38.0...v1.39.0) (2025-04-30)
-
-
-### Features
-
-* **notification:** add TODO for combining notifications into a single message ([eba3ee6](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/commit/eba3ee60eb1467c3b183f0f98dde935ebc4999c8))
 
 
 
