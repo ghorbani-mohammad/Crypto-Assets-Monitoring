@@ -1,3 +1,17 @@
+# [1.41.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/compare/v1.40.0...v1.41.0) (2025-05-03)
+
+
+### Bug Fixes
+
+* **notification:** update transaction notification text for improved clarity ([2040bfe](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/commit/2040bfe4730c89f60431776a93204f24c62a408c))
+
+
+### Features
+
+* **notification:** update notification messages to be more user-friendly and personalized ([2edb8c8](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/commit/2edb8c84c1411ad95e85657f424dd65e7c72f535))
+
+
+
 # [1.40.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/compare/v1.39.1...v1.40.0) (2025-05-03)
 
 
@@ -31,15 +45,6 @@
 ### Features
 
 * **notification:** enhance Telegram notification functionality to include channel messaging ([263da49](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/commit/263da49a10b60c3fd68882c918762c2ff54bf4fb))
-
-
-
-# [1.37.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/compare/v1.36.0...v1.37.0) (2025-04-27)
-
-
-### Features
-
-* update ChannelAdmin to include new fields for enhanced display in admin interface ([7406fa7](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/commit/7406fa7996b1e1c7f68bde923e97d26b04fec3bf))
 
 
 
