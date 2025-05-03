@@ -96,7 +96,7 @@ def check_coin_notifications():
     # Send combined messages
     for chat_id, messages in combined_messages.items():
         if messages:
-            combined_text = "📊 Favorite Crypto Prices \n\n" + "\n".join(messages)
+            combined_text = "\n".join(messages)
             utils.send_telegram_message(bot_token, chat_id, combined_text)
 
 
