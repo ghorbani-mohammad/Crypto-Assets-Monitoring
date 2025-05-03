@@ -1,3 +1,12 @@
+## [1.41.1](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/compare/v1.41.0...v1.41.1) (2025-05-03)
+
+
+### Bug Fixes
+
+* **notification:** simplify notification text for clarity and consistency ([6b06b3f](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/commit/6b06b3f42c1a67fdf37e79779449d3b031d9f671))
+
+
+
 # [1.41.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/compare/v1.40.0...v1.41.0) (2025-05-03)
 
 
@@ -36,15 +45,6 @@
 ### Features
 
 * **notification:** add TODO for combining notifications into a single message ([eba3ee6](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/commit/eba3ee60eb1467c3b183f0f98dde935ebc4999c8))
-
-
-
-# [1.38.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/compare/v1.37.0...v1.38.0) (2025-04-28)
-
-
-### Features
-
-* **notification:** enhance Telegram notification functionality to include channel messaging ([263da49](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/commit/263da49a10b60c3fd68882c918762c2ff54bf4fb))
 
 
 
