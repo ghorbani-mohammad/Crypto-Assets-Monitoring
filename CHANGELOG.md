@@ -1,3 +1,12 @@
+## [1.42.2](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/compare/v1.42.1...v1.42.2) (2025-05-09)
+
+
+### Bug Fixes
+
+* **notification:** update last_sent timestamp handling for notifications and optimize bulk update ([3436776](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/commit/343677652fba4aaef919bb397837f12cb8ff9c34))
+
+
+
 ## [1.42.1](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/compare/v1.42.0...v1.42.1) (2025-05-09)
 
 
@@ -32,15 +41,6 @@
 
 * **notification:** prepend header to combined notification text for better context ([c0d680d](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/commit/c0d680daa8e70593eaaa7a42c4c2cd3d5b7ab8e8))
 * **notification:** remove header from combined notification text for improved clarity ([cd2592f](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/commit/cd2592f46750d114648f9b867c838cc49049c3b4))
-
-
-
-## [1.41.1](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/compare/v1.41.0...v1.41.1) (2025-05-03)
-
-
-### Bug Fixes
-
-* **notification:** simplify notification text for clarity and consistency ([6b06b3f](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/commit/6b06b3f42c1a67fdf37e79779449d3b031d9f671))
 
 
 
