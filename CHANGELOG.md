@@ -1,3 +1,12 @@
+# [1.42.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/compare/v1.41.3...v1.42.0) (2025-05-09)
+
+
+### Features
+
+* **notification:** add reset_notifications_last_sent function and improve telegram account check ([0c9e58c](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/commit/0c9e58caa1355656fffaf12b46f491cc479b0011))
+
+
+
 ## [1.41.3](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/compare/v1.41.2...v1.41.3) (2025-05-03)
 
 
@@ -37,15 +46,6 @@
 ### Features
 
 * **notification:** update notification messages to be more user-friendly and personalized ([2edb8c8](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/commit/2edb8c84c1411ad95e85657f424dd65e7c72f535))
-
-
-
-# [1.40.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/compare/v1.39.1...v1.40.0) (2025-05-03)
-
-
-### Features
-
-* **notification:** implement combining of notifications into a single message for user profiles ([2fa484f](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/commit/2fa484f3d22408e42ff8168204c570e145544da4))
 
 
 
