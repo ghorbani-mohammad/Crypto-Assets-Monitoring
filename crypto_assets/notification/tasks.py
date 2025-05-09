@@ -90,7 +90,7 @@ def check_coin_notifications():
                     if channel_id not in combined_messages:
                         combined_messages[channel_id] = []
                     combined_messages[channel_id].append(message)
-                notifications_should_be_updated.append(notification)
+                notifications_should_be_updated.append(notification.pk)
             else:
                 # Send message to user's telegram account immediately
                 utils.send_telegram_message(bot_token, tg_account, message)
