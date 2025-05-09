@@ -10,6 +10,12 @@ from . import models, utils
 logger = get_task_logger(__name__)
 
 
+def reset_notifications_last_sent():
+    models.Notification.objects.filter(~Q(status=None)).update(
+        last_sent=None
+    )
+
+
 @app.task(name="check_coin_notifications")
 def check_coin_notifications():
     # This task will check all notifications and send a telegram message,
@@ -30,11 +36,13 @@ def check_coin_notifications():
     combined_messages = {}
 
     for notification in notifications:
-        coin_key = f"{notification.coin.code}_{notification.market}".lower()
-
         tg_account = notification.profile.telegram_account.chat_id
+        if not tg_account:
+            continue
+
+        coin_key = f"{notification.coin.code}_{notification.market}".lower()
         price = prices.get(coin_key)
-        if not tg_account or price is None:
+        if price is None:
             continue
 
         price_repr = f"{float(price):,}"
