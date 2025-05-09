@@ -36,6 +36,8 @@ def check_coin_notifications():
     # Dictionary to store combined notifications by profile
     combined_messages = {}
 
+    notifications_should_be_updated = []
+
     for notification in notifications:
         tg_account = notification.profile.telegram_account.chat_id
         if not tg_account:
@@ -75,8 +77,6 @@ def check_coin_notifications():
             send_message = True
 
         if send_message:
-            notification.last_sent = datetime.now()
-            notification.save()
 
             # If user wants to combine notifications, add to dictionary
             if notification.profile.combine_notifications:
@@ -90,6 +90,7 @@ def check_coin_notifications():
                     if channel_id not in combined_messages:
                         combined_messages[channel_id] = []
                     combined_messages[channel_id].append(message)
+                notifications_should_be_updated.append(notification)
             else:
                 # Send message to user's telegram account immediately
                 utils.send_telegram_message(bot_token, tg_account, message)
@@ -101,12 +102,18 @@ def check_coin_notifications():
                         notification.channel.channel_identifier,
                         message,
                     )
+                notification.last_sent = datetime.now()
+                notification.save()
 
     # Send combined messages
     for chat_id, messages in combined_messages.items():
         if messages:
             combined_text = "\n".join(messages)
             utils.send_telegram_message(bot_token, chat_id, combined_text)
+    # bulk update notifications' last_sent to datetime.now()
+    models.Notification.objects.filter(id__in=notifications_should_be_updated).update(
+        last_sent=datetime.now()
+    )
 
 
 def format_message(transaction, change_percentage):
