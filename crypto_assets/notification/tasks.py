@@ -4,16 +4,17 @@ from celery.utils.log import get_task_logger
 from django.conf import settings
 from django.db.models import Q
 
-from crypto_assets.celery import app
 from . import models, utils
+from crypto_assets.celery import app
 
 logger = get_task_logger(__name__)
 
 
 def reset_notifications_last_sent():
-    models.Notification.objects.filter(~Q(status=None)).update(
+    affected_count = models.Notification.objects.filter(~Q(status=None)).update(
         last_sent=None
     )
+    print(f"Reset last_sent for {affected_count} notifications")
 
 
 @app.task(name="check_coin_notifications")
