@@ -1,3 +1,12 @@
+## [1.42.4](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/compare/v1.42.3...v1.42.4) (2025-05-11)
+
+
+### Bug Fixes
+
+* **notification:** change notification ordering to primary key for consistent retrieval ([563f5f5](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/commit/563f5f5ae82a7e468707479205bbed28ba398ef7))
+
+
+
 ## [1.42.3](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/compare/v1.42.2...v1.42.3) (2025-05-09)
 
 
@@ -31,15 +40,6 @@
 ### Features
 
 * **notification:** add reset_notifications_last_sent function and improve telegram account check ([0c9e58c](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/commit/0c9e58caa1355656fffaf12b46f491cc479b0011))
-
-
-
-## [1.41.3](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/compare/v1.41.2...v1.41.3) (2025-05-03)
-
-
-### Bug Fixes
-
-* **notification:** remove header from combined notification text for improved clarity ([d04fa97](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/commit/d04fa97ea366fe50d121ccd591d26ecbb4672ddb))
 
 
 
