@@ -30,6 +30,8 @@ def check_coin_notifications():
     if not prices:
         return
 
+    starting_task_time = datetime.now()
+
     # check notifications randomly
     notifications = models.Notification.objects.filter(~Q(status=None)).order_by("pk")
 
@@ -102,7 +104,7 @@ def check_coin_notifications():
                         notification.channel.channel_identifier,
                         message,
                     )
-                notification.last_sent = datetime.now()
+                notification.last_sent = starting_task_time
                 notification.save()
 
     # Send combined messages
@@ -110,9 +112,9 @@ def check_coin_notifications():
         if messages:
             combined_text = "\n".join(messages)
             utils.send_telegram_message(bot_token, chat_id, combined_text)
-    # bulk update notifications' last_sent to datetime.now()
+    # bulk update notifications' last_sent to starting_task_time
     models.Notification.objects.filter(id__in=notifications_should_be_updated).update(
-        last_sent=datetime.now()
+        last_sent=starting_task_time
     )
 
 
