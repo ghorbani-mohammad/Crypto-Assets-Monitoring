@@ -31,7 +31,7 @@ def check_coin_notifications():
         return
 
     # check notifications randomly
-    notifications = models.Notification.objects.filter(~Q(status=None)).order_by("?")
+    notifications = models.Notification.objects.filter(~Q(status=None)).order_by("pk")
 
     # Dictionary to store combined notifications by profile
     combined_messages = {}
