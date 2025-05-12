@@ -1,3 +1,12 @@
+## [1.42.6](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/compare/v1.42.5...v1.42.6) (2025-05-12)
+
+
+### Bug Fixes
+
+* **notification:** improve message sending logic by skipping empty notifications in combined messages ([eaf994d](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/commit/eaf994dddd4da3fc4845224488fb77956f20cf72))
+
+
+
 ## [1.42.5](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/compare/v1.42.4...v1.42.5) (2025-05-12)
 
 
@@ -32,15 +41,6 @@
 ### Bug Fixes
 
 * **notification:** update last_sent timestamp handling for notifications and optimize bulk update ([3436776](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/commit/343677652fba4aaef919bb397837f12cb8ff9c34))
-
-
-
-## [1.42.1](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/compare/v1.42.0...v1.42.1) (2025-05-09)
-
-
-### Bug Fixes
-
-* **notification:** update reset_notifications_last_sent function to log affected notifications count ([55effd4](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/commit/55effd4495e24d54b64472d8ec3b050be2fa893e))
 
 
 
