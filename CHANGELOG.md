@@ -1,3 +1,12 @@
+## [1.42.7](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/compare/v1.42.6...v1.42.7) (2025-05-12)
+
+
+### Bug Fixes
+
+* **notification:** enhance message sending logic to ensure proper delivery to user accounts and channels ([de2e7c3](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/commit/de2e7c39a3631fcbe368488919b92ad0805cc876))
+
+
+
 ## [1.42.6](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/compare/v1.42.5...v1.42.6) (2025-05-12)
 
 
@@ -32,15 +41,6 @@
 ### Bug Fixes
 
 * **notification:** update notification handling to append primary key instead of notification object ([ffb80c6](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/commit/ffb80c6c98552d908f29d54d93c498bc74e221f9))
-
-
-
-## [1.42.2](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/compare/v1.42.1...v1.42.2) (2025-05-09)
-
-
-### Bug Fixes
-
-* **notification:** update last_sent timestamp handling for notifications and optimize bulk update ([3436776](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/commit/343677652fba4aaef919bb397837f12cb8ff9c34))
 
 
 
