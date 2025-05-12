@@ -110,9 +110,10 @@ def check_coin_notifications():
 
     # Send combined messages
     for chat_id, messages in combined_messages.items():
-        if messages:
-            combined_text = "\n".join(messages)
-            utils.send_telegram_message(bot_token, chat_id, combined_text)
+        if not messages:
+            continue
+        combined_text = "\n".join(messages)
+        utils.send_telegram_message(bot_token, chat_id, combined_text)
     # bulk update notifications' last_sent to starting_task_time
     models.Notification.objects.filter(id__in=notifications_should_be_updated).update(
         last_sent=starting_task_time
