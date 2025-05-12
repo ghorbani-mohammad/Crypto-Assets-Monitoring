@@ -83,28 +83,30 @@ def check_coin_notifications():
 
         # If user wants to combine notifications, add to dictionary
         if notification.profile.combine_notifications:
-            if tg_account not in combined_messages:
-                combined_messages[tg_account] = []
-            combined_messages[tg_account].append(message)
-
-            # Add channel messages to a separate entry if channel exists
+            # send to channel or directly to user
             if notification.channel:
                 channel_id = notification.channel.channel_identifier
                 if channel_id not in combined_messages:
                     combined_messages[channel_id] = []
                 combined_messages[channel_id].append(message)
+            else:
+                if tg_account not in combined_messages:
+                    combined_messages[tg_account] = []
+                combined_messages[tg_account].append(message)
             notifications_should_be_updated.append(notification.pk)
         else:
-            # Send message to user's telegram account immediately
-            utils.send_telegram_message(bot_token, tg_account, message)
-
-            # Send message to channel if available
+            # Send separate message to channel if available
             if notification.channel:
                 utils.send_telegram_message(
                     settings.TELEGRAM_BOT_TOKEN,
                     notification.channel.channel_identifier,
                     message,
                 )
+            else:
+                # Send message to user's telegram account immediately
+                if tg_account:
+                    utils.send_telegram_message(bot_token, tg_account, message)
+
             notification.last_sent = starting_task_time
             notification.save()
 
