@@ -78,34 +78,35 @@ def check_coin_notifications():
                 notification.status = None
             send_message = True
 
-        if send_message:
+        if not send_message:
+            continue
 
-            # If user wants to combine notifications, add to dictionary
-            if notification.profile.combine_notifications:
-                if tg_account not in combined_messages:
-                    combined_messages[tg_account] = []
-                combined_messages[tg_account].append(message)
+        # If user wants to combine notifications, add to dictionary
+        if notification.profile.combine_notifications:
+            if tg_account not in combined_messages:
+                combined_messages[tg_account] = []
+            combined_messages[tg_account].append(message)
 
-                # Add channel messages to a separate entry if channel exists
-                if notification.channel:
-                    channel_id = notification.channel.channel_identifier
-                    if channel_id not in combined_messages:
-                        combined_messages[channel_id] = []
-                    combined_messages[channel_id].append(message)
-                notifications_should_be_updated.append(notification.pk)
-            else:
-                # Send message to user's telegram account immediately
-                utils.send_telegram_message(bot_token, tg_account, message)
+            # Add channel messages to a separate entry if channel exists
+            if notification.channel:
+                channel_id = notification.channel.channel_identifier
+                if channel_id not in combined_messages:
+                    combined_messages[channel_id] = []
+                combined_messages[channel_id].append(message)
+            notifications_should_be_updated.append(notification.pk)
+        else:
+            # Send message to user's telegram account immediately
+            utils.send_telegram_message(bot_token, tg_account, message)
 
-                # Send message to channel if available
-                if notification.channel:
-                    utils.send_telegram_message(
-                        settings.TELEGRAM_BOT_TOKEN,
-                        notification.channel.channel_identifier,
-                        message,
-                    )
-                notification.last_sent = starting_task_time
-                notification.save()
+            # Send message to channel if available
+            if notification.channel:
+                utils.send_telegram_message(
+                    settings.TELEGRAM_BOT_TOKEN,
+                    notification.channel.channel_identifier,
+                    message,
+                )
+            notification.last_sent = starting_task_time
+            notification.save()
 
     # Send combined messages
     for chat_id, messages in combined_messages.items():
