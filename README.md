@@ -4,6 +4,10 @@ For instance you can get alarms on Telegram when the price of Bitcoin is above 8
 As an another example, suppose you have bought 2.5 BNB, and you want sell it when you have
 30 percent profit. You can create a transaction notification and get when the profit of your 
 transaction is 30 percent.
+
+- Official Telegram Channel for Price Updates:
+    * 📢 [https://t.me/eye_on_crypto](https://t.me/eye_on_crypto)
+
 - Nginx log files:
     ```
     access: /var/log/nginx/api-crypto_assets_access.log
