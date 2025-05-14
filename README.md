@@ -7,6 +7,7 @@ transaction is 30 percent.
 
 - Official Telegram Channel for Price Updates:
     * 📢 [https://t.me/eye_on_crypto](https://t.me/eye_on_crypto)
+    * Each 10 minutes, we check the prices of the coins that you're interested.
 
 - Nginx log files:
     ```
