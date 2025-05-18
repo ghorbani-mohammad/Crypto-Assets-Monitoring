@@ -1,3 +1,12 @@
+# [1.43.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/compare/v1.42.7...v1.43.0) (2025-05-18)
+
+
+### Features
+
+* **api:** add cached prices endpoint and update URL routing ([c4991b8](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/commit/c4991b83f8beaf167012532b136f4b4324153d28))
+
+
+
 ## [1.42.7](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/compare/v1.42.6...v1.42.7) (2025-05-12)
 
 
@@ -32,15 +41,6 @@
 ### Bug Fixes
 
 * **notification:** change notification ordering to primary key for consistent retrieval ([563f5f5](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/commit/563f5f5ae82a7e468707479205bbed28ba398ef7))
-
-
-
-## [1.42.3](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/compare/v1.42.2...v1.42.3) (2025-05-09)
-
-
-### Bug Fixes
-
-* **notification:** update notification handling to append primary key instead of notification object ([ffb80c6](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/commit/ffb80c6c98552d908f29d54d93c498bc74e221f9))
 
 
 
