@@ -37,12 +37,12 @@ app.conf.beat_schedule = {
         "task": "update_bitpin_prices",
         "schedule": MINUTE * 4,
     },
-    "check_coin_notifications-60": {
+    "check_coin_notifications": {
         "task": "check_coin_notifications",
-        "schedule": MINUTE * 1,
+        "schedule": MINUTE * 15,
     },
-    "check_transaction_notifications-60": {
+    "check_transaction_notifications": {
         "task": "check_transaction_notifications",
-        "schedule": MINUTE * 1,
+        "schedule": MINUTE * 15,
     },
 }
