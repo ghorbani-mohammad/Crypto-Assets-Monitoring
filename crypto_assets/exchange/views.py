@@ -1,7 +1,6 @@
 from django.http import JsonResponse
 from django.core.cache import cache
-from django.conf import settings
-import redis
+from .models import Coin
 
 def cached_prices(request):
     """
@@ -10,20 +9,27 @@ def cached_prices(request):
     """
     all_prices = {}
     
-    # Get connection to Redis
-    redis_client = redis.Redis.from_url(settings.CACHES['default']['LOCATION'])
+    # Get all coins from the database
+    coins = Coin.objects.all()
     
-    # Get all keys matching the pattern
-    coin_keys = redis_client.keys("coin_*")
-    
-    # Get prices for each key
-    for key in coin_keys:
-        key_str = key.decode('utf-8')
-        parts = key_str.split("_")
-        if len(parts) >= 2:
-            code = parts[1].lower()
-            price = cache.get(key_str)
+    # Check for cached prices for each coin
+    for coin in coins:
+        # Check for both market types
+        for market in ["irt", "usdt"]:
+            # Format key the same way as in platforms/bitpin.py
+            key = f"coin_{coin.code}_{market}".lower()
+            price = cache.get(key)
+            
             if price:
-                all_prices[code] = float(price)
+                all_prices[coin.code.lower()] = float(price)
+                # Once we have a price for a coin, we can move to the next coin
+                break
+                
+        # Also check for direct coin price without market suffix
+        if coin.code.lower() not in all_prices:
+            key = f"coin_{coin.code}".lower()
+            price = cache.get(key)
+            if price:
+                all_prices[coin.code.lower()] = float(price)
     
     return JsonResponse(all_prices) 
