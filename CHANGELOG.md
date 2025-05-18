@@ -1,3 +1,12 @@
+# [1.44.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/compare/v1.43.0...v1.44.0) (2025-05-18)
+
+
+### Features
+
+* **api:** enhance cached prices endpoint to use Redis for improved performance ([6e7d409](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/commit/6e7d4095939983306918553225609f42beafb695))
+
+
+
 # [1.43.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/compare/v1.42.7...v1.43.0) (2025-05-18)
 
 
@@ -32,15 +41,6 @@
 
 * **notification:** refactor notification handling to streamline message sending and improve combined notifications logic ([8e674d5](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/commit/8e674d5f1fea3def438e4941feb7568a736e8a74))
 * **notification:** standardize last_sent timestamp handling to use starting_task_time for consistency ([a99e090](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/commit/a99e090a13f286961b3e055da0409baed04893d6))
-
-
-
-## [1.42.4](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/compare/v1.42.3...v1.42.4) (2025-05-11)
-
-
-### Bug Fixes
-
-* **notification:** change notification ordering to primary key for consistent retrieval ([563f5f5](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/commit/563f5f5ae82a7e468707479205bbed28ba398ef7))
 
 
 
