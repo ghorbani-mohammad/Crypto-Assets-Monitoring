@@ -2,17 +2,26 @@ from django.http import JsonResponse
 from django.core.cache import cache
 from .models import Coin
 import json
-from decimal import Decimal
 import logging
+from decimal import Decimal
 
 logger = logging.getLogger(__name__)
 
-class CustomJSONEncoder(json.JSONEncoder):
-    def default(self, obj):
-        if isinstance(obj, (float, Decimal)):
-            # Convert to string with no trailing zeros, then back to float
-            return float(f"{obj:.10f}".rstrip('0').rstrip('.'))
-        return super().default(obj)
+def format_number(value):
+    """
+    Format a number to remove trailing zeros.
+    If it's a whole number, return an integer, otherwise return a float.
+    """
+    # Convert to Decimal for precise handling
+    if isinstance(value, float) or isinstance(value, int) or isinstance(value, str):
+        value = Decimal(str(value))
+    
+    # Check if it's a whole number
+    if value % 1 == 0:
+        return int(value)
+    else:
+        # Convert to string, remove trailing zeros, convert back to float
+        return float(str(value).rstrip('0').rstrip('.') if '.' in str(value) else str(value))
 
 def cached_prices(request):
     """
@@ -34,7 +43,7 @@ def cached_prices(request):
         logger.info(f"Checking key: {key}, found price: {price}")
         
         if price:
-            all_prices[coin.code.lower()] = float(price)
+            all_prices[coin.code.lower()] = format_number(price)
             logger.info(f"Added price for {coin.code}: {price}")
             continue
             
@@ -45,7 +54,7 @@ def cached_prices(request):
             logger.info(f"Checking market key: {key}, found price: {price}")
             
             if price:
-                all_prices[coin.code.lower()] = float(price)
+                all_prices[coin.code.lower()] = format_number(price)
                 logger.info(f"Added market price for {coin.code}: {price}")
                 break
     
@@ -62,4 +71,4 @@ def cached_prices(request):
             logger.info(f"Sample key {key}: {value}")
     
     logger.info(f"Final prices: {all_prices}")
-    return JsonResponse(all_prices, encoder=CustomJSONEncoder) 
+    return JsonResponse(all_prices) 
