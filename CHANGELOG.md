@@ -1,3 +1,12 @@
+## [1.44.2](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/compare/v1.44.1...v1.44.2) (2025-05-19)
+
+
+### Bug Fixes
+
+* **api:** update JSON response to use encoder parameter for custom JSON formatting ([0b62216](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/commit/0b62216261a3d63ba013ba0aba9831cfaff70981))
+
+
+
 ## [1.44.1](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/compare/v1.44.0...v1.44.1) (2025-05-19)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * **notification:** enhance message sending logic to ensure proper delivery to user accounts and channels ([de2e7c3](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/commit/de2e7c39a3631fcbe368488919b92ad0805cc876))
-
-
-
-## [1.42.6](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/compare/v1.42.5...v1.42.6) (2025-05-12)
-
-
-### Bug Fixes
-
-* **notification:** improve message sending logic by skipping empty notifications in combined messages ([eaf994d](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/commit/eaf994dddd4da3fc4845224488fb77956f20cf72))
 
 
 
