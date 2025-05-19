@@ -21,7 +21,9 @@ def cached_prices(request):
             price = cache.get(key)
             
             if price:
-                all_prices[coin.code.lower()] = float(price)
+                # Format float to remove trailing zeros
+                formatted_price = float(f"{float(price):g}")
+                all_prices[coin.code.lower()] = formatted_price
                 # Once we have a price for a coin, we can move to the next coin
                 break
                 
@@ -30,6 +32,8 @@ def cached_prices(request):
             key = f"coin_{coin.code}".lower()
             price = cache.get(key)
             if price:
-                all_prices[coin.code.lower()] = float(price)
+                # Format float to remove trailing zeros
+                formatted_price = float(f"{float(price):g}")
+                all_prices[coin.code.lower()] = formatted_price
     
     return JsonResponse(all_prices) 
