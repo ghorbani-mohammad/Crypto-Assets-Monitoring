@@ -1,6 +1,15 @@
 from django.http import JsonResponse
 from django.core.cache import cache
 from .models import Coin
+import json
+from decimal import Decimal
+
+class CustomJSONEncoder(json.JSONEncoder):
+    def default(self, obj):
+        if isinstance(obj, (float, Decimal)):
+            # Convert to string with no trailing zeros, then back to float
+            return float(f"{obj:.10f}".rstrip('0').rstrip('.'))
+        return super().default(obj)
 
 def cached_prices(request):
     """
@@ -21,9 +30,7 @@ def cached_prices(request):
             price = cache.get(key)
             
             if price:
-                # Format float to remove trailing zeros
-                formatted_price = float(f"{float(price):g}")
-                all_prices[coin.code.lower()] = formatted_price
+                all_prices[coin.code.lower()] = float(price)
                 # Once we have a price for a coin, we can move to the next coin
                 break
                 
@@ -32,8 +39,7 @@ def cached_prices(request):
             key = f"coin_{coin.code}".lower()
             price = cache.get(key)
             if price:
-                # Format float to remove trailing zeros
-                formatted_price = float(f"{float(price):g}")
-                all_prices[coin.code.lower()] = formatted_price
+                all_prices[coin.code.lower()] = float(price)
     
-    return JsonResponse(all_prices) 
+    # Use custom JSON encoder to format the response
+    return JsonResponse(all_prices, json_dumps_params={'cls': CustomJSONEncoder}) 
