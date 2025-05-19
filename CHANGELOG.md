@@ -1,3 +1,12 @@
+## [1.44.1](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/compare/v1.44.0...v1.44.1) (2025-05-19)
+
+
+### Bug Fixes
+
+* **api:** format cached prices to remove trailing zeros for better presentation ([4740722](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/commit/4740722adfc186e5d0223137e19315635081227e))
+
+
+
 # [1.44.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/compare/v1.43.0...v1.44.0) (2025-05-18)
 
 
@@ -31,16 +40,6 @@
 ### Bug Fixes
 
 * **notification:** improve message sending logic by skipping empty notifications in combined messages ([eaf994d](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/commit/eaf994dddd4da3fc4845224488fb77956f20cf72))
-
-
-
-## [1.42.5](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/compare/v1.42.4...v1.42.5) (2025-05-12)
-
-
-### Bug Fixes
-
-* **notification:** refactor notification handling to streamline message sending and improve combined notifications logic ([8e674d5](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/commit/8e674d5f1fea3def438e4941feb7568a736e8a74))
-* **notification:** standardize last_sent timestamp handling to use starting_task_time for consistency ([a99e090](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/commit/a99e090a13f286961b3e055da0409baed04893d6))
 
 
 
