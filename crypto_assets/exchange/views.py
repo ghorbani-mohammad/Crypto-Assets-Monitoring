@@ -42,4 +42,4 @@ def cached_prices(request):
                 all_prices[coin.code.lower()] = float(price)
     
     # Use custom JSON encoder to format the response
-    return JsonResponse(all_prices, json_dumps_params={'cls': CustomJSONEncoder}) 
+    return JsonResponse(all_prices, encoder=CustomJSONEncoder) 
