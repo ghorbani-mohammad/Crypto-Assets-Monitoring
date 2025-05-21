@@ -1,6 +1,6 @@
 from django.http import JsonResponse
 from django.core.cache import cache
-from .models import Coin
+from .models import Coin, Transaction
 import json
 import logging
 from decimal import Decimal
@@ -71,4 +71,31 @@ def cached_prices(request):
             logger.info(f"Sample key {key}: {value}")
     
     logger.info(f"Final prices: {all_prices}")
-    return JsonResponse(all_prices) 
+    return JsonResponse(all_prices)
+
+def get_transactions(request):
+    """
+    API endpoint to get the user's transactions.
+    Returns a JSON array of transaction objects.
+    """
+    
+    # Get transactions for the user's profile
+    transactions = Transaction.objects.all().select_related('coin')
+    
+    # Format transactions as a list of dictionaries
+    transaction_list = []
+    for tx in transactions:
+        transaction_list.append({
+            'id': tx.id,
+            'type': tx.type,
+            'market': tx.market,
+            'coin': tx.coin.code,
+            'price': format_number(tx.price),
+            'quantity': format_number(tx.quantity),
+            'total_price': format_number(tx.total_price),
+            'current_value': format_number(tx.get_current_value),
+            'date': tx.jdate.strftime('%Y-%m-%d %H:%M:%S') if tx.jdate else None,
+            'change_percentage': format_number(tx.get_change_percentage) if tx.type == Transaction.BUY else None
+        })
+    
+    return JsonResponse(transaction_list, safe=False)
