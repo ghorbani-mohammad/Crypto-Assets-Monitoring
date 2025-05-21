@@ -1,45 +1,51 @@
-## [1.44.2](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/compare/v1.44.1...v1.44.2) (2025-05-19)
+# [1.45.0](https://github.com/ghorbani-mohammad/Django-Crypto-Assets-Monitoring/compare/v1.44.2...v1.45.0) (2025-05-21)
 
 
 ### Bug Fixes
 
-* **api:** update JSON response to use encoder parameter for custom JSON formatting ([0b62216](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/commit/0b62216261a3d63ba013ba0aba9831cfaff70981))
-
-
-
-## [1.44.1](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/compare/v1.44.0...v1.44.1) (2025-05-19)
-
-
-### Bug Fixes
-
-* **api:** format cached prices to remove trailing zeros for better presentation ([4740722](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/commit/4740722adfc186e5d0223137e19315635081227e))
-
-
-
-# [1.44.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/compare/v1.43.0...v1.44.0) (2025-05-18)
+* **api:** ensure proper newline at end of file in cached prices response ([1e11e52](https://github.com/ghorbani-mohammad/Django-Crypto-Assets-Monitoring/commit/1e11e529c5e501788910c650f93a53562a1af8f9))
+* **api:** update transactions retrieval to fetch all transactions instead of user-specific ones ([e3425c0](https://github.com/ghorbani-mohammad/Django-Crypto-Assets-Monitoring/commit/e3425c016ce92a3001348cdf05bfeff66395c0c4))
 
 
 ### Features
 
-* **api:** enhance cached prices endpoint to use Redis for improved performance ([6e7d409](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/commit/6e7d4095939983306918553225609f42beafb695))
+* **api:** add transactions endpoint to retrieve user transactions as JSON ([e65dc1f](https://github.com/ghorbani-mohammad/Django-Crypto-Assets-Monitoring/commit/e65dc1fa73a8e813cc2739e48fa08834bb425f52))
 
 
 
-# [1.43.0](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/compare/v1.42.7...v1.43.0) (2025-05-18)
-
-
-### Features
-
-* **api:** add cached prices endpoint and update URL routing ([c4991b8](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/commit/c4991b83f8beaf167012532b136f4b4324153d28))
-
-
-
-## [1.42.7](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/compare/v1.42.6...v1.42.7) (2025-05-12)
+## [1.44.2](https://github.com/ghorbani-mohammad/Django-Crypto-Assets-Monitoring/compare/v1.44.1...v1.44.2) (2025-05-19)
 
 
 ### Bug Fixes
 
-* **notification:** enhance message sending logic to ensure proper delivery to user accounts and channels ([de2e7c3](https://github.com/ghorbani-mohammad/Crypto-Assets-Monitoring/commit/de2e7c39a3631fcbe368488919b92ad0805cc876))
+* **api:** update JSON response to use encoder parameter for custom JSON formatting ([0b62216](https://github.com/ghorbani-mohammad/Django-Crypto-Assets-Monitoring/commit/0b62216261a3d63ba013ba0aba9831cfaff70981))
+
+
+
+## [1.44.1](https://github.com/ghorbani-mohammad/Django-Crypto-Assets-Monitoring/compare/v1.44.0...v1.44.1) (2025-05-19)
+
+
+### Bug Fixes
+
+* **api:** format cached prices to remove trailing zeros for better presentation ([4740722](https://github.com/ghorbani-mohammad/Django-Crypto-Assets-Monitoring/commit/4740722adfc186e5d0223137e19315635081227e))
+
+
+
+# [1.44.0](https://github.com/ghorbani-mohammad/Django-Crypto-Assets-Monitoring/compare/v1.43.0...v1.44.0) (2025-05-18)
+
+
+### Features
+
+* **api:** enhance cached prices endpoint to use Redis for improved performance ([6e7d409](https://github.com/ghorbani-mohammad/Django-Crypto-Assets-Monitoring/commit/6e7d4095939983306918553225609f42beafb695))
+
+
+
+# [1.43.0](https://github.com/ghorbani-mohammad/Django-Crypto-Assets-Monitoring/compare/v1.42.7...v1.43.0) (2025-05-18)
+
+
+### Features
+
+* **api:** add cached prices endpoint and update URL routing ([c4991b8](https://github.com/ghorbani-mohammad/Django-Crypto-Assets-Monitoring/commit/c4991b83f8beaf167012532b136f4b4324153d28))
 
 
 
