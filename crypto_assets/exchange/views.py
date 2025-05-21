@@ -71,4 +71,4 @@ def cached_prices(request):
             logger.info(f"Sample key {key}: {value}")
     
     logger.info(f"Final prices: {all_prices}")
-    return JsonResponse(all_prices) 
+    return JsonResponse(all_prices)
