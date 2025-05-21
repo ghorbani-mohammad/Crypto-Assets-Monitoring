@@ -78,11 +78,9 @@ def get_transactions(request):
     API endpoint to get the user's transactions.
     Returns a JSON array of transaction objects.
     """
-    # Get the user's profile from the request
-    profile = request.user.profile
     
     # Get transactions for the user's profile
-    transactions = Transaction.objects.filter(profile=profile).select_related('coin')
+    transactions = Transaction.objects.all().select_related('coin')
     
     # Format transactions as a list of dictionaries
     transaction_list = []
