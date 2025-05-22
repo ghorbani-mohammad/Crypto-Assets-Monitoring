@@ -1,4 +1,4 @@
-name: Release using conventional commits (master branch)
+name: Release using conventional commits on master
 
 on:
   push:
@@ -9,23 +9,30 @@ jobs:
   release:
     runs-on: ubuntu-latest
     steps:
-      - name: checkout
-        uses: actions/checkout@v2
+      - name: Checkout full repo
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
-      - name: conventional changelog action
+      - name: Set Git identity
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Generate changelog & bump tag
         id: changelog
         uses: TriPSs/conventional-changelog-action@latest
         with:
-          github-token: "${{ secrets.GITHUB_TOKEN }}"
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          commit: true
+          push: true
 
-      - name: create release
+      - name: Create GitHub Release
         uses: softprops/action-gh-release@v1
-        if: ${{steps.changelog.outputs.skipped == 'false'}}
+        if: steps.changelog.outputs.skipped == 'false'
+        with:
+          tag_name: ${{ steps.changelog.outputs.tag }}
+          name: ${{ steps.changelog.outputs.tag }}
+          body: ${{ steps.changelog.outputs.clean_changelog }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-            tag_name: ${{ steps.changelog.outputs.tag }}
-            name: ${{ steps.changelog.outputs.tag }}
-            body: ${{steps.changelog.outputs.clean_changelog}}
-            draft: false
-            prerelease: false
