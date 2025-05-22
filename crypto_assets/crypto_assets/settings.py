@@ -21,6 +21,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django_jalali",
+    "rest_framework",
     "user",
     "exchange",
     "notification",
