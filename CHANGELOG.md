@@ -1,3 +1,12 @@
+# [1.46.0](https://github.com/ghorbani-mohammad/Django-Crypto-Assets-Monitoring/compare/v1.45.0...v1.46.0) (2025-05-22)
+
+
+### Features
+
+* **api:** integrate REST framework and create transaction viewset with pagination ([0fa396c](https://github.com/ghorbani-mohammad/Django-Crypto-Assets-Monitoring/commit/0fa396cd2436845d37c6bab720aa7b0f229a379d))
+
+
+
 # [1.45.0](https://github.com/ghorbani-mohammad/Django-Crypto-Assets-Monitoring/compare/v1.44.2...v1.45.0) (2025-05-21)
 
 
@@ -37,15 +46,6 @@
 ### Features
 
 * **api:** enhance cached prices endpoint to use Redis for improved performance ([6e7d409](https://github.com/ghorbani-mohammad/Django-Crypto-Assets-Monitoring/commit/6e7d4095939983306918553225609f42beafb695))
-
-
-
-# [1.43.0](https://github.com/ghorbani-mohammad/Django-Crypto-Assets-Monitoring/compare/v1.42.7...v1.43.0) (2025-05-18)
-
-
-### Features
-
-* **api:** add cached prices endpoint and update URL routing ([c4991b8](https://github.com/ghorbani-mohammad/Django-Crypto-Assets-Monitoring/commit/c4991b83f8beaf167012532b136f4b4324153d28))
 
 
 
