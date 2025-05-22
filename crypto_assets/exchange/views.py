@@ -1,5 +1,6 @@
 from django.http import JsonResponse
 from django.core.cache import cache
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .models import Coin, Transaction
 import json
 import logging
@@ -75,16 +76,32 @@ def cached_prices(request):
 
 def get_transactions(request):
     """
-    API endpoint to get the user's transactions.
-    Returns a JSON array of transaction objects.
+    API endpoint to get the user's transactions with pagination.
+    Returns a JSON object with transactions and pagination info.
     """
-    
-    # Get transactions for the user's profile
+    # Get transactions
     transactions = Transaction.objects.all().select_related('coin')
+    
+    # Get page number from request
+    page_number = request.GET.get('page', 1)
+    items_per_page = 10
+    
+    # Create paginator
+    paginator = Paginator(transactions, items_per_page)
+    
+    try:
+        # Get requested page
+        page_obj = paginator.page(page_number)
+    except PageNotAnInteger:
+        # If page is not an integer, deliver first page
+        page_obj = paginator.page(1)
+    except EmptyPage:
+        # If page is out of range, deliver last page
+        page_obj = paginator.page(paginator.num_pages)
     
     # Format transactions as a list of dictionaries
     transaction_list = []
-    for tx in transactions:
+    for tx in page_obj:
         transaction_list.append({
             'id': tx.id,
             'type': tx.type,
@@ -98,4 +115,19 @@ def get_transactions(request):
             'change_percentage': format_number(tx.get_change_percentage) if tx.type == Transaction.BUY else None
         })
     
-    return JsonResponse(transaction_list, safe=False)
+    # Prepare pagination info
+    response = {
+        'transactions': transaction_list,
+        'pagination': {
+            'current_page': page_obj.number,
+            'total_pages': paginator.num_pages,
+            'items_per_page': items_per_page,
+            'total_items': paginator.count,
+            'has_next': page_obj.has_next(),
+            'has_previous': page_obj.has_previous(),
+            'next_page': page_obj.number + 1 if page_obj.has_next() else None,
+            'previous_page': page_obj.number - 1 if page_obj.has_previous() else None,
+        }
+    }
+    
+    return JsonResponse(response)
