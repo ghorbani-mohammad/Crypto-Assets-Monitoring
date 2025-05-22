@@ -6,6 +6,7 @@ class TransactionSerializer(serializers.ModelSerializer):
     coin = serializers.CharField(source='coin.code', read_only=True)
     current_value = serializers.FloatField(source='get_current_value', read_only=True)
     change_percentage = serializers.SerializerMethodField()
+    date = serializers.SerializerMethodField()
     
     class Meta:
         model = Transaction
@@ -21,6 +22,11 @@ class TransactionSerializer(serializers.ModelSerializer):
             return obj.get_change_percentage
         return None
     
+    def get_date(self, obj):
+        if obj.jdate:
+            return obj.jdate.strftime('%Y-%m-%d %H:%M:%S')
+        return None
+    
     def to_representation(self, instance):
         from .views import format_number
         ret = super().to_representation(instance)
@@ -30,10 +36,4 @@ class TransactionSerializer(serializers.ModelSerializer):
             if ret[field] is not None:
                 ret[field] = format_number(ret[field])
         
-        # Format date
-        if instance.jdate:
-            ret['date'] = instance.jdate.strftime('%Y-%m-%d %H:%M:%S')
-        else:
-            ret['date'] = None
-            
         return ret
