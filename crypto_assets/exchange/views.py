@@ -1,12 +1,17 @@
+import json
+import logging
 from django.http import JsonResponse
 from django.core.cache import cache
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from .models import Coin, Transaction
-import json
-import logging
 from decimal import Decimal
+from rest_framework import viewsets
+from rest_framework.pagination import PageNumberPagination
+
+from .models import Coin, Transaction
+from .serializers import TransactionSerializer
 
 logger = logging.getLogger(__name__)
+
 
 def format_number(value):
     """
@@ -74,6 +79,23 @@ def cached_prices(request):
     logger.info(f"Final prices: {all_prices}")
     return JsonResponse(all_prices)
 
+class StandardResultsSetPagination(PageNumberPagination):
+    page_size = 10
+    page_size_query_param = 'page_size'
+    max_page_size = 100
+
+
+class TransactionViewSet(viewsets.ReadOnlyModelViewSet):
+    """
+    A viewset for viewing transactions.
+    """
+    serializer_class = TransactionSerializer
+    pagination_class = StandardResultsSetPagination
+    
+    def get_queryset(self):
+        return Transaction.objects.all().select_related('coin')
+
+# Keep the old function-based view temporarily until fully migrated
 def get_transactions(request):
     """
     API endpoint to get the user's transactions with pagination.
