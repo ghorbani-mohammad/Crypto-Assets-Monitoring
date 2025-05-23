@@ -1,3 +1,12 @@
+## [1.47.1](https://github.com/ghorbani-mohammad/Django-Crypto-Assets-Monitoring/compare/v1.47.0...v1.47.1) (2025-05-23)
+
+
+### Bug Fixes
+
+* **api:** update date format in TransactionSerializer and remove deprecated function-based view for transactions ([a493d22](https://github.com/ghorbani-mohammad/Django-Crypto-Assets-Monitoring/commit/a493d2280403812102922abec8f891676d4c44a5))
+
+
+
 # [1.47.0](https://github.com/ghorbani-mohammad/Django-Crypto-Assets-Monitoring/compare/v1.46.0...v1.47.0) (2025-05-22)
 
 
@@ -37,15 +46,6 @@
 ### Bug Fixes
 
 * **api:** update JSON response to use encoder parameter for custom JSON formatting ([0b62216](https://github.com/ghorbani-mohammad/Django-Crypto-Assets-Monitoring/commit/0b62216261a3d63ba013ba0aba9831cfaff70981))
-
-
-
-## [1.44.1](https://github.com/ghorbani-mohammad/Django-Crypto-Assets-Monitoring/compare/v1.44.0...v1.44.1) (2025-05-19)
-
-
-### Bug Fixes
-
-* **api:** format cached prices to remove trailing zeros for better presentation ([4740722](https://github.com/ghorbani-mohammad/Django-Crypto-Assets-Monitoring/commit/4740722adfc186e5d0223137e19315635081227e))
 
 
 
