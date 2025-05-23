@@ -93,4 +93,4 @@ class TransactionViewSet(viewsets.ReadOnlyModelViewSet):
     pagination_class = StandardResultsSetPagination
     
     def get_queryset(self):
-        return Transaction.objects.all().select_related('coin')
+        return Transaction.objects.all().select_related('coin').order_by('-jdate')
