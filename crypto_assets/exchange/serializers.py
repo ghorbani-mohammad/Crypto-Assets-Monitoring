@@ -24,7 +24,7 @@ class TransactionSerializer(serializers.ModelSerializer):
     
     def get_date(self, obj):
         if obj.jdate:
-            return obj.jdate.strftime('%Y-%m-%d %H:%M:%S')
+            return obj.jdate.strftime('%Y-%m-%d')
         return None
     
     def to_representation(self, instance):
