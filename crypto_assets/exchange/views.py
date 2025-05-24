@@ -1,8 +1,5 @@
-import json
 import logging
-from django.http import JsonResponse
 from django.core.cache import cache
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from decimal import Decimal
 from rest_framework import viewsets
 from rest_framework.pagination import PageNumberPagination
@@ -12,6 +9,12 @@ from .models import Coin, Transaction
 from .serializers import TransactionSerializer, CachedPricesSerializer
 
 logger = logging.getLogger(__name__)
+
+
+class StandardResultsSetPagination(PageNumberPagination):
+    page_size = 10
+    page_size_query_param = "page_size"
+    max_page_size = 100
 
 
 def format_number(value):
@@ -40,6 +43,7 @@ class CachedPricesViewSet(viewsets.ReadOnlyModelViewSet):
     """
 
     serializer_class = CachedPricesSerializer
+    pagination_class = StandardResultsSetPagination
 
     def list(self, request, *args, **kwargs):
         """
@@ -108,12 +112,6 @@ class CachedPricesViewSet(viewsets.ReadOnlyModelViewSet):
         # Serialize the data
         serializer = self.get_serializer(all_prices, many=True)
         return Response(serializer.data)
-
-
-class StandardResultsSetPagination(PageNumberPagination):
-    page_size = 10
-    page_size_query_param = "page_size"
-    max_page_size = 100
 
 
 class TransactionViewSet(viewsets.ReadOnlyModelViewSet):
