@@ -36,6 +36,12 @@ class Coin(BaseModel):
     title = models.CharField(max_length=100, unique=True, null=True)
     code = models.CharField(max_length=20, unique=True)
     icon = models.FileField(upload_to="coin_logos/", blank=True, null=True)
+    icon_background_color = models.CharField(
+        max_length=20,
+        blank=True,
+        null=True,
+        help_text="Background color for SVG icons in hex format (e.g. #FFFFFF)",
+    )
 
     TOMAN = "irt"
     TETHER = "usdt"

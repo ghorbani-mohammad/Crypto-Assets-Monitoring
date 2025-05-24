@@ -10,6 +10,7 @@ local_settings.py
 venv
 db.sqlite3
 static
+logs
 crypto_assets/static
 *.sql
 *.sql.gz

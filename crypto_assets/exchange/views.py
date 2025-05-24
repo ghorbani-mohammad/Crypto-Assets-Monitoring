@@ -111,7 +111,12 @@ class CachedPricesViewSet(viewsets.ReadOnlyModelViewSet):
 
         # Sort coins by price in descending order
         # Handle None prices by putting them at the end
-        all_prices.sort(key=lambda x: (x["price"] is None, -float(x["price"]) if x["price"] is not None else 0))
+        all_prices.sort(
+            key=lambda x: (
+                x["price"] is None,
+                -float(x["price"]) if x["price"] is not None else 0,
+            )
+        )
 
         # Apply pagination
         page = self.paginate_queryset(all_prices)
