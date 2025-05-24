@@ -59,7 +59,7 @@ class CachedPricesViewSet(viewsets.ReadOnlyModelViewSet):
         for coin in coins:
             logger.info(f"Checking prices for coin: {coin.code}")
             price = None
-
+            
             # Check for direct coin price (format used by Bitpin.cache_all_prices)
             key = f"coin_{coin.code}".lower()
             price = cache.get(key)
@@ -85,7 +85,7 @@ class CachedPricesViewSet(viewsets.ReadOnlyModelViewSet):
                 else None,
                 "price": format_number(price) if price else None,
             }
-
+            
             all_prices.append(coin_data)
             logger.info(f"Added coin data: {coin_data}")
 
@@ -108,8 +108,14 @@ class CachedPricesViewSet(viewsets.ReadOnlyModelViewSet):
                 logger.info(f"Sample key {key}: {value}")
 
         logger.info(f"Final prices count: {len(all_prices)}")
-
-        # Serialize the data
+        
+        # Apply pagination
+        page = self.paginate_queryset(all_prices)
+        if page is not None:
+            serializer = self.get_serializer(page, many=True)
+            return self.get_paginated_response(serializer.data)
+        
+        # If pagination is not applied, return all data
         serializer = self.get_serializer(all_prices, many=True)
         return Response(serializer.data)
 
