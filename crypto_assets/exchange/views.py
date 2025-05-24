@@ -73,11 +73,11 @@ def cached_prices(request):
         # Try to get a sample of cached values to see what's in there
         sample_keys = [
             "coin_btc",
-            "coin_eth",  # Format used by Bitpin.cache_all_prices
+            "coin_eth",
             "coin_btc_irt",
             "coin_btc_usdt",
             "coin_eth_irt",
-            "coin_eth_usdt",  # Format used by update_bitpin_prices
+            "coin_eth_usdt",
         ]
         for key in sample_keys:
             value = cache.get(key)
