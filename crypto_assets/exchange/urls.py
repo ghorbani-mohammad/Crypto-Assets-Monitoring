@@ -5,8 +5,8 @@ from . import views
 # Create a router and register our viewsets with it
 router = DefaultRouter()
 router.register(r"transactions", views.TransactionViewSet, basename="transaction")
+router.register(r"cached-prices", views.CachedPricesViewSet, basename="cached-prices")
 
 urlpatterns = [
     path("", include(router.urls)),
-    path("cached-prices/", views.cached_prices, name="cached_prices"),
 ]
