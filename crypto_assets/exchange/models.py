@@ -35,7 +35,7 @@ class Exchange(BaseModel):
 class Coin(BaseModel):
     title = models.CharField(max_length=100, unique=True, null=True)
     code = models.CharField(max_length=20, unique=True)
-    # logo = models.ImageField(upload_to="coin_logos/", null=True, blank=True)
+    icon = models.FileField(upload_to='coin_logos/', blank=True, null=True)
 
     TOMAN = "irt"
     TETHER = "usdt"
