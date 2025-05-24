@@ -200,7 +200,9 @@ def check_transaction_notifications():
     # Send combined messages
     for chat_id, messages in combined_messages.items():
         if messages:
-            combined_text = "📊 Favorite Crypto Transactions \n\n" + "\n\n".join(messages)
+            combined_text = "📊 Favorite Crypto Transactions \n\n" + "\n\n".join(
+                messages
+            )
             utils.send_telegram_message(
                 settings.TELEGRAM_BOT_TOKEN, chat_id, combined_text
             )
