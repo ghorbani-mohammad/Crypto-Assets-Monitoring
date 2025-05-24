@@ -6,7 +6,7 @@ from rest_framework.pagination import PageNumberPagination
 from rest_framework.response import Response
 
 from .models import Coin, Transaction
-from .serializers import TransactionSerializer, CachedPricesSerializer
+from .serializers import TransactionSerializer, CachedPricesSerializer, CoinSerializer
 
 logger = logging.getLogger(__name__)
 
@@ -139,3 +139,14 @@ class TransactionViewSet(viewsets.ReadOnlyModelViewSet):
 
     def get_queryset(self):
         return Transaction.objects.all().select_related("coin").order_by("-jdate")
+
+
+class CoinViewSet(viewsets.ReadOnlyModelViewSet):
+    """
+    A read-only viewset for viewing coins.
+    Provides list and detail views for coins.
+    """
+
+    queryset = Coin.objects.all().order_by("code")
+    serializer_class = CoinSerializer
+    pagination_class = StandardResultsSetPagination

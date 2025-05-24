@@ -1,5 +1,37 @@
 from rest_framework import serializers
-from .models import Transaction
+
+from .models import Transaction, Coin
+
+
+class CoinSerializer(serializers.ModelSerializer):
+    """
+    Serializer for Coin model.
+    Read-only serializer that includes all relevant coin information.
+    """
+
+    icon_url = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Coin
+        fields = [
+            "id",
+            "title",
+            "code",
+            "icon_url",
+            "icon_background_color",
+            "market",
+            "created_at",
+            "updated_at",
+        ]
+        read_only_fields = fields
+
+    def get_icon_url(self, obj):
+        if obj.icon:
+            request = self.context.get("request")
+            if request:
+                return request.build_absolute_uri(obj.icon.url)
+            return obj.icon.url
+        return None
 
 
 class CachedPricesSerializer(serializers.Serializer):
