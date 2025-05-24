@@ -1,3 +1,12 @@
+# [1.48.0](https://github.com/ghorbani-mohammad/Django-Crypto-Assets-Monitoring/compare/v1.47.1...v1.48.0) (2025-05-24)
+
+
+### Features
+
+* **api:** add CachedPricesViewSet and CachedPricesSerializer for retrieving cached cryptocurrency prices ([08fa6d4](https://github.com/ghorbani-mohammad/Django-Crypto-Assets-Monitoring/commit/08fa6d4d1de09061b74c8c6e93280b351d8d57c3))
+
+
+
 ## [1.47.1](https://github.com/ghorbani-mohammad/Django-Crypto-Assets-Monitoring/compare/v1.47.0...v1.47.1) (2025-05-23)
 
 
@@ -37,15 +46,6 @@
 ### Features
 
 * **api:** add transactions endpoint to retrieve user transactions as JSON ([e65dc1f](https://github.com/ghorbani-mohammad/Django-Crypto-Assets-Monitoring/commit/e65dc1fa73a8e813cc2739e48fa08834bb425f52))
-
-
-
-## [1.44.2](https://github.com/ghorbani-mohammad/Django-Crypto-Assets-Monitoring/compare/v1.44.1...v1.44.2) (2025-05-19)
-
-
-### Bug Fixes
-
-* **api:** update JSON response to use encoder parameter for custom JSON formatting ([0b62216](https://github.com/ghorbani-mohammad/Django-Crypto-Assets-Monitoring/commit/0b62216261a3d63ba013ba0aba9831cfaff70981))
 
 
 
