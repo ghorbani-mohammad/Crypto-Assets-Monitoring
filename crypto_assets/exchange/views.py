@@ -6,9 +6,10 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from decimal import Decimal
 from rest_framework import viewsets
 from rest_framework.pagination import PageNumberPagination
+from rest_framework.response import Response
 
 from .models import Coin, Transaction
-from .serializers import TransactionSerializer
+from .serializers import TransactionSerializer, CachedPricesSerializer
 
 logger = logging.getLogger(__name__)
 
@@ -32,59 +33,81 @@ def format_number(value):
         )
 
 
-def cached_prices(request):
+class CachedPricesViewSet(viewsets.ReadOnlyModelViewSet):
     """
-    API endpoint to get all cached cryptocurrency prices.
-    Returns a JSON object with cryptocurrency codes as keys and their prices as values.
+    A viewset for viewing cached cryptocurrency prices.
+    Returns a list of objects with code, title, icon, and price fields.
     """
-    all_prices = {}
 
-    # Get all coins from the database
-    coins = Coin.objects.all()
-    logger.info(f"Found {coins.count()} coins in database")
+    serializer_class = CachedPricesSerializer
 
-    # Check for cached prices for each coin
-    for coin in coins:
-        logger.info(f"Checking prices for coin: {coin.code}")
-        # Check for direct coin price (format used by Bitpin.cache_all_prices)
-        key = f"coin_{coin.code}".lower()
-        price = cache.get(key)
-        logger.info(f"Checking key: {key}, found price: {price}")
+    def list(self, request, *args, **kwargs):
+        """
+        Override the list method to return cached prices instead of model data.
+        """
+        all_prices = []
 
-        if price:
-            all_prices[coin.code.lower()] = format_number(price)
-            logger.info(f"Added price for {coin.code}: {price}")
-            continue
+        # Get all coins from the database
+        coins = Coin.objects.all()
+        logger.info(f"Found {coins.count()} coins in database")
 
-        # If not found, check for market-specific keys (format used by update_bitpin_prices task)
-        for market in ["irt", "usdt"]:
-            key = f"coin_{coin.code}_{market}".lower()
+        # Check for cached prices for each coin
+        for coin in coins:
+            logger.info(f"Checking prices for coin: {coin.code}")
+            price = None
+
+            # Check for direct coin price (format used by Bitpin.cache_all_prices)
+            key = f"coin_{coin.code}".lower()
             price = cache.get(key)
-            logger.info(f"Checking market key: {key}, found price: {price}")
+            logger.info(f"Checking key: {key}, found price: {price}")
 
-            if price:
-                all_prices[coin.code.lower()] = format_number(price)
-                logger.info(f"Added market price for {coin.code}: {price}")
-                break
+            if not price:
+                # If not found, check for market-specific keys (format used by update_bitpin_prices task)
+                for market in ["irt", "usdt"]:
+                    key = f"coin_{coin.code}_{market}".lower()
+                    price = cache.get(key)
+                    logger.info(f"Checking market key: {key}, found price: {price}")
 
-    # If no prices found, try to get any cached values
-    if not all_prices:
-        logger.warning("No prices found in cache. Checking for any cached values...")
-        # Try to get a sample of cached values to see what's in there
-        sample_keys = [
-            "coin_btc",
-            "coin_eth",
-            "coin_btc_irt",
-            "coin_btc_usdt",
-            "coin_eth_irt",
-            "coin_eth_usdt",
-        ]
-        for key in sample_keys:
-            value = cache.get(key)
-            logger.info(f"Sample key {key}: {value}")
+                    if price:
+                        break
 
-    logger.info(f"Final prices: {all_prices}")
-    return JsonResponse(all_prices)
+            # Create coin data object
+            coin_data = {
+                "code": coin.code,
+                "title": coin.title
+                or coin.code,  # Use code as fallback if title is None
+                "icon": request.build_absolute_uri(coin.icon.url)
+                if coin.icon
+                else None,
+                "price": format_number(price) if price else None,
+            }
+
+            all_prices.append(coin_data)
+            logger.info(f"Added coin data: {coin_data}")
+
+        # If no prices found, try to get any cached values for debugging
+        if not any(coin["price"] for coin in all_prices):
+            logger.warning(
+                "No prices found in cache. Checking for any cached values..."
+            )
+            # Try to get a sample of cached values to see what's in there
+            sample_keys = [
+                "coin_btc",
+                "coin_eth",
+                "coin_btc_irt",
+                "coin_btc_usdt",
+                "coin_eth_irt",
+                "coin_eth_usdt",
+            ]
+            for key in sample_keys:
+                value = cache.get(key)
+                logger.info(f"Sample key {key}: {value}")
+
+        logger.info(f"Final prices count: {len(all_prices)}")
+
+        # Serialize the data
+        serializer = self.get_serializer(all_prices, many=True)
+        return Response(serializer.data)
 
 
 class StandardResultsSetPagination(PageNumberPagination):

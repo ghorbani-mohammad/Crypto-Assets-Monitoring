@@ -2,6 +2,18 @@ from rest_framework import serializers
 from .models import Transaction
 
 
+class CachedPricesSerializer(serializers.Serializer):
+    """
+    Serializer for cached cryptocurrency prices.
+    Returns a list of objects with code, title, icon, and price fields.
+    """
+
+    code = serializers.CharField()
+    title = serializers.CharField()
+    icon = serializers.CharField(allow_null=True)
+    price = serializers.FloatField(allow_null=True)
+
+
 class TransactionSerializer(serializers.ModelSerializer):
     coin = serializers.CharField(source="coin.code", read_only=True)
     current_value = serializers.FloatField(source="get_current_value", read_only=True)
