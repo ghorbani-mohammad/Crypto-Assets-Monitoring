@@ -109,7 +109,13 @@ class CachedPricesViewSet(viewsets.ReadOnlyModelViewSet):
 
         logger.info(f"Final prices count: {len(all_prices)}")
 
-        # Serialize the data
+        # Apply pagination
+        page = self.paginate_queryset(all_prices)
+        if page is not None:
+            serializer = self.get_serializer(page, many=True)
+            return self.get_paginated_response(serializer.data)
+
+        # If pagination is not applied, return all data
         serializer = self.get_serializer(all_prices, many=True)
         return Response(serializer.data)
 
