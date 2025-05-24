@@ -4,6 +4,8 @@ from decimal import Decimal
 from rest_framework import viewsets
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.response import Response
+from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework import filters
 
 from .models import Coin, Transaction
 from .serializers import TransactionSerializer, CachedPricesSerializer, CoinSerializer
@@ -132,10 +134,17 @@ class CachedPricesViewSet(viewsets.ReadOnlyModelViewSet):
 class TransactionViewSet(viewsets.ReadOnlyModelViewSet):
     """
     A viewset for viewing transactions.
+    Supports filtering by coin using query parameters:
+    - coin: Filter by coin ID
+    - coin__code: Filter by coin code (e.g., BTC, ETH)
     """
 
     serializer_class = TransactionSerializer
     pagination_class = StandardResultsSetPagination
+    filter_backends = [DjangoFilterBackend, filters.OrderingFilter]
+    filterset_fields = ["coin", "coin__code"]
+    ordering_fields = ["jdate", "amount", "price"]
+    ordering = ["-jdate"]
 
     def get_queryset(self):
         return Transaction.objects.all().select_related("coin").order_by("-jdate")
