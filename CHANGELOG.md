@@ -1,3 +1,12 @@
+# [1.49.0](https://github.com/ghorbani-mohammad/Django-Crypto-Assets-Monitoring/compare/v1.48.0...v1.49.0) (2025-05-24)
+
+
+### Features
+
+* **viewset:** add filtering and ordering capabilities to TransactionViewSet for enhanced transaction data retrieval ([8bf6469](https://github.com/ghorbani-mohammad/Django-Crypto-Assets-Monitoring/commit/8bf6469dba362e258adbe982d0080e343c136b86))
+
+
+
 # [1.48.0](https://github.com/ghorbani-mohammad/Django-Crypto-Assets-Monitoring/compare/v1.47.1...v1.48.0) (2025-05-24)
 
 
@@ -31,21 +40,6 @@
 ### Features
 
 * **api:** integrate REST framework and create transaction viewset with pagination ([0fa396c](https://github.com/ghorbani-mohammad/Django-Crypto-Assets-Monitoring/commit/0fa396cd2436845d37c6bab720aa7b0f229a379d))
-
-
-
-# [1.45.0](https://github.com/ghorbani-mohammad/Django-Crypto-Assets-Monitoring/compare/v1.44.2...v1.45.0) (2025-05-21)
-
-
-### Bug Fixes
-
-* **api:** ensure proper newline at end of file in cached prices response ([1e11e52](https://github.com/ghorbani-mohammad/Django-Crypto-Assets-Monitoring/commit/1e11e529c5e501788910c650f93a53562a1af8f9))
-* **api:** update transactions retrieval to fetch all transactions instead of user-specific ones ([e3425c0](https://github.com/ghorbani-mohammad/Django-Crypto-Assets-Monitoring/commit/e3425c016ce92a3001348cdf05bfeff66395c0c4))
-
-
-### Features
-
-* **api:** add transactions endpoint to retrieve user transactions as JSON ([e65dc1f](https://github.com/ghorbani-mohammad/Django-Crypto-Assets-Monitoring/commit/e65dc1fa73a8e813cc2739e48fa08834bb425f52))
 
 
 
