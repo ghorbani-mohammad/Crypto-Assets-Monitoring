@@ -10,7 +10,7 @@ class CoinAdmin(ReadOnlyAdminDateFieldsMIXIN):
         "pk",
         "code",
         "title",
-        "logo",
+        # "logo",
         "market",
         "get_current_usdt_price",
         "get_current_irt_price",
