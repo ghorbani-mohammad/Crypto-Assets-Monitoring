@@ -78,8 +78,8 @@ class CachedPricesViewSet(viewsets.ReadOnlyModelViewSet):
                     if price:
                         break
 
-            icon_svg_url = request.build_absolute_uri(coin.icon.url)
-            icon_png_url = request.build_absolute_uri(coin.icon_png.url)
+            icon_svg_url = request.build_absolute_uri(coin.icon.url) if coin.icon else None
+            icon_png_url = request.build_absolute_uri(coin.icon_png.url) if coin.icon_png else None
             # Create coin data object
             coin_data = {
                 "code": coin.code,
