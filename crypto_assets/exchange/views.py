@@ -46,6 +46,7 @@ class CachedPricesViewSet(viewsets.ReadOnlyModelViewSet):
 
     serializer_class = CachedPricesSerializer
     pagination_class = StandardResultsSetPagination
+    queryset = Coin.objects.filter(enable=True)
 
     def list(self, request, *args, **kwargs):
         """
@@ -54,7 +55,7 @@ class CachedPricesViewSet(viewsets.ReadOnlyModelViewSet):
         all_prices = []
 
         # Get all coins from the database
-        coins = Coin.objects.all()
+        coins = self.get_queryset()
         logger.info(f"Found {coins.count()} coins in database")
 
         # Check for cached prices for each coin
@@ -77,14 +78,14 @@ class CachedPricesViewSet(viewsets.ReadOnlyModelViewSet):
                     if price:
                         break
 
+            icon_svg_url = request.build_absolute_uri(coin.icon.url)
+            icon_png_url = request.build_absolute_uri(coin.icon_png.url)
             # Create coin data object
             coin_data = {
                 "code": coin.code,
                 "title": coin.title
                 or coin.code,  # Use code as fallback if title is None
-                "icon": request.build_absolute_uri(coin.icon.url)
-                if coin.icon
-                else None,
+                "icon": icon_png_url if icon_png_url else icon_svg_url,
                 "price": format_number(price) if price else None,
             }
 
