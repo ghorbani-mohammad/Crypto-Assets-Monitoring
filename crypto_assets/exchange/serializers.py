@@ -1,5 +1,6 @@
 from rest_framework import serializers
 
+from .views import format_number
 from .models import Transaction, Coin
 
 
@@ -11,6 +12,7 @@ class CoinSerializer(serializers.ModelSerializer):
 
     icon_url = serializers.SerializerMethodField()
     icon_png_url = serializers.SerializerMethodField()
+
     class Meta:
         model = Coin
         fields = [
@@ -40,7 +42,7 @@ class CoinSerializer(serializers.ModelSerializer):
             if request:
                 return request.build_absolute_uri(obj.icon_png.url)
         return None
-    
+
     def to_representation(self, instance):
         ret = super().to_representation(instance)
         ret["icon_url"] = ret["icon_png_url"] or ret["icon_url"]
@@ -92,8 +94,6 @@ class TransactionSerializer(serializers.ModelSerializer):
         return None
 
     def to_representation(self, instance):
-        from .views import format_number
-
         ret = super().to_representation(instance)
 
         # Format numeric fields
