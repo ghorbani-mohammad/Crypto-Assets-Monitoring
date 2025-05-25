@@ -156,6 +156,6 @@ class CoinViewSet(viewsets.ReadOnlyModelViewSet):
     Provides list and detail views for coins.
     """
 
-    queryset = Coin.objects.all().order_by("code")
+    queryset = Coin.objects.filter(enable=True).order_by("code")
     serializer_class = CoinSerializer
     pagination_class = StandardResultsSetPagination
