@@ -35,6 +35,7 @@ class Exchange(BaseModel):
 class Coin(BaseModel):
     title = models.CharField(max_length=100, unique=True, null=True)
     code = models.CharField(max_length=20, unique=True)
+    enable = models.BooleanField(default=True)
     icon = models.FileField(upload_to="coin_logos/", blank=True, null=True, help_text="SVG icon for the coin")
     icon_png = models.FileField(upload_to="coin_logos/", blank=True, null=True, help_text="PNG icon for the coin")
     icon_background_color = models.CharField(
