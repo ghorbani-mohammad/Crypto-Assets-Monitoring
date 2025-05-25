@@ -20,6 +20,7 @@ class CoinAdmin(ReadOnlyAdminDateFieldsMIXIN):
         "created_at",
         "updated_at",
     )
+    list_filter = ("enable",)
 
     @admin.display(description="usdt price")
     def get_current_usdt_price(self, instance):
